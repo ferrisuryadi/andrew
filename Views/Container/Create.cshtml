@@ -1,0 +1,63 @@
+﻿@{
+    ViewData["Title"] = "Container";
+}
+
+@model fms.Models.mtContainer;
+
+@if (ViewBag.Error) {
+    <div class="alert alert-danger alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <h4><i class="icon fa fa-ban"></i> Error!</h4>
+        @Html.ValidationSummary()
+    </div>
+}
+
+<div class="row">
+    <!-- left column -->
+    <div class="col-xs-12">
+        <!-- general form elements -->
+        <div class="box box-primary">
+            <!-- form start -->
+            <form role="form" method="post" asp-controller="Container" asp-action="Create">
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="typeofContainer">@Html.DisplayNameFor(model => model.typeofContainer)</label>
+                        <input type="text" class="form-control" id="typeofContainer" asp-for="typeofContainer" autofocus>
+                    </div>
+                    <div class="form-group">
+                        <label for="interiorDimension">@Html.DisplayNameFor(model => model.interiorDimension)</label>
+                        <input type="text" class="form-control" id="interiorDimension" asp-for="interiorDimension">
+                    </div>
+                    <div class="form-group">
+                        <label for="doorOpening">@Html.DisplayNameFor(model => model.doorOpening)</label>
+                        <input type="text" class="form-control" id="doorOpening" asp-for="doorOpening">
+                    </div>
+                    <div class="form-group">
+                        <label for="tareWeight">@Html.DisplayNameFor(model => model.tareWeight)</label>
+                        <input type="text" class="form-control" id="tareWeight" asp-for="tareWeight">
+                    </div>
+                    <div class="form-group">
+                        <label for="cubicCapacity">@Html.DisplayNameFor(model => model.cubicCapacity)</label>
+                        <input type="text" class="form-control" id="cubicCapacity" asp-for="cubicCapacity">
+                    </div>
+                    <div class="form-group">
+                        <label for="payload">@Html.DisplayNameFor(model => model.payload)</label>
+                        <input type="text" class="form-control" id="payload" asp-for="payload">
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" asp-for="isActive"> @Html.DisplayNameFor(model => model.isActive)
+                        </label>
+                    </div>
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">Save</button>&nbsp;
+                    <a class="btn btn-default" asp-controller="container" asp-action="index">Cancel</a>
+                </div>
+            </form>
+        </div>
+        <!-- /.box -->
+    </div>
+    <!--/.col (left) -->
+</div>

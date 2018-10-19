@@ -1,0 +1,104 @@
+﻿@{
+    ViewData["Title"] = "Agent Profit Shared";
+}
+@model fms.Models.mtAgentProfitShared;
+@section Header
+{
+    <link rel="stylesheet" href="~/AdminLTE/bower_components/select2/dist/css/select2.min.css">
+    <link rel="stylesheet" href="~/AdminLTE/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+}
+@if (ViewBag.Error)
+{
+    <div class="alert alert-danger alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <h4><i class="icon fa fa-ban"></i> Error!</h4>
+        @Html.ValidationSummary()
+    </div>
+}
+<div class="row">
+    <!-- left column -->
+    <div class="col-xs-12">
+        <!-- general form elements -->
+        <div class="box box-primary">
+            <!-- form start -->
+            <form role="form" method="post" asp-controller="AgentProfitShared" asp-action="Create">
+                <div class="box-body">
+                    <div class="form-group">
+                        <div class="form-group">
+                            <label>@Html.DisplayNameFor(model => model.agentId)</label>
+                            <select class="form-control select2" style="width: 100%;" asp-for="agentId">
+                                <option value="0">No Parent</option>
+                                @foreach (var item in ViewBag.Agent)
+                                {
+                                    <option value="@item.id">@item.code - @item.description</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-group">
+                            <label>@Html.DisplayNameFor(model => model.containerId)</label>
+                            <select class="form-control select2" style="width: 100%;" asp-for="containerId">
+                                <option value="0">No Parent</option>
+                                @foreach (var item in ViewBag.Container)
+                                {
+                                    <option value="@item.id">@item.typeofContainer</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-group">
+                            <label>@Html.DisplayNameFor(model => model.shipperId)</label>
+                            <select class="form-control select2" style="width: 100%;" asp-for="shipperId">
+                                <option value="0">No Parent</option>
+                                @foreach (var item in ViewBag.Shipper)
+                                {
+                                    <option value="@item.id">@item.code - @item.name</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="profitShared">@Html.DisplayNameFor(model => model.profitShared)</label>
+                        <input type="number" class="form-control" id="profitShared" asp-for="profitShared" autofocus>
+                    </div>
+                    <div class="form-group">
+                        <label for="periodStart">@Html.DisplayNameFor(model => model.periodStart)</label>
+                        <input type="text" class="form-control" id="periodStart" asp-for="periodStart">
+                    </div>
+                    <div class="form-group">
+                        <label for="periodEnd">@Html.DisplayNameFor(model => model.periodEnd)</label>
+                        <input type="text" class="form-control" id="periodEnd" asp-for="periodEnd">
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" asp-for="isActive"> @Html.DisplayNameFor(model => model.isActive)
+                        </label>
+                    </div>
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">Save</button>&nbsp;
+                    <a class="btn btn-default" asp-controller="AgentProfitShared" asp-action="index">Cancel</a>
+                </div>
+            </form>
+        </div>
+        <!-- /.box -->
+    </div>
+    <!--/.col (left) -->
+</div>
+@section scripts{
+    <script src="@Url.Content("~/AdminLTE/bower_components/select2/dist/js/select2.full.min.js")"></script>
+    <script>$(function () {
+            $('.select2').select2()
+
+            $('#periodStart').datepicker({
+              autoclose: true
+            })
+
+            $('#periodEnd').datepicker({
+              autoclose: true
+            })
+        })</script>
+}

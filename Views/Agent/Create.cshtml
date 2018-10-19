@@ -1,0 +1,156 @@
+﻿@{
+    ViewData["Title"] = "Agent";
+}
+@model fms.Models.mtAgent;
+
+@section Header
+{
+    <link rel="stylesheet" href="~/AdminLTE/bower_components/select2/dist/css/select2.min.css">
+}
+@if (ViewBag.Error)
+{
+    <div class="alert alert-danger alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <h4><i class="icon fa fa-ban"></i> Error!</h4>
+        @Html.ValidationSummary()
+    </div>
+}
+    <div class="row">
+        <!-- left column -->
+        <div class="col-md-6">
+            <!-- general form elements -->
+            <div class="box box-primary">
+                <!-- form start -->
+                <form role="form" method="post" asp-controller="Agent" asp-action="Create">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="code">@Html.DisplayNameFor(model => model.code)</label>
+                            <input type="text" class="form-control" id="code" asp-for="code" autofocus>
+                        </div>
+                        <div class="form-group">
+                            <label for="name">@Html.DisplayNameFor(model => model.name)</label>
+                            <input type="text" class="form-control" id="name" asp-for="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="address">@Html.DisplayNameFor(model => model.address)</label>
+                            <input type="text" class="form-control" id="address" asp-for="address">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">@Html.DisplayNameFor(model => model.email)</label>
+                            <input type="text" class="form-control" id="email" asp-for="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="website">@Html.DisplayNameFor(model => model.website)</label>
+                            <input type="text" class="form-control" id="website" asp-for="website">
+                        </div>
+                        <div class="form-group">
+                            <label for="address">@Html.DisplayNameFor(model => model.address)</label>
+                            <input type="text" class="form-control" id="address" asp-for="address">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="postalCode">@Html.DisplayNameFor(model => model.postalCode)</label>
+                            <input type="text" class="form-control" id="postalCode" asp-for="postalCode">
+                        </div>
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label>@Html.DisplayNameFor(model => model.portOfDestinationId)</label>
+                                <select class="form-control select2" style="width: 100%;" asp-for="portOfDestinationId">
+                                    <option value="0">No Parent</option>
+                                    @foreach (var item in ViewBag.PortOfDestination)
+                                {
+                                    <option value="@item.id">@item.location</option>
+                            }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label>@Html.DisplayNameFor(model => model.shipperId)</label>
+                                <select class="form-control select2" style="width: 100%;" asp-for="shipperId">
+                                    <option value="0">No Parent</option>
+                                    @foreach (var item in ViewBag.Shipper)
+                                {
+                                    <option value="@item.id">@item.code - @item.name</option>
+                            }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label>@Html.DisplayNameFor(model => model.shipperId)</label>
+                                <select class="form-control select2" style="width: 100%;" asp-for="shipperId">
+                                    <option value="0">No Parent</option>
+                                    @foreach (var item in ViewBag.Shipper)
+                                {
+                                    <option value="@item.id">@item.code - @item.description</option>
+                            }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" asp-for="isActive"> @Html.DisplayNameFor(model => model.isActive)
+                            </label>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary">Save</button>&nbsp;
+                        <a class="btn btn-default" asp-controller="Agent" asp-action="index">Cancel</a>
+                    </div>
+                </form>
+            </div>
+            <!-- /.box -->
+        </div>
+        <!--/.col (left) -->
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">
+                        <a asp-controller="Agent" asp-action="create" class="btn btn-primary">Create New</a>
+                    </h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body table-responsive">
+                    <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Contact Person</th>
+                                <th>Telepon</th>
+                                <th>Position</th>
+                                <th>Address</th>
+                                <th>Handphone</th>
+                                <th>Email</th> 
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>Contact Person</th>
+                                <th>Telepon</th>
+                                <th>Position</th>
+                                <th>Address</th>
+                                <th>Handphone</th>
+                                <th>Email</th>
+                                <th>Action</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- /.col -->
+    </div>
+@section scripts{
+    <script src="@Url.Content("~/AdminLTE/bower_components/select2/dist/js/select2.full.min.js")"></script>
+    <script>$(function () {
+            $('.select2').select2()
+        })
+    </script>
+}
