@@ -1,0 +1,65 @@
+﻿@{
+    ViewData["Title"] = "Port Terminal";
+}
+@model fms.Models.mtPortTerminal;
+@section Header
+    {
+    <link rel="stylesheet" href="~/AdminLTE/bower_components/select2/dist/css/select2.min.css">
+}
+@if (ViewBag.Error)
+{
+    <div class="alert alert-danger alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <h4><i class="icon fa fa-ban"></i> Error!</h4>
+        @Html.ValidationSummary()
+    </div>
+}
+<div class="row">
+    <!-- left column -->
+    <div class="col-xs-12">
+        <!-- general form elements -->
+        <div class="box box-primary">
+            <form role="form" method="post" asp-controller="PortTerminal" asp-action="Create">
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="terminalPort">@Html.DisplayNameFor(model => model.terminalPort)</label>
+                        <input type="text" class="form-control" id="port" asp-for="terminalPort" autofocus>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">@Html.DisplayNameFor(model => model.address)</label>
+                        <input type="text" class="form-control" id="port" asp-for="address">
+                    </div>
+                    <div class="form-group">
+                        <div class="form-group">
+                            <label>@Html.DisplayNameFor(model => model.portOfLoadingId)</label>
+                            <select class="form-control select2" style="width: 100%;" asp-for="portOfLoadingId">
+                                @foreach (var item in ViewBag.PortOfLoading)
+                                {
+                                    <option value="@item.id">@item.code - @item.description</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" asp-for="isActive"> @Html.DisplayNameFor(model => model.isActive)
+                        </label>
+                    </div>
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">Save</button>&nbsp;
+                    <a class="btn btn-default" asp-controller="PortTerminal" asp-action="index">Cancel</a>
+                </div>
+            </form>
+        </div>
+        <!-- /.box -->
+    </div>
+    <!--/.col (left) -->
+</div>
+@section scripts{
+    <script src="@Url.Content("~/AdminLTE/bower_components/select2/dist/js/select2.full.min.js")"></script>
+    <script>$(function () {
+        $('.select2').select2()
+    })</script>
+}

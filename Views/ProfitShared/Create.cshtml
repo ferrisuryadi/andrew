@@ -1,0 +1,273 @@
+﻿@{
+    ViewData["Title"] = "Profit Shared";
+}
+@model fms.Models.mtProfitShared;
+@section Header
+    {
+    <link rel="stylesheet" href="~/AdminLTE/bower_components/select2/dist/css/select2.min.css">
+}
+@if (ViewBag.Error)
+{
+    <div class="alert alert-danger alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <h4><i class="icon fa fa-ban"></i> Error!</h4>
+        @Html.ValidationSummary()
+    </div>
+}
+<div class="row">
+    <!-- left column -->
+    <!--<form role="form" method="post" asp-controller="Agent" asp-action="Create"> -->
+    <div class="col-xs-12">
+        <!-- general form elements -->
+        <div class="box box-primary">
+            <!-- form start -->
+            <div class="box-body">
+                <div class="col-xs-6">
+                    <div class="form-group">
+                        <div class="form-group">
+                            <label>@Html.DisplayNameFor(model => model.agentId)</label>
+                            <select class="form-control select2" style="width: 100%;" id="agentId">
+                                <option value="0">No Parent</option>
+                                @foreach (var item in ViewBag.Agent)
+                                {
+                                    <option value="@item.id">@item.code</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-group">
+                            <label>@Html.DisplayNameFor(model => model.countryId)</label>
+                            <select class="form-control select2" style="width: 100%;" id="countryId">
+                                <option value="0">No Parent</option>
+                                @foreach (var item in ViewBag.Countries)
+                                {
+                                    <option value="@item.id">@item.code</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="refNo">@Html.DisplayNameFor(model => model.refNo)</label>
+                        <input type="text" class="form-control" id="refNo" autofocus>
+                    </div>
+                    <div class="form-group">
+                        <label for="txDate">@Html.DisplayNameFor(model => model.txDate)</label>
+                        <input type="text" class="form-control" id="txDate" asp-for="txDate">
+                    </div>
+                    <div class="form-group">
+                        <label for="txValidDate">@Html.DisplayNameFor(model => model.txValidDate)</label>
+                        <input type="text" class="form-control" id="txValidDate" asp-for="txValidDate">
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="form-group">
+                        <label for="psCondition">@Html.DisplayNameFor(model => model.psCondition)</label>
+                        <input type="number" class="form-control" id="psCondition">
+                    </div>
+                    <div class="form-group">
+                        <label for="psForAgent">@Html.DisplayNameFor(model => model.psForAgent)</label>
+                        <input type="number" class="form-control" id="psForAgent">
+                    </div>
+                    <div class="form-group">
+                        <label for="rebateForTsk">@Html.DisplayNameFor(model => model.rebateForTsk)</label>
+                        <input type="number" class="form-control" id="rebateForTsk">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputBy">@Html.DisplayNameFor(model => model.inputBy)</label>
+                        <input type="text" class="form-control" id="inputBy">
+                    </div>
+                    <div class="form-group">
+                        <label for="remark">@Html.DisplayNameFor(model => model.remark)</label>
+                        <input type="text" class="form-control" id="remark">
+                    </div>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" id="isActive"> @Html.DisplayNameFor(model => model.isActive)
+                    </label>
+                </div>
+            </div>
+        </div>
+        <!-- /.box-body -->
+        <div class="box-footer">
+            <button id="submit" type="submit" class="btn btn-primary">Save</button>&nbsp;
+            <a class="btn btn-default" asp-controller="DepoContainer" asp-action="index">Cancel</a>
+        </div>
+    </div>
+    <!-- /.box -->
+</div>
+<!--/.col (left) -->
+<div class="col-xs-12">
+    <div class="box">
+        <!-- /.box-header -->
+        <div class="box-body table-responsive">
+            <table class="table table-bordered table-striped" id="Details">
+                <thead>
+                    <tr>
+                        <th>Ref No</th>
+                        <th>Container Id</th>
+                        <th>Ps For Agent</th>
+                        <th>Ps For Tsk</th>
+                        <th>Ps Due To Agent</th>
+                        <th>Ps Due To Tsk</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="mycontainer">
+                        <td>
+                            <input type="text" id="detailRefNo" class="form-control" />
+                        </td>
+                        <td>
+                            <input type="number" id="detailContainerId" class="form-control" />
+                        </td>
+                        <td>
+                            <input type="number" id="detailPsForAgent" class="form-control" />
+                        </td>
+                        <td>
+                            <input type="number" id="detailPsForTsk" class="form-control" />
+                        </td>
+                        <td>
+                            <input type="number" id="detailPsDueForAgent" class="form-control" />
+                        </td>
+                        <td>
+                            <input type="number" id="detailPsDueForTsk" class="form-control" />
+                        </td>
+                        <td>
+                            <input type="button" id="add" value="Add" style="width: 80px" class="btn btn-success" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- /.box-body -->
+    </div>
+    <!-- /.box -->
+</div>
+<!-- </form> -->
+<!-- /.col -->
+</div>
+@section scripts{
+    <script src="@Url.Content("~/AdminLTE/bower_components/select2/dist/js/select2.full.min.js")"></script>
+    <script src="@Url.Content("https://code.jquery.com/jquery-2.2.4.min.js")"></script>
+    <script>
+        $('#txDate').datepicker({
+          autoclose: true
+        });
+
+        $('#txValidDate').datepicker({
+          autoclose: true
+        });
+
+        $("#add").click(function (e) {
+            e.preventDefault();
+
+            if ($.trim($("#detailRefNo").val()) == "") return;
+
+            var detailRefNo = $("#detailRefNo").val(),
+                detailContainerId = $("#detailContainerId").val(),
+                detailPsForAgent = $("#detailPsForAgent").val(),
+                detailPsForTsk = $("#detailPsForTsk").val(),
+                detailPsDueForAgent = $("#detailPsDueForAgent").val(),
+                detailPsDueForTsk = $("#detailPsDueForTsk").val(),
+                detailsTableBody = $("#Details tbody");
+
+            var Item = '<tr><td>' + detailRefNo + '</td><td>' + detailContainerId + '</td><td>' + detailPsForAgent + '</td><td>' + detailPsForTsk + '</td><td>' + detailPsDueForAgent + '</td><td>' + detailPsDueForTsk +'</td><td> <input type="button" data-itemId="0" href="#" style="width: 80px" value="Remove" class="deleteItem btn btn-danger" /> </td></tr>';
+            detailsTableBody.append(Item);
+            clearItem();
+        });
+
+        function clearItem() {
+            $("#detailRefNo").val('');
+            $("#detailContainerId").val('');
+            $("#detailPsForAgent").val('');
+            $("#detailPsForTsk").val('');
+            $("#detailPsDueForAgent").val('');
+            $("#detailPsDueForTsk").val('');
+        }
+
+        $(document).on('click', 'a.deleteItem', function (e) {
+            e.preventDefault();
+            var $self = $(this);
+            if ($(this).attr('data-itemId') == "0") {
+                $(this).parents('tr').css("background-color", "#ff6347").fadeOut(800, function () {
+                    $(this).remove();
+                });
+            }
+        });
+
+        //After Click Save Button Pass All Data View To Controller For Save Database
+        function save(data) {
+            return $.ajax({
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                type: 'POST',
+                url: "/ProfitShared/add",
+                data: data,
+                success: function (result) {
+
+                },
+                error: function () {
+                    console.log(data);
+                    alert("Error!");
+                }
+            });
+        }
+
+        //Collect Multiple Order List For Pass To Controller
+        $("#submit").click(function (e) {
+            e.preventDefault();
+
+            var details = [];
+            details.length = 0;
+            var i = 0;
+
+            $.each($("#Details tbody tr"), function () {
+                if (i == 0) {
+                    i = 1;
+                }else{
+                    details.push({
+                        refNo: $(this).find('td:eq(0)').html(),
+                        containerId: $(this).find('td:eq(1)').html(),
+                        psForAgent: $(this).find('td:eq(2)').html(),
+                        psForTsk: $(this).find('td:eq(3)').html(),
+                        psDueForAgent: $(this).find('td:eq(4)').html(),
+                        psDueForTsk: $(this).find('td:eq(5)').html()
+                    });
+                }
+            });
+
+            var isChecked = $('#isActive').is(":checked");
+            var isCheck;
+
+            if (isChecked) {
+                isCheck = 1;
+            }
+            else{
+                isCheck = 0;
+            }
+
+            var data = JSON.stringify({
+                agentId: $('#agentId').val().trim(),
+                countryId: $('#countryId').val().trim(),
+                refNo: $('#refNo').val().trim(),
+                txDate: $('#txDate').val().trim(),
+                txValidDate: $('#txValidDate').val().trim(),
+                psCondition: $('#psCondition').val().trim(),
+                psForAgent: $('#psForAgent').val().trim(),
+                rebateForTsk: $('#rebateForTsk').val().trim(),
+                inputBy: $('#inputBy').val().trim(),
+                remark: $('#remark').val(),
+                isActive: isCheck,
+                depoContainerDetails: details
+            });
+
+            $.when(save(data)).then(function (response) {
+                console.log(response);
+                window.location.href = '/DepoContainer/';
+            }).fail(function (err) {
+                console.log(err);
+            });
+        });</script>
+}
