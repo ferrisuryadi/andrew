@@ -1,0 +1,382 @@
+﻿@{
+    ViewData["Title"] = "Cost Shipping";
+}
+@model fms.Models.trCostShipping;
+@section Header
+    {
+    <link rel="stylesheet" href="~/AdminLTE/bower_components/select2/dist/css/select2.min.css">
+}
+@if (ViewBag.Error)
+{
+    <div class="alert alert-danger alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <h4><i class="icon fa fa-ban"></i> Error!</h4>
+        @Html.ValidationSummary()
+    </div>
+}
+    <div class="row">
+        <!-- left column -->
+        <!--<form role="form" method="post" asp-controller="CostShipping" asp-action="Create"> -->
+        <div class="col-xs-12">
+            <!-- general form elements -->
+            <div class="box box-primary">
+                <!-- form start -->
+                <div class="box-body">
+                    <div class="col-xs-6">
+                        <div class="form-group">
+                            <label for="referenceNo">@Html.DisplayNameFor(model => model.referenceNo)</label>
+                            <input type="text" class="form-control" id="referenceNo" autofocus>
+                        </div>
+                        <div class="form-group">
+                            <label for="shippingDate">@Html.DisplayNameFor(model => model.shippingDate)</label>
+                            <input type="text" class="form-control" id="shippingDate">
+                        </div>
+                        <div class="form-group">
+                            <label for="validDate">@Html.DisplayNameFor(model => model.validDate)</label>
+                            <input type="text" class="form-control" id="validDate">
+                        </div>
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label>@Html.DisplayNameFor(model => model.portOfLoadingId)</label>
+                                <select class="form-control select2" style="width: 100%;" id="portOfLoadingId">
+                                    <option value="0">No Parent</option>
+                                    @foreach (var item in ViewBag.PortOfLoadings)
+                                    {
+                                        <option value="@item.id">@item.port</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label>@Html.DisplayNameFor(model => model.userIdSales)</label>
+                                <select class="form-control select2" style="width: 100%;" id="userIdSales">
+                                    <option value="0">No Parent</option>
+                                    @foreach (var item in ViewBag.Users)
+                                    {
+                                        <option value="@item.id">@item.port</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="shipLineRefNo">@Html.DisplayNameFor(model => model.shipLineRefNo)</label>
+                            <input type="text" class="form-control" id="shipLineRefNo">
+                        </div>
+                        <div class="form-group">
+                            <label for="shippingInfoKode">@Html.DisplayNameFor(model => model.shippingInfoKode)</label>
+                            <input type="text" class="form-control" id="shippingInfoKode">
+                        </div>
+                        <div class="form-group">
+                            <label for="remark">@Html.DisplayNameFor(model => model.remark)</label>
+                            <input type="text" class="form-control" id="remark">
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer">
+                    <button id="submit" type="submit" class="btn btn-primary">Save</button>&nbsp;
+                    <a class="btn btn-default" asp-controller="CostShipping" asp-action="index">Cancel</a>
+                </div>
+            </div>
+            <!-- /.box -->
+        </div>
+        <!--/.col (left) -->
+        <div class="col-xs-12">
+            <div class="box">
+                <!-- /.box-header -->
+                <div class="box-body table-responsive">
+                    <table class="table table-bordered table-striped" id="CostShippingDetails">
+                        <thead>
+                            <tr>
+                                <th>Service</th>
+                                <th>Port Transipment</th>
+                                <th>Port Destination</th>
+                                <th>Container</th>
+                                <th>P/C</th>
+                                <th>Currency</th>
+                                <th>Harga</th>
+                                <th>Tax</th>
+                                <th>Vat</th>
+                                <th>All In</th>
+                                <th>Refund</th>
+                                <th>Payable To</th>
+                                <th>Destination</th>
+                                <th>Shipper</th>
+                                <th>OF/EMKL</th>
+                                <th>Remark</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="mycontainer" id="mainrow">
+                                <td>
+                                    <select class="detailServices form-control select2" style="width: 100%;" id="detailServices">
+                                        <option value="0">No Parent</option>
+                                        @foreach (var item in ViewBag.Services)
+                                        {
+                                            <option value="@item.id">@item.port</option>
+                                        }
+                                    </select>
+                                </td>
+                                <td>
+                                    <select class="detailPortTransipment form-control select2" style="width: 100%;" id="detailPortTransipment">
+                                        <option value="0">No Parent</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select class="detailPortDestination form-control select2" style="width: 100%;" id="detailPortDestination">
+                                        <option value="0">No Parent</option>
+                                        @foreach (var item in ViewBag.PortOfDestinations)
+                                        {
+                                            <option value="@item.id">@item.location</option>
+                                        }
+                                    </select>
+                                </td>
+                                <td>
+                                    <select class="detailContainer form-control select2" style="width: 100%;" id="detailContainer">
+                                        <option value="0">No Parent</option>
+                                        @foreach (var item in ViewBag.Containers)
+                                        {
+                                            <option value="@item.id">@item.typeofContainer</option>
+                                        }
+                                    </select>
+                                </td>
+                                <td>
+                                    <input type="number" id="detailPC" class="detailPC form-control" />
+                                </td>
+                                <td>
+                                    <select class="detailCurrency form-control select2" style="width: 100%;" id="detailCurrency">
+                                        <option value="0">No Parent</option>
+                                        @foreach (var item in ViewBag.Currencies)
+                                        {
+                                            <option value="@item.id">@item.code</option>
+                                        }
+                                    </select>
+                                </td>
+                                <td>
+                                    <input type="number" id="detailHarga" class="detailHarga form-control" />
+                                </td>
+                                <td>
+                                    <select class="detailTax form-control select2" style="width: 100%;" id="detailTax">
+                                        <option value="0">No Parent</option>
+                                        @foreach (var item in ViewBag.Taxes)
+                                        {
+                                            <option value="@item.id">@item.code</option>
+                                        }
+                                    </select>
+                                </td>
+                                <td>
+                                    <select class="detailVat form-control select2" style="width: 100%;" id="detailVat">
+                                        <option value="0">No Parent</option>
+                                        @foreach (var item in ViewBag.Taxes)
+                                        {
+                                            <option value="@item.id">@item.code</option>
+                                        }
+                                    </select>
+                                </td>
+                                <td>
+                                    <input type="checkbox" id="detailAllIn" class="detailAllIn form-control" />All In
+                                </td>
+                                <td>
+                                    <input type="number" id="detailRefund" class="detailRefund form-control" />
+                                </td>
+                                <td>
+                                    <input type="text" id="detailPayableTo" class="detailPayableTo form-control" />
+                                </td>
+                                <td>
+                                    <select class="detailDestination form-control select2" style="width: 100%;" id="detailDestination">
+                                        <option value="0">No Parent</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select class="detailShipper form-control select2" style="width: 100%;" id="detailShipper">
+                                        <option value="0">No Parent</option>
+                                        @foreach (var item in ViewBag.Shippers)
+                                        {
+                                            <option value="@item.id">@item.code</option>
+                                        }
+                                    </select>
+                                </td>
+                                <td>
+                                    <select class="detailOfEmkl form-control select2" style="width: 100%;" id="detailOfEmkl">
+                                        <option value="1">OF</option>
+                                        <option value="0">EMKL</option>
+                                    </select>
+                                </td>
+
+                                <td>
+                                    <input type="text" id="detailRemark" class="detailRemark form-control" />
+                                </td>
+                                <td>
+                                    <input type="button" id="add" value="add" style="width: 80px" class="btn btn-success" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- </form> -->
+        <!-- /.col -->
+
+        <div class="col-xs-12">
+            <div class="box">
+                <!-- /.box-header -->
+                <div class="box-body table-responsive">
+                    <table class="table table-bordered table-striped" id="CostShippingShippers">
+                        <thead>
+                            <tr>
+                                <th>Shipper</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="mycontainer">
+                                <td>
+                                    <select class="form-control select2" style="width: 100%;" id="userIdSales">
+                                        <option value="0">No Parent</option>
+                                        @foreach (var item in ViewBag.Users)
+                                        {
+                                            <option value="@item.id">@item.port</option>
+                                        }
+                                    </select>
+                                </td>
+                                <td>
+                                    <input type="button" id="addShipper" value="Add" style="width: 80px" class="btn btn-success" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- </form> -->
+        <!-- /.col -->
+    </div>
+@section scripts{
+    <script src="@Url.Content("~/AdminLTE/bower_components/select2/dist/js/select2.full.min.js")"></script>
+    <script src="@Url.Content("https://code.jquery.com/jquery-2.2.4.min.js")"></script>
+    <script>
+        $(document).ready(function () {
+            $('.select2').select2();
+
+            $('#shippingDate').datepicker({
+              autoclose: true
+            });
+
+            $('#validDate').datepicker({
+              autoclose: true
+            });
+
+            $("#add").click(function (e) {                 e.preventDefault();                  var services = $("#detailServices").val(),                     portTransipment = $("#detailPortTransipment").val(),                     portDestination = $("#detailPortDestination").val(),                     container = $("#detailContainer").val(),                     PC = $(#detailPC).val(),                     currency = $("#detailCurrency").val(),                     harga = $("#detailHarga").val(),                     tax = $("#detailTax").val(),                     vat = $("#detailVat").val(),                     allIn = $("#detailAllIn").val(),                     refund = $("#detailRefund").val(),                     payableTo = $("#detailPayableTo").val(),                     destination = $("#detailDestination").val(),                     shipper = $("#detailShipper").val(),                     remark = $("#detailRemark").val(),                     detailsTableBody = $("#CostShippingDetails tbody");                  var Item =                     '<tr><td>' + services +                     '</td><td>' + portTransipment +                     '</td><td>' + portDestination +
+                    '</td><td>' + container +                     '</td><td>' + PC +                     '</td><td>' + currency +                     '</td><td>' + harga +                     '</td><td>' + tax +                     '</td><td>' + vat +                     '</td><td>' + allIn +                     '</td><td>' + refund +                     '</td><td>' + payableTo +                     '</td><td>' + destination +                     '</td><td>' + shipper +                     '</td><td>' + remark +                     '</td><td> <input type="button" data-itemId="0" href="#" style="width: 80px" value="Remove" class="deleteItem btn btn-danger" /> </td></tr>';                 detailsTableBody.append(Item);             });
+
+            $(document).on('click', 'a.deleteItem', function (e) {
+                e.preventDefault();
+                var $self = $(this);
+                if ($(this).attr('data-itemId') == "0") {
+                    $(this).parents('tr').css("background-color", "#ff6347").fadeOut(800, function () {
+                        $(this).remove();
+                    });
+                }
+            });
+
+            //After Click Save Button Pass All Data View To Controller For Save Database
+            function save(data) {
+                return $.ajax({
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: 'json',
+                    type: 'POST',
+                    url: "/CostShipping/add",
+                    data: data,
+                    success: function (result) {
+
+                    },
+                    error: function () {
+                        console.log(data);
+                        alert("Error!");
+                    }
+                });
+            }
+
+            //Collect Multiple Order List For Pass To Controller
+            $("#submit").click(function (e) {
+                e.preventDefault();
+
+                var details = [];
+                details.length = 0;
+                var i = 0;
+
+                $.each($("#CostShippingDetails tbody tr"), function () {
+                    if (i == 0) {
+                        i = 1;
+                    }else{
+                        serviceId: $('select.detailServices', this).val(),
+                            portTransipmentId: $('select.detailPortTransipment', this).val(),
+                            portOfDestinationId: $('select.detailPortDestination', this).val(),
+                            containerId: $('select.detailContainer', this).val(),
+                            pc: parseInt($('.detailPC', this).val()),
+                            currencyId: $('select.detailCurrency', this).val(),
+                            price: parseFloat($('.detailHarga', this).val()),
+                            taxId: $('select.detailTax', this).val(),
+                            vatId: $('select.detailVat', this).val(),
+                            allIn: parseInt($('.detailAllIn', this).val()),
+                            refund: parseFloat($('.detailRefund', this).val()),
+                            payableTo: $('.detailPayableTo', this).val(),
+                            destinationId: $('select.detailDestination', this).val(),
+                            shipperId: $('select.detailShipper', this).val(),
+                            ofEmkl: $('select.detailOfEmkl', this).val(),
+                            remark: $('.detailRemark', this).val(),
+
+                        details.push({
+                            serviceId: $(this).find('td:eq(0)').html(),
+                            portTransipmentId: $(this).find('td:eq(1)').html(),
+                            portOfDestinationId: $(this).find('td:eq(2)').html(),
+                            containerId: $(this).find('td:eq(3)').html(),
+                            pc: $(this).find('td:eq(4)').html(),
+                            currencyId: $(this).find('td:eq(5)').html(),
+                            price: $(this).find('td:eq(6)').html(),
+                            taxId: $(this).find('td:eq(7)').html(),
+                            vatId: $(this).find('td:eq(8)').html(),
+                            allIn: $(this).find('td:eq(9)').html(),
+                            refund: $(this).find('td:eq(10)').html(),
+                            payableTo: $(this).find('td:eq(11)').html(),
+                            destinationId: $(this).find('td:eq(12)').html(),
+                            shipperId: $(this).find('td:eq(13)').html(),
+                            ofEmkl: $(this).find('td:eq(14)').html(),
+                            remark: $(this).find('td:eq(15)').html()
+                        });
+                    }
+                });
+
+                var data = JSON.stringify({
+                    referenceNo: $('#referenceNo').val().trim(),
+                    shippingDate: $('#shippingDate').val().trim(),
+                    validDate: $('#validDate').val().trim(),
+                    portOfLoadingId: $('#portOfLoadingId').val().trim(),
+                    userIdSales: $('#userIdSales').val().trim(),
+                    shipLineRefNo: $('#shipLineRefNo').val().trim(),
+                    shippingInfoKode: $('#shippingInfoKode').val().trim(),
+                    remark: $('#orderDate').val().trim(),
+                    agentDetails: details
+                });
+
+                $.when(save(data)).then(function (response) {
+                    console.log(response);
+                    window.location.href = '/Agent/';
+                }).fail(function (err) {
+                    console.log(err);
+                });
+            });
+
+    </script>
+}

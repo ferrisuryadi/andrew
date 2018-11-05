@@ -1,0 +1,119 @@
+﻿@{
+    ViewData["Title"] = "Currency Rate";
+}
+@model fms.Models.mtCurrencyRate;
+@section Header
+    {
+    <link rel="stylesheet" href="~/AdminLTE/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+}
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">
+                    <a asp-controller="CurrencyRate" asp-action="create" class="btn btn-primary">Create New</a>
+                </h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body table-responsive">
+                <table id="example1" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.id)</th>
+                            <th>@Html.DisplayNameFor(model => model.currencyIdFrom)</th>
+                            <th>@Html.DisplayNameFor(model => model.currencyIdTo)</th>
+                            <th>@Html.DisplayNameFor(model => model.rate)</th>
+                            <th>@Html.DisplayNameFor(model => model.validFrom)</th>
+                            <th>@Html.DisplayNameFor(model => model.validTo)</th>
+                            <th>@Html.DisplayNameFor(model => model.isActive)</th>
+                            <th>@Html.DisplayNameFor(model => model.createdBy)</th>
+                            <th>@Html.DisplayNameFor(model => model.createdOn)</th>
+                            <th>@Html.DisplayNameFor(model => model.updatedBy)</th>
+                            <th>@Html.DisplayNameFor(model => model.updatedOn)</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in ViewBag.Items)
+                        {
+                            <tr>
+                                <td>@item.id</td>
+                                @if (@item.currencyFrom != null)
+                                {
+                                    <td>@item.currencyFrom.code</td>
+                                }
+                                else
+                                {
+                                    <td>&nbsp;</td>
+                                }
+
+                                @if (@item.currencyTo != null)
+                                {
+                                    <td>@item.currencyTo.code</td>
+                                }
+                                else
+                                {
+                                    <td>&nbsp;</td>
+                                }
+                                <td>@item.rate</td>
+                                <td>@item.validFrom.ToString("dd-MMM-yyyy")</td>
+                                <td>@item.validTo.ToString("dd-MMM-yyyy")</td>
+                                @if (@item.isActive)
+                                {
+                                    <td><a class="btn btn-success" asp-controller="CurrencyRate" asp-action="isActive" asp-route-id="@item.id">True</a></td>
+                                }
+                                else
+                                {
+                                    <td><a class="btn btn-danger" asp-controller="CurrencyRate" asp-action="isActive" asp-route-id="@item.id">False</a></td>
+                                }
+                                <td>@item.createdBy</td>
+                                <td>@item.createdOn.ToString("dd-MMM-yyyy HH:mm:ss")</td>
+                                <td>@item.updatedBy</td>
+                                <td>@item.updatedOn.ToString("dd-MMM-yyyy HH:mm:ss")</td>
+                                <td>
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a asp-controller="CurrencyRate" asp-action="edit" asp-route-id="@item.id">Edit</a></li>
+                                            <li><a asp-controller="CurrencyRate" asp-action="delete" asp-route-id="@item.id" onclick="return confirm('Are you sure?')">Delete</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.id)</th>
+                            <th>@Html.DisplayNameFor(model => model.currencyIdFrom)</th>
+                            <th>@Html.DisplayNameFor(model => model.currencyIdTo)</th>
+                            <th>@Html.DisplayNameFor(model => model.rate)</th>
+                            <th>@Html.DisplayNameFor(model => model.validFrom)</th>
+                            <th>@Html.DisplayNameFor(model => model.validTo)</th>
+                            <th>@Html.DisplayNameFor(model => model.isActive)</th>
+                            <th>@Html.DisplayNameFor(model => model.createdBy)</th>
+                            <th>@Html.DisplayNameFor(model => model.createdOn)</th>
+                            <th>@Html.DisplayNameFor(model => model.updatedBy)</th>
+                            <th>@Html.DisplayNameFor(model => model.updatedOn)</th>
+                            <th>Action</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+    </div>
+    <!-- /.col -->
+</div>
+@section scripts{
+    <script src="@Url.Content("~/AdminLTE/bower_components/datatables.net/js/jquery.dataTables.min.js")"></script>
+    <script src="@Url.Content("~/AdminLTE/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js")"></script>
+    <script>
+        $(function () {
+            $('#example1').DataTable()
+        })
+    </script>
+}

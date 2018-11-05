@@ -1,0 +1,172 @@
+﻿@{
+    ViewData["Title"] = "Shipper";
+}
+@model fms.Models.mtShipper;
+
+@section Header
+{
+    <link rel="stylesheet" href="~/AdminLTE/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+}
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">
+                    <a asp-controller="Shipper" asp-action="create" class="btn btn-primary">Create New</a>
+                </h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body table-responsive">
+                <table id="example1" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.id)</th>
+                            <th>@Html.DisplayNameFor(model => model.code)</th>
+                            <th>@Html.DisplayNameFor(model => model.name)</th>
+                            <th>@Html.DisplayNameFor(model => model.qq)</th>
+                            <th>@Html.DisplayNameFor(model => model.attention)</th>
+                            <th>@Html.DisplayNameFor(model => model.email)</th>
+                            <th>@Html.DisplayNameFor(model => model.website)</th>
+                            <th>@Html.DisplayNameFor(model => model.phone)</th>
+                            <th>@Html.DisplayNameFor(model => model.fax)</th>
+                            <th>@Html.DisplayNameFor(model => model.taxNo)</th>
+                            <th>@Html.DisplayNameFor(model => model.province)</th>
+                            <th>@Html.DisplayNameFor(model => model.city)</th>
+                            <th>@Html.DisplayNameFor(model => model.district)</th>
+                            <th>@Html.DisplayNameFor(model => model.subDistrict)</th>
+                            <th>@Html.DisplayNameFor(model => model.village)</th>
+                            <th>@Html.DisplayNameFor(model => model.subVillage)</th>
+                            <th>@Html.DisplayNameFor(model => model.block)</th>
+                            <th>@Html.DisplayNameFor(model => model.postalCode)</th>
+                            <th>@Html.DisplayNameFor(model => model.remark)</th>
+                            <th>@Html.DisplayNameFor(model => model.userId)</th>
+                            <th>@Html.DisplayNameFor(model => model.coaIdIdr)</th>
+                            <th>@Html.DisplayNameFor(model => model.coaIdUsd)</th>
+                            <th>@Html.DisplayNameFor(model => model.isActive)</th>
+                            <th>@Html.DisplayNameFor(model => model.createdBy)</th>
+                            <th>@Html.DisplayNameFor(model => model.createdOn)</th>
+                            <th>@Html.DisplayNameFor(model => model.updatedBy)</th>
+                            <th>@Html.DisplayNameFor(model => model.updatedOn)</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in ViewBag.Items)
+                        {
+                            <tr>
+                                <td>@item.id</td>
+                                <td>@item.code</td>
+                                <td>@item.name</td>
+                                <td>@item.qq</td>
+                                <td>@item.attention</td>
+                                <td>@item.email</td>
+                                <td>@item.website</td>
+                                <td>@item.phone</td>
+                                <td>@item.fax</td>
+                                <td>@item.taxNo</td>
+                                <td>@item.province</td>
+                                <td>@item.city</td>
+                                <td>@item.district</td>
+                                <td>@item.subDistrict</td>
+                                <td>@item.village</td>
+                                <td>@item.subVillage</td>
+                                <td>@item.block</td>
+                                <td>@item.postalCode</td>
+                                <td>@item.remark</td>
+                                @if (@item.user != null)
+                                {
+                                    <td>@item.user.name</td>
+                                }
+                                else
+                                {
+                                    <td>&nbsp;</td>
+                                }
+                                @if (@item.coaIdr != null)
+                                {
+                                    <td>@item.coaIdr.code</td>
+                                }
+                                else
+                                {
+                                    <td>&nbsp;</td>
+                                }
+                                @if (@item.coaUsd != null)
+                                {
+                                    <td>@item.coaUsd.code</td>
+                                }
+                                else
+                                {
+                                    <td>&nbsp;</td>
+                                }
+                                @if (@item.isActive)
+                                {
+                                    <td><a class="btn btn-success" asp-controller="Shipper" asp-action="isActive" asp-route-id="@item.id">True</a></td>
+                                }
+                                else
+                                {
+                                    <td><a class="btn btn-danger" asp-controller="Shipper" asp-action="isActive" asp-route-id="@item.id">False</a></td>
+                                }
+                                <td>@item.createdBy</td>
+                                <td>@item.createdOn.ToString("dd-MMM-yyyy HH:mm:ss")</td>
+                                <td>@item.updatedBy</td>
+                                <td>@item.updatedOn.ToString("dd-MMM-yyyy HH:mm:ss")</td>
+                                <td>
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a asp-controller="Shipper" asp-action="edit" asp-route-id="@item.id">Edit</a></li>
+                                            <li><a asp-controller="Shipper" asp-action="delete" asp-route-id="@item.id" onclick="return confirm('Are you sure?')">Delete</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.id)</th>
+                            <th>@Html.DisplayNameFor(model => model.code)</th>
+                            <th>@Html.DisplayNameFor(model => model.name)</th>
+                            <th>@Html.DisplayNameFor(model => model.qq)</th>
+                            <th>@Html.DisplayNameFor(model => model.attention)</th>
+                            <th>@Html.DisplayNameFor(model => model.email)</th>
+                            <th>@Html.DisplayNameFor(model => model.website)</th>
+                            <th>@Html.DisplayNameFor(model => model.phone)</th>
+                            <th>@Html.DisplayNameFor(model => model.fax)</th>
+                            <th>@Html.DisplayNameFor(model => model.taxNo)</th>
+                            <th>@Html.DisplayNameFor(model => model.province)</th>
+                            <th>@Html.DisplayNameFor(model => model.city)</th>
+                            <th>@Html.DisplayNameFor(model => model.district)</th>
+                            <th>@Html.DisplayNameFor(model => model.subDistrict)</th>
+                            <th>@Html.DisplayNameFor(model => model.village)</th>
+                            <th>@Html.DisplayNameFor(model => model.subVillage)</th>
+                            <th>@Html.DisplayNameFor(model => model.block)</th>
+                            <th>@Html.DisplayNameFor(model => model.postalCode)</th>
+                            <th>@Html.DisplayNameFor(model => model.remark)</th>
+                            <th>@Html.DisplayNameFor(model => model.userId)</th>
+                            <th>@Html.DisplayNameFor(model => model.coaIdIdr)</th>
+                            <th>@Html.DisplayNameFor(model => model.coaIdUsd)</th>
+                            <th>@Html.DisplayNameFor(model => model.isActive)</th>
+                            <th>@Html.DisplayNameFor(model => model.createdBy)</th>
+                            <th>@Html.DisplayNameFor(model => model.createdOn)</th>
+                            <th>@Html.DisplayNameFor(model => model.updatedBy)</th>
+                            <th>@Html.DisplayNameFor(model => model.updatedOn)</th>
+                            <th>Action</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+    </div>
+    <!-- /.col -->
+</div>
+@section scripts{
+    <script src="@Url.Content("~/AdminLTE/bower_components/datatables.net/js/jquery.dataTables.min.js")"></script>
+    <script src="@Url.Content("~/AdminLTE/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js")"></script>
+    <script>$(function () {
+    $('#example1').DataTable()
+  })</script>
+}
