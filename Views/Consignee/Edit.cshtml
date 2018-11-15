@@ -1,0 +1,80 @@
+﻿@{
+    ViewData["Title"] = "Consignee";
+}
+
+@model fms.Models.mtConsignee;
+
+@section Header
+{
+    <link rel="stylesheet" href="~/AdminLTE/bower_components/select2/dist/css/select2.min.css">
+}
+
+
+@if (ViewBag.Error)
+{
+    <div class="alert alert-danger alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <h4><i class="icon fa fa-ban"></i> Error!</h4>
+        @Html.ValidationSummary()
+    </div>
+}
+
+<div class="row">
+    <!-- left column -->
+    <div class="col-xs-12">
+        <!-- general form elements -->
+        <div class="box box-primary">
+            <!-- form start -->
+            <form role="form" method="post" asp-controller="Consignee" asp-action="Edit">
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="code">@Html.DisplayNameFor(model => model.code)</label>
+                        <input type="text" class="form-control" id="code" asp-for="code" autofocus>
+                    </div>
+                    <div class="form-group">
+                        <label for="name">@Html.DisplayNameFor(model => model.name)</label>
+                        <input type="text" class="form-control" id="name" asp-for="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="referenceNo">@Html.DisplayNameFor(model => model.referenceNo)</label>
+                        <input type="text" class="form-control" id="referenceNo" asp-for="referenceNo">
+                    </div>
+                    <div class="form-group">
+                        <label for="address">@Html.DisplayNameFor(model => model.address)</label>
+                        <input type="text" class="form-control" id="address" asp-for="address">
+                    </div>
+                    <div class="form-group">
+                        <label for="dog">@Html.DisplayNameFor(model => model.dog)</label>
+                        <input type="text" class="form-control" id="dog" asp-for="dog">
+                    </div>
+                    <div class="form-group">
+                        <div class="form-group">
+                            <label>@Html.DisplayNameFor(model => model.countryId)</label>
+                            <select class="form-control select2" style="width: 100%;" asp-for="countryId">
+                                @foreach (var item in ViewBag.Countries)
+                                {
+                                    <option value="@item.id">@item.code - @item.description</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" asp-for="isActive"> @Html.DisplayNameFor(model => model.isActive)
+                        </label>
+                    </div>
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer">
+                    <input type="hidden" asp-for="id">
+                    <input type="hidden" asp-for="createdBy">
+                    <input type="hidden" asp-for="createdOn">
+                    <button type="submit" class="btn btn-primary">Save</button>&nbsp;
+                    <a class="btn btn-default" asp-controller="Consignee" asp-action="index">Cancel</a>
+                </div>
+            </form>
+        </div>
+        <!-- /.box -->
+    </div>
+    <!--/.col (left) -->
+</div>
