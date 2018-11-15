@@ -1,0 +1,385 @@
+﻿@{
+    ViewData["Title"] = "Depo Container";
+}
+@model fms.Models.mtDepoContainer;
+
+<div id="errorMessageHeader">
+
+</div>
+
+<div class="row">
+    <!-- left column -->
+    <div class="col-xs-12">
+        <!-- general form elements -->
+        <div class="box box-primary">
+            <!-- form start -->
+            <div class="box-body">
+                <div class="col-xs-6">
+                     <div class="form-group">
+                        <label for="code">@Html.DisplayNameFor(model => model.code)</label>
+                        <input type="text" class="form-control" id="code" asp-for="code" autofocus>
+                    </div>
+                    <div class="form-group">
+                        <label for="name">@Html.DisplayNameFor(model => model.name)</label>
+                        <input type="text" class="form-control" id="name" asp-for="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="address">@Html.DisplayNameFor(model => model.address)</label>
+                        <input type="text" class="form-control" id="address" asp-for="address">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">@Html.DisplayNameFor(model => model.email)</label>
+                        <input type="text" class="form-control" id="email" asp-for="email">
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="form-group">
+                        <label for="website">@Html.DisplayNameFor(model => model.website)</label>
+                        <input type="text" class="form-control" id="website" asp-for="website">
+                    </div>
+                    <div class="form-group">
+                        <label for="telepon">@Html.DisplayNameFor(model => model.telepon)</label>
+                        <input type="text" class="form-control" id="telepon" asp-for="telepon">
+                    </div>
+                    <div class="form-group">
+                        <label for="fax">@Html.DisplayNameFor(model => model.fax)</label>
+                        <input type="text" class="form-control" id="fax" asp-for="fax">
+                    </div>
+                    <div class="form-group">
+                        <label for="remark">@Html.DisplayNameFor(model => model.remark)</label>
+                        <input type="text" class="form-control" id="remark" asp-for="remark">
+                    </div>
+                </div>
+
+                <div class="col-xs-12">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" id="isActive" asp-for="isActive"> @Html.DisplayNameFor(model => model.isActive)
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer">
+                <input type="hidden" asp-for="id" id="depoContainerId">
+                <input type="hidden" asp-for="createdBy" id="createdBy">
+                <input type="hidden" asp-for="createdOn" id="createdOn">
+                <button id="submit" type="submit" class="btn btn-primary">Save</button>&nbsp;
+                <input type="button" class="btn btn-default" id="cancel" value="Cancel">
+            </div>
+        </div>
+        <!-- /.box -->
+    </div>
+    <!--/.col (left) -->
+    <div class="col-xs-12">
+        <div class="box">
+            <!-- /.box-header -->
+            <div class="box-body table-responsive">
+                <table class="table table-bordered table-striped" id="Details">
+                    <thead>
+                        <tr>
+                            <th style="display:none">Id</th>
+                            <th>Contact Person</th>
+                            <th>Telepon</th>
+                            <th>Position</th>
+                            <th>Address</th>
+                            <th>Handphone</th>
+                            <th>Email</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="mycontainer">
+                            <td style="display: none;"></td>
+                            <td>
+                                <input type="text" id="detailContactPerson" class="form-control" maxlength="50" />
+                            </td>
+                            <td>
+                                <input type="text" id="detailTelepon" class="form-control" maxlength="50" />
+                            </td>
+                            <td>
+                                <input type="text" id="detailPosition" class="form-control" maxlength="50" />
+                            </td>
+                            <td>
+                                <input type="text" id="detailAddress" class="form-control" maxlength="500" />
+                            </td>
+                            <td>
+                                <input type="text" id="detailHandphone" class="form-control" maxlength="50" />
+                            </td>
+                            <td>
+                                <input type="text" id="detailEmail" class="form-control" maxlength="250" />
+                            </td>
+                            <td>
+                                <input type="button" id="add" value="Add" style="width: 80px" class="btn btn-success" />
+                            </td>
+                        </tr>
+                        @foreach (var item in ViewBag.Details)
+                        {
+                            <tr id="item @item.id">
+                                <td style="display:none;">@item.id</td>
+                                <td>@item.contactPerson</td>
+                                <td>@item.telepon</td>
+                                <td>@item.position</td>
+                                <td>@item.address</td>
+                                <td>@item.handphone</td>
+                                <td>@item.email</td>
+                                <td>
+                                    <input type="button" data-itemId="@item.id" style="width: 80px" value="Remove" class="deleteItem btn btn-danger" /> 
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+    </div>
+</div>
+
+@section scripts{
+    <script src="@Url.Content("https://code.jquery.com/jquery-2.2.4.min.js")"></script>
+    <script>
+        $("#cancel").click(
+            function (e) {
+                e.preventDefault();
+                var id = $.trim($("#depoContainerId").val());
+
+                $.ajax({
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: 'json',
+                    type: 'GET',
+                    url: "/DepoContainer/cancel/" + id,
+                    success: function (result) {
+                        console.log(result);
+                        switch (result.status) {
+                            case 200:
+                                window.location.href = '/DepoContainer/';
+                                break;
+
+                            case 409:
+                                $('#divError').remove();
+                                var element = document.getElementById("errorMessageHeader");
+                                var error = '<li>' + result.message + '</li>';
+                                var alert = '<div class="alert alert-danger alert-dismissible" id = "divError"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><h4><i class="icon fa fa-ban"></i> Error!</h4><div class="validation-summary-errors" data-valmsg-summary="true"><ul>' + error + '</ul></div></div>';
+
+                                element.innerHTML = alert;
+                                console.log(alert);
+                                break;
+                        }
+                    },
+                    error: function (result) {
+                        $('#divError').remove();
+                        var element = document.getElementById("errorMessageHeader");
+                        var error = '<li>Error! Check Console</li>';
+                        var alert = '<div class="alert alert-danger alert-dismissible" id = "divError"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><h4><i class="icon fa fa-ban"></i> Error!</h4><div class="validation-summary-errors" data-valmsg-summary="true"><ul>' + error + '</ul></div></div>';
+
+                        element.innerHTML = alert;
+                        console.log(result);
+                    }
+                });
+            }
+        );
+
+        $("#add").click(function (e) {
+            e.preventDefault();
+
+            if ($.trim($("#detailContactPerson").val()) == "" ||
+                $.trim($("#detailTelepon").val()) == "" ||
+                $.trim($("#detailPosition").val()) == "" ||
+                $.trim($("#detailAddress").val()) == "" ||
+                $.trim($("#detailHandphone").val()) == "" ||
+                $.trim($("#detailEmail").val()) == "") return;
+
+            var contactPerson = $("#detailContactPerson").val(),
+                telepon = $("#detailTelepon").val(),
+                position = $("#detailPosition").val(),
+                address = $("#detailAddress").val(),
+                handphone = $("#detailHandphone").val(),
+                email = $("#detailEmail").val(),
+                detailsTableBody = $("#Details tbody");
+
+            var data = JSON.stringify({
+                depoContainerId: $('#depoContainerId').val().trim(),
+                contactPerson: $('#detailContactPerson').val().trim(),
+                telepon: $('#detailTelepon').val().trim(),
+                position: $('#detailPosition').val().trim(),
+                address: $('#detailAddress').val().trim(),
+                handphone: $('#detailHandphone').val().trim(),
+                email: $('#detailEmail').val().trim()
+            });
+
+            $.ajax({
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                type: 'POST',
+                url: "/DepoContainer/addDetail",
+                data: data,
+                success: function (result) {
+                    console.log(result);
+                    switch (result.status) {
+                        case 200:
+                            var itemId = result.message;
+                            var Item = '<tr><td>' + contactPerson + '</td><td>' + telepon + '</td><td>' + position + '</td><td>' + address + '</td><td>' + handphone + '</td><td>' + email +'</td><td> <input type="button" data-itemId="' + itemId +  '" href="#" style="width: 80px" value="Remove" class="deleteItem btn btn-danger" /> </td></tr>';
+                            detailsTableBody.append(Item);
+                            clearItem();
+                            break;
+
+                        case 409:
+                            $('#divError').remove();
+                            var element = document.getElementById("errorMessageHeader");
+                            var error = '<li>' + result.message + '</li>';
+                            var alert = '<div class="alert alert-danger alert-dismissible" id = "divError"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><h4><i class="icon fa fa-ban"></i> Error!</h4><div class="validation-summary-errors" data-valmsg-summary="true"><ul>' + error + '</ul></div></div>';
+
+                            element.innerHTML = alert;
+                            console.log(alert);
+                            break;
+                    }
+                },
+                error: function (result) {
+                    $('#divError').remove();
+                    var element = document.getElementById("errorMessageHeader");
+                    var error = '<li>Error! Check Console</li>';
+                    var alert = '<div class="alert alert-danger alert-dismissible" id = "divError"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><h4><i class="icon fa fa-ban"></i> Error!</h4><div class="validation-summary-errors" data-valmsg-summary="true"><ul>' + error + '</ul></div></div>';
+
+                    element.innerHTML = alert;
+                    console.log(result);
+                }
+            });
+        });
+
+        function clearItem() {
+            $("#detailContactPerson").val('');
+            $("#detailTelepon").val('');
+            $("#detailPosition").val('');
+            $("#detailAddress").val('');
+            $("#detailHandphone").val('');
+            $("#detailEmail").val('');
+        }
+
+        $(document).on('click', '.deleteItem', function (e) {
+            e.preventDefault();
+            var id = $(this).attr('data-itemId');
+
+            if ($(this).attr('data-itemId') != "0") {
+                $(this).parents('tr').css("background-color", "#ff6347").fadeOut(800, function () {
+                    $.ajax({
+                        contentType: 'application/json; charset=utf-8',
+                        dataType: 'json',
+                        type: 'POST',
+                        url: "/DepoContainer/deleteDetail/" + id,
+                        success: function (result) {
+                            console.log(result);
+                            switch (result.status) {
+                                case 200:
+                                    $(this).remove();
+                                    break;
+
+                                case 409:
+                                    $('#divError').remove();
+                                    var element = document.getElementById("errorMessageHeader");
+                                    var error = '<li>' + result.message + '</li>';
+                                    var alert = '<div class="alert alert-danger alert-dismissible" id = "divError"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><h4><i class="icon fa fa-ban"></i> Error!</h4><div class="validation-summary-errors" data-valmsg-summary="true"><ul>' + error + '</ul></div></div>';
+
+                                    element.innerHTML = alert;
+                                    console.log(alert);
+                                    break;
+                            }
+                        },
+                        error: function (result) {
+                            $('#divError').remove();
+                            var element = document.getElementById("errorMessageHeader");
+                            var error = '<li>Error! Check Console</li>';
+                            var alert = '<div class="alert alert-danger alert-dismissible" id = "divError"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><h4><i class="icon fa fa-ban"></i> Error!</h4><div class="validation-summary-errors" data-valmsg-summary="true"><ul>' + error + '</ul></div></div>';
+
+                            element.innerHTML = alert;
+                            console.log(result);
+                        }
+                    });
+                });
+            }
+        });
+
+        //Collect Multiple Order List For Pass To Controller
+        $("#submit").click(function (e) {
+            e.preventDefault();
+
+            var id = $.trim($("#depoContainerId").val());
+
+            var isChecked = $('#isActive').is(":checked");
+            var isCheck;
+
+            if (isChecked) {
+                isCheck = 1;
+            }
+            else{
+                isCheck = 0;
+            }
+
+            var data = JSON.stringify({
+                id: id,
+                code: $('#code').val().trim(),
+                name: $('#name').val().trim(),
+                address: $('#address').val().trim(),
+                email: $('#email').val().trim(),
+                website: $('#website').val().trim(),
+                telepon: $('#telepon').val().trim(),
+                fax: $('#fax').val().trim(),
+                remark: $('#remark').val(),
+                isActive: isCheck,
+                createdBy: $('#createdBy').val().trim(),
+                createdOn: $('#createdOn').val().trim()
+            });
+
+            console.log(data);
+
+            $.ajax({
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                type: 'POST',
+                url: "/DepoContainer/edit/" + id,
+                data: data,
+                success: function (result) {
+                    console.log(result);
+                    switch (result.status) {
+                        case 200:
+                            window.location.href = '/DepoContainer/';
+                            break;
+                        case 400:
+                            $('#divError').remove();
+                            var element = document.getElementById("errorMessageHeader");
+                            var error = '';
+                            for (var i=0; i < result.message.length; i++) {
+                                console.log(result.message[i]);
+                                error = error + '<li>' + result.message[i] + '</li>';
+                            }
+
+                            var alert = '<div class="alert alert-danger alert-dismissible" id = "divError"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><h4><i class="icon fa fa-ban"></i> Error!</h4><div class="validation-summary-errors" data-valmsg-summary="true"><ul>' + error + '</ul></div></div>';
+
+                            element.innerHTML = alert;
+                            console.log(alert);
+                            break;
+                        case 409:
+                            $('#divError').remove();
+                            var element = document.getElementById("errorMessageHeader");
+                            var error = '<li>' + result.message + '</li>';
+                            var alert = '<div class="alert alert-danger alert-dismissible" id = "divError"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><h4><i class="icon fa fa-ban"></i> Error!</h4><div class="validation-summary-errors" data-valmsg-summary="true"><ul>' + error + '</ul></div></div>';
+
+                            element.innerHTML = alert;
+                            console.log(alert);
+                            break;
+                    }
+                },
+                error: function (result) {
+                    $('#divError').remove();
+                    var element = document.getElementById("errorMessageHeader");
+                    var error = '<li>Error! Check Console</li>';
+                    var alert = '<div class="alert alert-danger alert-dismissible" id = "divError"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><h4><i class="icon fa fa-ban"></i> Error!</h4><div class="validation-summary-errors" data-valmsg-summary="true"><ul>' + error + '</ul></div></div>';
+
+                    element.innerHTML = alert;
+                    console.log(result);
+                }
+            });
+        });
+    </script>
+}
