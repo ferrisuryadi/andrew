@@ -63,6 +63,8 @@ namespace fms.Controllers
 
             ViewBag.Countries = mContext.mtCountry.Where(x => x.isActive == true).ToList();
             ViewBag.Error = true;
+            ViewData["Menu"] = "Master";
+            ViewData["SubMenuLvl1"] = "Consignee";
             return View("Create");
         }
 
@@ -106,7 +108,8 @@ namespace fms.Controllers
 
                 return RedirectToAction("Index");
             }
-
+            ViewData["Menu"] = "Master";
+            ViewData["SubMenuLvl1"] = "Consignee";
             ViewBag.Countries = mContext.mtCountry.Where(x => x.isActive == true).ToList();
             ViewBag.Error = true;
             return View("edit");

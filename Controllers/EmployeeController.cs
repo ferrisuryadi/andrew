@@ -133,6 +133,8 @@ namespace fms.Controllers
             }
 
             ViewBag.Error = true;
+            ViewData["Menu"] = "Master";
+            ViewData["SubMenuLvl1"] = "Employee";
             return View("edit");
         }
 

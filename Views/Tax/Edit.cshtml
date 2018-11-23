@@ -2,10 +2,7 @@
     ViewData["Title"] = "Tax";
 }
 @model fms.Models.mtTax;
-@section Header
-    {
-    <link rel="stylesheet" href="~/AdminLTE/bower_components/select2/dist/css/select2.min.css">
-}
+
 @if (ViewBag.Error)
 {
     <div class="alert alert-danger alert-dismissible">
@@ -27,8 +24,8 @@
                         <input type="text" class="form-control" id="code" asp-for="code" autofocus>
                     </div>
                     <div class="form-group">
-                        <label for="description">@Html.DisplayNameFor(model => model.amount)</label>
-                        <input type="number" class="form-control" id="description" asp-for="amount">
+                        <label for="amount">@Html.DisplayNameFor(model => model.amount)</label>
+                        <input type="number" class="form-control" id="amount" asp-for="amount" lang="en-US" step=".01">
                     </div>
                     <div class="checkbox">
                         <label>
@@ -51,8 +48,11 @@
     <!--/.col (left) -->
 </div>
 @section scripts{
-    <script src="@Url.Content("~/AdminLTE/bower_components/select2/dist/js/select2.full.min.js")"></script>
-    <script>$(function () {
-        $('.select2').select2()
-    })</script>
+<script>
+    $(document).ready(function(){
+        var value = $('#amount').val();
+        $('#amount').val(parseFloat(Math.round(value * 100) / 100).toFixed(2));
+        //alert(value);
+    });
+</script>
 }

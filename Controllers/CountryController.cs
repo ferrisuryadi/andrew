@@ -58,7 +58,8 @@ namespace fms.Controllers
 
                 return RedirectToAction("Index");
             }
-
+            ViewData["Menu"] = "Master";
+            ViewData["SubMenuLvl1"] = "Country";
             ViewBag.Error = true;
             return View("Create");
         }
@@ -100,7 +101,8 @@ namespace fms.Controllers
 
                 return RedirectToAction("Index");
             }
-
+            ViewData["Menu"] = "Master";
+            ViewData["SubMenuLvl1"] = "Country";
             ViewBag.Error = true;
             return View("edit");
         }

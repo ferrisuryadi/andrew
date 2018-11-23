@@ -97,6 +97,9 @@ namespace fms.Controllers
                 mContext.mtGroups
                     .Where(x => x.isActive == true).ToList();
 
+            ViewData["Menu"] = "Master";
+            ViewData["SubMenuLvl1"] = "ProfitShared";
+
             ViewBag.CoaIdr = CoaIdr;
             ViewBag.coausd = CoaUsd;
             ViewBag.Groups = Groups;
@@ -178,6 +181,9 @@ namespace fms.Controllers
             ICollection<mtGroups> Groups =
                 mContext.mtGroups
                     .Where(x => x.isActive == true).ToList();
+
+            ViewData["Menu"] = "Master";
+            ViewData["SubMenuLvl1"] = "ProfitShared";
 
             ViewBag.CoaIdr = CoaIdr;
             ViewBag.coausd = CoaUsd;

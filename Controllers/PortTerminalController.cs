@@ -58,7 +58,8 @@ namespace fms.Controllers
 
                 return RedirectToAction("Index");
             }
-
+            ViewData["Menu"] = "Master";
+            ViewData["SubMenuLvl1"] = "PortTerminal";
             ViewBag.PortOfLoading = mContext.mtPortOfLoading.Where(x => x.isActive == true).ToList();
             ViewBag.Error = true;
             return View("Create");
@@ -102,7 +103,8 @@ namespace fms.Controllers
 
                 return RedirectToAction("Index");
             }
-
+            ViewData["Menu"] = "Master";
+            ViewData["SubMenuLvl1"] = "PortTerminal";
             ViewBag.PortOfLoading = mContext.mtPortOfLoading.Where(x => x.isActive == true).ToList();
             ViewBag.Error = true;
             return View("edit");

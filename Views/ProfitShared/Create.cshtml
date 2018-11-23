@@ -160,7 +160,7 @@
     <script src="@Url.Content("~/AdminLTE/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js")"></script>
 
     <script>
-        $(function () {
+$(function () {
             var currentDate = new Date();
             $("#txDate").datepicker("setDate", currentDate);
             $("#txValidDate").datepicker("setDate", currentDate);
@@ -202,6 +202,8 @@
             $("#detailPsForTsk").val('');
             $("#detailPsDueForAgent").val('');
             $("#detailPsDueForTsk").val('');
+            $('#detailContainerId').val(0);
+            $('#detailContainerId').trigger('change');
         }
 
         $(document).on('click', '.deleteItem', function (e) {
@@ -311,6 +313,5 @@
                     console.log(result);
                 }
             });
-        });
-    </script>
+        });</script>
 }

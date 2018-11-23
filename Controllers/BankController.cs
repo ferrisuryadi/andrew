@@ -56,6 +56,8 @@ namespace fms.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewData["Menu"] = "Master";
+            ViewData["SubMenuLvl1"] = "Bank";
             ViewBag.Error = true;
             return View("Create");
         }
@@ -99,6 +101,8 @@ namespace fms.Controllers
             }
 
             ViewBag.Error = true;
+            ViewData["Menu"] = "Master";
+            ViewData["SubMenuLvl1"] = "Bank";
             return View("edit");
         }
 

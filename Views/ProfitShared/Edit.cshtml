@@ -329,6 +329,8 @@
             $("#detailPsForTsk").val('');
             $("#detailPsDueForAgent").val('');
             $("#detailPsDueForTsk").val('');
+            $('#detailContainerId').val(0);
+            $('#detailContainerId').trigger('change');
         }
 
         $(document).on('click', '.deleteItem', function (e) {

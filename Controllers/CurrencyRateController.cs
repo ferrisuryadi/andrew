@@ -79,6 +79,8 @@ namespace fms.Controllers
 
             ViewBag.Currency = mContext.mtCurrency.Where(x => x.isActive == true).ToList();
             ViewBag.Error = true;
+            ViewData["Menu"] = "Master";
+            ViewData["SubMenuLvl1"] = "CurrencyRate";
             return View("Create");
         }
 
@@ -120,7 +122,8 @@ namespace fms.Controllers
 
                 return RedirectToAction("Index");
             }
-
+            ViewData["Menu"] = "Master";
+            ViewData["SubMenuLvl1"] = "CurrencyRate";
             ViewBag.Currency = mContext.mtCurrency.Where(x => x.isActive == true).ToList();
             ViewBag.Error = true;
             return View("edit");

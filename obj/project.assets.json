@@ -11736,11 +11736,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/ferrisuryadi/Documents/Project/Forwarding/fms/fms.csproj",
+      "projectUniqueName": "/Users/ferrisuryadi/Documents/GitHub/andrew/fms.csproj",
       "projectName": "fms",
-      "projectPath": "/Users/ferrisuryadi/Documents/Project/Forwarding/fms/fms.csproj",
+      "projectPath": "/Users/ferrisuryadi/Documents/GitHub/andrew/fms.csproj",
       "packagesPath": "/Users/ferrisuryadi/.nuget/packages/",
-      "outputPath": "/Users/ferrisuryadi/Documents/Project/Forwarding/fms/obj",
+      "outputPath": "/Users/ferrisuryadi/Documents/GitHub/andrew/obj",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"

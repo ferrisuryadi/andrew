@@ -67,6 +67,8 @@ namespace fms.Controllers
             ViewBag.Currency = mContext.mtCurrency.Where(x => x.isActive == true).ToList();
             ViewBag.ChartOfAccount = mContext.mtChartOfAccount.Where(x => x.isActive == true).ToList();
             ViewBag.Error = true;
+            ViewData["Menu"] = "Master";
+            ViewData["SubMenuLvl1"] = "ChartOfAccount";
             return View("Create");
         }
 
@@ -116,6 +118,8 @@ namespace fms.Controllers
             ViewBag.Currency = mContext.mtCurrency.Where(x => x.isActive == true).ToList();
             ViewBag.ChartOfAccount = mContext.mtChartOfAccount.Where(x => x.isActive == true).ToList();
             ViewBag.Error = true;
+            ViewData["Menu"] = "Master";
+            ViewData["SubMenuLvl1"] = "ChartOfAccount";
             return View("edit");
         }
 

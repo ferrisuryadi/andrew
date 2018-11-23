@@ -69,6 +69,8 @@ namespace fms.Controllers
             ViewBag.Container = mContext.mtContainer.Where(x => x.isActive == true).ToList();
             ViewBag.Agent = mContext.mtAgent.Where(x => x.isActive == true).ToList();
             ViewBag.Shipper = mContext.mtShipper.Where(x => x.isActive == true).ToList();
+            ViewData["Menu"] = "Master";
+            ViewData["SubMenuLvl1"] = "AgentProfitShared";
 
             ViewBag.Error = true;
             return View("Create");
@@ -125,6 +127,8 @@ namespace fms.Controllers
             ViewBag.Shipper = mContext.mtShipper.Where(x => x.isActive == true).ToList();
 
             ViewBag.Error = true;
+            ViewData["Menu"] = "Master";
+            ViewData["SubMenuLvl1"] = "AgentProfitShared";
             return View("edit");
         }
 
