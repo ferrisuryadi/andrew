@@ -1,0 +1,108 @@
+﻿@{
+    Layout = "";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Forwarding | Log in</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="~/AdminLTE/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/AdminLTE/bower_components/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/AdminLTE/bower_components/Ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="~/AdminLTE/dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="~/AdminLTE/plugins/iCheck/square/blue.css">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+</head>
+<body class="hold-transition login-page">
+    <div class="login-box">
+        <div class="login-logo">
+            <a href="~/login/">Forwarding</a>
+        </div>
+
+        <div id="errorMessageHeader">
+        </div>
+
+        <div class="login-box-body">
+            <div class="form-group has-feedback">
+                <input type="text" class="form-control" placeholder="Username" id="username">
+                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+                <input type="password" class="form-control" placeholder="Password" id="password">
+                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+            </div>
+            <div class="row">
+                <div class="col-xs-4">
+                    <button type="submit" id="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/AdminLTE/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="~/AdminLTE/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script>
+            $("#submit").click(function (e) {
+                e.preventDefault();
+
+                var data = JSON.stringify({
+                    username: $('#username').val(),
+                    password: $('#password').val().trim()
+                });
+
+                $('#divError').remove();
+
+                $.ajax({
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: 'json',
+                    type: 'POST',
+                    url: "/login/login",
+                    data: data,
+                    success: function (result) {
+                        switch (result.status) {
+                            case 200:
+                                window.location.href = result.message;
+                                break;
+
+                            case 400:
+                                var element = document.getElementById("errorMessageHeader");
+                                var error = '';
+                                for (var i=0; i < result.message.length; i++) {
+                                    console.log(result.message[i]);
+                                    error = error + '<li>' + result.message[i] + '</li>';
+                                }
+
+                                var alert = '<div class="alert alert-danger alert-dismissible" id = "divError"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><h4><i class="icon fa fa-ban"></i> Error!</h4><div class="validation-summary-errors" data-valmsg-summary="true"><ul>' + error + '</ul></div></div>';
+
+                                element.innerHTML = alert;
+                                console.log(alert);
+                                break;
+
+                            case 409:
+                                var element = document.getElementById("errorMessageHeader");
+                                var error = '<li>' + result.message + '</li>';
+                                var alert = '<div class="alert alert-danger alert-dismissible" id = "divError"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><h4><i class="icon fa fa-ban"></i> Error!</h4><div class="validation-summary-errors" data-valmsg-summary="true"><ul>' + error + '</ul></div></div>';
+
+                                element.innerHTML = alert;
+                                console.log(alert);
+                                break;
+                        }
+                    },
+                    error: function (result) {
+                        $('#divError').remove();
+                        var element = document.getElementById("errorMessageHeader");
+                        var error = '<li>Error! Check Console</li>';
+                        var alert = '<div class="alert alert-danger alert-dismissible" id = "divError"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><h4><i class="icon fa fa-ban"></i> Error!</h4><div class="validation-summary-errors" data-valmsg-summary="true"><ul>' + error + '</ul></div></div>';
+
+                        element.innerHTML = alert;
+                        console.log(result);
+                    }
+                });
+            });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1284 @@
+﻿@{
+    ViewData["Title"] = "Cost Shipping";
+}
+@model fms.Models.trCostShipping;
+@section Header
+    {
+    <link rel="stylesheet" href="~/AdminLTE/bower_components/select2/dist/css/select2.min.css">
+    <link rel="stylesheet" href="~/AdminLTE/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" href="~/AdminLTE/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" href="~/AdminLTE/bower_components/datatables.net/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="~/AdminLTE/bower_components/datatables.net/css/select.dataTables.min.css">
+}
+<div id="errorMessageHeader">
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box box-primary">
+            <div class="box-body">
+                <div class="col-xs-6">
+                    <div class="form-group">
+                        <label for="referenceNo">@Html.DisplayNameFor(model => model.referenceNo)</label>
+                        <input type="text" class="form-control" id="referenceNo" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="txDate">@Html.DisplayNameFor(model => model.txDate)</label>
+                        <input type="text" class="form-control" id="txDate">
+                    </div>
+                    <div class="form-group">
+                        <label for="sales">@Html.DisplayNameFor(model => model.sales)</label>
+                        <input type="text" class="form-control" id="sales" >
+                    </div>
+                    <div class="form-group">
+                        <label for="portOfLoadingId">@Html.DisplayNameFor(model => model.portOfLoadingId)</label>
+                        <select class="form-control select2" style="width: 100%;" id="portOfLoadingId">
+                            <option value="0">Select</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="form-group">
+                        <label for="vendorDescription">@Html.DisplayNameFor(model => model.vendorId)</label>
+                        <input type="text" class="form-control" id="vendorDescription" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="txValidDate">@Html.DisplayNameFor(model => model.txValidDate)</label>
+                        <input type="text" class="form-control" id="txValidDate">
+                    </div>
+                    <div class="form-group">
+                        <label for="shippingReferenceNo">@Html.DisplayNameFor(model => model.shippingReferenceNo)</label>
+                        <input type="text" class="form-control" id="shippingReferenceNo">
+                    </div>
+                    <div class="form-group">
+                        <label for="remark">@Html.DisplayNameFor(model => model.remark)</label>
+                        <textarea class="form-control" style="width: 100%;" rows="4" id="remark"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="box-footer">
+                <input type="hidden" id="vendorId" value="0">
+                <input type="hidden" id="state" value="0">
+                <input type="hidden" id="costShippingId" value="0">
+                <input type="hidden" id="costShippingDetailId" value="0">
+                <input type="hidden" id="createdBy">
+                <input type="hidden" id="createdOn">
+                <button id="submit" type="submit" class="btn btn-primary">Save</button>
+            </div>
+            <div class="overlay" id="refreshLoad">
+                <i class="fa fa-refresh fa-spin"></i>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12" id="boxService" hidden>
+        <div class="box box-primary collapsed-box">
+            <div class="box-header with-border">
+                <h3 class="box-title">ITEM OF SERVICE OF ALL DESTINATION</h3>
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                        <i class="fa fa-plus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="box-body">
+                <div class="col-xs-3">
+                    <div class="form-group">
+                        <label for="itemServiceId">Item Of Services</label>
+                        <select class="form-control select2" style="width: 100%;" id="itemServiceId">
+                            <option value="0">Select</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="itemPortOfDestinationId">Port Of Destination</label>
+                        <select class="form-control select2" style="width: 100%;" id="itemPortOfDestinationId">
+                            <option value="0">Select</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="form-group">
+                        <label for="itemOfEmkl">O/F / EMKL</label>
+                        <select class="form-control select2" style="width: 100%;" id="itemOfEmkl">
+                            <option value="1" selected>O / F</option>
+                            <option value="2">EMKL</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="itemPcPay">P / C / Payable At</label>
+                        <select class="form-control select2" style="width: 100%;" id="itemPcPay">
+                            <option value="1">PREPAID (P)</option>
+                            <option value="2">COLLECT (C)</option>
+                            <option value="3">PAYABLE AT</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="form-group">
+                        <label for="itemTax23">% Tax 23</label>
+                        <select class="form-control select2" style="width: 100%;" id="itemTaxId23">
+                            <option value="0">Select</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="itemVat">% Vat</label>
+                        <select class="form-control select2" style="width: 100%;" id="itemTaxIdVat">
+                            <option value="0">Select</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="form-group">
+                        <label for="itemContainerId">Container</label>
+                        <select class="form-control select2" style="width: 100%;" id="itemContainerId">
+                            <option value="0">Select</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="itemRemark">Remark</label>
+                        <textarea class="form-control" style="width: 100%;" rows="1" id="itemRemark"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="box-footer">
+                <button id="addService" type="submit" class="btn btn-success">Add</button>
+            </div>
+            <div class="box-footer">
+                <div class="box-body table-responsive">
+                    <table class="table table-bordered table-striped" style="width:100%" id="Items">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Item Of Service</th>
+                                <th>Port Of Destination</th>
+                                <th>O/F / EMKL</th>
+                                <th>P / C / Payable At</th>
+                                <th>% Tax 23</th>
+                                <th>% Vat</th>
+                                <th>Container</th>
+                                <th>Remark</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12" id="boxDetail" hidden>
+        <div class="box box-primary collapsed-box">
+            <div class="box-header with-border">
+                <h3 class="box-title">DETAILS</h3>
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                        <i class="fa fa-plus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="box-body">
+                <div class="col-xs-4">
+                    <div class="form-group">
+                        <label for="detailServiceId">Item Of Services</label>
+                        <select class="form-control select2" style="width: 100%;" id="detailServiceId">
+                            <option value="0">Select</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="detailPortOfDestinationId">Port Of Destination</label>
+                        <select class="form-control select2" style="width: 100%;" id="detailPortOfDestinationId">
+                            <option value="0">Select</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="detailPortOfDestinationId">Port Of Transhipment</label>
+                        <select class="form-control select2" style="width: 100%;" id="detailPortTerminalId">
+                            <option value="0">Select</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="detailPcPay">P / C / Payable At</label>
+                        <select class="form-control select2" style="width: 100%;" id="detailPcPay">
+                            <option value="1">PREPAID (P)</option>
+                            <option value="2">COLLECT (C)</option>
+                            <option value="3">PAYABLE AT</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="detailContainerId">Container</label>
+                        <select class="form-control select2" style="width: 100%;" id="detailContainerId">
+                            <option value="0">Select</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <div class="form-group">
+                        <label for="detailCurrencyId">Currency</label>
+                        <select class="form-control select2" style="width: 100%;" id="detailCurrencyId">
+                            <option value="0">Select</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="detailPrice">Price</label>
+                        <input type="number" class="form-control" style="width: 100%;" id="detailPrice">
+                    </div>
+                    <div class="form-group">
+                        <label for="detailTaxId23">% Tax 23</label>
+                        <select class="form-control select2" style="width: 100%;" id="detailTaxId23">
+                            <option value="0">Select</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="detailTaxIdVat">% Vat</label>
+                        <select class="form-control select2" style="width: 100%;" id="detailTaxIdVat">
+                            <option value="0">Select</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="detailRemark">Remark</label>
+                        <textarea class="form-control" style="width: 100%;" rows="2" id="detailRemark"></textarea>
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <div class="form-group">
+                        <label for="detailRefundType">Refund Type</label>
+                        <select class="form-control select2" style="width: 100%;" id="detailRefundType">
+                            <option value="1" selected>Percentage</option>
+                            <option value="2">Amount</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="detailRefund">Refund</label>
+                        <input type="number" class="form-control" style="width: 100%;" id="detailRefund">
+                    </div>
+                    <div class="form-group">
+                        <label for="detailPayableTo">Payable To</label>
+                        <input type="text" class="form-control" style="width: 100%;" id="detailPayableTo">
+                    </div>
+                    <div class="form-group">
+                        <label for="detailVendor">Ship CoLoader</label>
+                        <select class="form-control select2" style="width: 100%;" id="detailVendorId">
+                            <option value="0">Select</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <br />
+                        <input type="checkbox" id="detailAllIn"><label for="detailAllIn">&nbsp; All In</label>
+                    </div>
+                </div>
+            </div>
+            <div class="box-footer">
+                <button id="addDetail" type="submit" class="btn btn-success">Add</button>
+            </div>
+            <div class="box-footer">
+                <div class="box-body table-responsive">
+                    <table class="table table-bordered table-striped" style="width:100%" id="Details">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Item Of Service</th>
+                                <th>Port Of Destination</th>
+                                <th>Port Of Transhipment</th>
+                                <th>P / C / Payable At</th>
+                                <th>Container</th>
+                                <th>Currency</th>
+                                <th>Price</th>
+                                <th>% Tax 23</th>
+                                <th>% Vat</th>
+                                <th>All In</th>
+                                <th>Refund Type</th>
+                                <th>Refund</th>
+                                <th>Payable To</th>
+                                <th>Ship CoLoader</th>
+                                <th>Remark</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12" id="boxShipper" hidden>
+        <div class="box box-primary collapsed-box">
+            <div class="box-header with-border">
+                <h3 class="box-title">SHIPPER</h3>
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                        <i class="fa fa-plus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="box-body">
+                <div class="col-xs-4">
+                    <div class="form-group">
+                        <label for="shipperId">Shipper</label>
+                        <select class="form-control select2" style="width: 100%;" id="shipperId">
+                            <option value="0">Select</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <div class="form-group">
+                        <label for="shipperCode">Code Shipper</label>
+                        <input type="text" class="form-control" style="width: 100%;" id="shipperCode" disabled>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="form-group">
+                        <label for="shipperName">Name Shipper</label>
+                        <input type="text" class="form-control" style="width: 100%;" id="shipperName" disabled>
+                    </div>
+                </div>
+            </div>
+            <div class="box-footer">
+                <button id="addShipper" type="submit" class="btn btn-success">Add</button>
+            </div>
+            <div class="box-footer">
+                <div class="box-body table-responsive">
+                    <table class="table table-bordered table-striped" style="width:100%" id="Shippers">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Kode Shipper</th>
+                                <th>Nama Shipper</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script src="@Url.Content("https://code.jquery.com/jquery-2.2.4.min.js")"></script>
+    <script src="@Url.Content("~/AdminLTE/bower_components/datatables.net/js/jquery.dataTables.min.js")"></script>
+    <script src="@Url.Content("~/AdminLTE/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/AdminLTE/bower_components/select2/dist/js/select2.full.min.js")"></script>
+    <script src="@Url.Content("~/AdminLTE/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js")"></script>
+    <script src="@Url.Content("~/AdminLTE/bower_components/datatables.net/js/dataTables.select.min.js")"></script>
+    <script>
+        $(document).ready(function(){
+            $('.select2').select2();
+
+            $('#Items').DataTable({
+                "columnDefs":
+                [
+                    {
+                        "targets": -1,
+                        "data": null,
+                        "defaultContent": "<input type='button' href='#' style='width: 80px' value='Remove' class='deleteService btn btn-danger' />"
+                    },
+                    {
+                        "targets": [0],
+                        "visible": false,
+                        "searchable": false
+                    }
+                ]
+            });
+
+            $('#Details').DataTable({
+                "columnDefs":
+                [
+                    {
+                        "targets": -1,
+                        "data": null,
+                        "defaultContent": "<input type='button' href='#' style='width: 80px' value='Remove' class='deleteDetail btn btn-danger' />"
+                    },
+                    {
+                        "targets": [0],
+                        "visible": false,
+                        "searchable": false
+                    }
+                ]
+            });
+
+            $('#Shippers').DataTable({
+                "columnDefs":
+                [
+                    {
+                        "targets": -1,
+                        "data": null,
+                        "defaultContent": "<input type='button' href='#' style='width: 80px' value='Remove' class='deleteShipper btn btn-danger' />"
+                    },
+                    {
+                        "targets": [0],
+                        "visible": false,
+                        "searchable": false
+                    }
+                ]
+            });
+
+            $('#txDate').datepicker({format:'mm/dd/yyyy',
+              autoclose: true
+            });
+
+            $('#txValidDate').datepicker({format:'mm/dd/yyyy',
+              autoclose: true
+            });
+
+            var currentDate = new Date();
+            $("#txDate").datepicker("setDate", currentDate);
+            $("#txValidDate").datepicker("setDate", currentDate);
+
+            $('#shipperId').change(function(){
+                getShipper();
+            });
+
+            //assign data Service
+            getDropDown($('#itemServiceId'), 'getService');
+            getDropDown($('#itemPortOfDestinationId'), 'getPortOfDestination');
+            getDropDown($('#itemContainerId'), 'getContainer');
+            getDropDown($('#itemTaxId23'), 'getTax');
+            getDropDown($('#itemTaxIdVat'), 'getTax');
+
+            //assign data Detail
+            getDropDown($('#detailServiceId'), 'getService');
+            getDropDown($('#detailPortOfDestinationId'), 'getPortOfDestination');
+            getDropDown($('#detailPortTerminalId'), 'getTerminal');
+            getDropDown($('#detailContainerId'), 'getContainer');
+            getDropDown($('#detailCurrencyId'), 'getCurrency');
+            getDropDown($('#detailTaxId23'), 'getTax');
+            getDropDown($('#detailTaxIdVat'), 'getTax');
+            getDropDown($('#detailVendorId'), 'getCoLoader');
+
+            //assign data Vendor
+            getDropDown($('#shipperId'), 'getShipper');
+
+            $('#detailRefund').val('0');
+            $('#detailPrice').val('0');
+
+            //Set selected for grid detail
+            $('#Details tbody').on('click', 'tr', function () {
+                if ($(this).hasClass('selected') ) {
+                    $(this).removeClass('selected');
+                }
+                else {
+                    $('#Details tr.selected').removeClass('selected');
+                    $(this).addClass('selected');
+
+                    //Assign Detail Id & load vendor
+                    var data = $('#Details').DataTable().row(this).data();
+                    var detailId = data[0];
+                    $("#costShippingDetailId").val(detailId);
+
+                    loadShipper();
+                }
+            });
+
+            //assign data header
+
+            @{
+                var serverState = ViewBag.state.Replace("\\", "\\\\").Replace("'", "\\'");
+            }
+            var state = '@(serverState)';
+            if(state == 'add'){
+                $("#vendorId").val(@(ViewBag.vendorId));
+                getVendorShipping();
+                getDropDown($('#portOfLoadingId'), 'getPortOfLoading');
+                $('#state').val(state);
+            }
+            else {
+                $("#costShippingId").val(@(ViewBag.costShippingId));
+                $.when(getDropDown($('#portOfLoadingId'), 'getPortOfLoading')).done(loadHeader());
+                loadService();
+                loadDetail();
+
+                $('#boxShipper').removeAttr('hidden');
+            }
+
+            $('#refreshLoad').remove();
+        });
+
+        function getDropDown(element, url) {
+            $.ajax({
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                type: 'GET',
+                url: "/CostShipping/" + url,
+                success: function (result) {
+                    switch (result.status) {
+                        case 200:
+                            var $ele = $(element);
+                            $ele.empty();
+                            $ele.append($('<option/>').val('0').text('Select'));
+                            for (var i=0; i < result.message.length; i++) {
+                                $ele.append($('<option/>').val(result.message[i].id).text(result.message[i].description));
+                            }
+
+                            break;
+                    }
+                },
+                error: function (result) {
+                    $('#divError').remove();
+                    var element = document.getElementById("errorMessageHeader");
+                    var error = '<li>Error! Check Console</li>';
+                    var alert = '<div class="alert alert-danger alert-dismissible" id = "divError"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><h4><i class="icon fa fa-ban"></i> Error!</h4><div class="validation-summary-errors" data-valmsg-summary="true"><ul>' + error + '</ul></div></div>';
+
+                    element.innerHTML = alert;
+                    console.log(result);
+                }
+            });
+        }
+
+        function getVendorShipping() {
+            var vendorId = $('#vendorId').val().trim();
+
+            $.ajax({
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                type: 'GET',
+                url: "/CostShipping/loadVendor/" + vendorId,
+                success: function (result) {
+                    switch (result.status) {
+                        case 200:
+                            $('#vendorDescription').val(result.message.description);
+                            break;
+                    }
+                },
+                error: function (result) {
+                    $('#divError').remove();
+                    var element = document.getElementById("errorMessageHeader");
+                    var error = '<li>Error! Check Console</li>';
+                    var alert = '<div class="alert alert-danger alert-dismissible" id = "divError"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><h4><i class="icon fa fa-ban"></i> Error!</h4><div class="validation-summary-errors" data-valmsg-summary="true"><ul>' + error + '</ul></div></div>';
+
+                    element.innerHTML = alert;
+                    console.log(result);
+                }
+            });
+        }
+
+        function getShipper() {
+            var shipperId = $('#shipperId').val().trim();
+
+            $('#shipperCode').val('');
+            $('#shipperName').val('');
+
+            $.ajax({
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                type: 'GET',
+                url: "/CostShipping/getShipper/" + shipperId,
+                success: function (result) {
+                    switch (result.status) {
+                        case 200:
+                            $('#shipperCode').val(result.message.code);
+                            $('#shipperName').val(result.message.name);
+                            break;
+                    }
+                },
+                error: function (result) {
+                    $('#divError').remove();
+                    var element = document.getElementById("errorMessageHeader");
+                    var error = '<li>Error! Check Console</li>';
+                    var alert = '<div class="alert alert-danger alert-dismissible" id = "divError"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><h4><i class="icon fa fa-ban"></i> Error!</h4><div class="validation-summary-errors" data-valmsg-summary="true"><ul>' + error + '</ul></div></div>';
+
+                    element.innerHTML = alert;
+                    console.log(result);
+                }
+            });
+        }
+
+        function loadShipper() {
+            var costShippingId = $("#costShippingId").val().trim();
+            var costShippingDetailId = $("#costShippingDetailId").val().trim();
+
+            $('#Shippers').DataTable().clear().draw();
+            $('#divError').remove();
+
+            var data = JSON.stringify({
+                costShippingId: costShippingId,
+                costShippingDetailId: costShippingDetailId
+            });
+
+            $.ajax({
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                type: 'POST',
+                url: "/CostShipping/loadShipper",
+                data: data,
+                success: function (result) {
+                    switch (result.status) {
+                        case 200:
+                            //load vendor
+                            for (var i=0; i < result.message.length; i++) {
+                                $('#Shippers').DataTable().row.add( [
+                                    result.message[i].id,
+                                    result.message[i].shipperCode,
+                                    result.message[i].shipperName
+                                ] ).draw(false);
+                            }
+                            console.log(result.message);
+                            break;
+                    }
+                },
+                error: function (result) {
+                    var element = document.getElementById("errorMessageHeader");
+                    var error = '<li>Error! Check Console</li>';
+                    var alert = '<div class="alert alert-danger alert-dismissible" id = "divError"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><h4><i class="icon fa fa-ban"></i> Error!</h4><div class="validation-summary-errors" data-valmsg-summary="true"><ul>' + error + '</ul></div></div>';
+
+                    element.innerHTML = alert;
+                    console.log(result);
+                }
+            });
+        }
+
+        //Save Header
+        $("#submit").click(function (e) {
+            e.preventDefault();
+
+            var data;
+            var state = $('#state').val();
+
+            if (state == 'add'){
+                data = JSON.stringify({
+                    id: $('#costShippingId').val(),
+                    referenceNo: $('#referenceNo').val().trim(),
+                    vendorId: $('#vendorId').val().trim(),
+                    txDate: $('#txDate').val().trim(),
+                    txValidDate: $('#txValidDate').val().trim(),
+                    portOfLoadingId: $('#portOfLoadingId').val().trim(),
+                    sales: $('#sales').val().trim(),
+                    shippingReferenceNo: $('#shippingReferenceNo').val().trim(),
+                    remark: $('#remark').val().trim()
+                });
+            }
+            else
+            {
+                data = JSON.stringify({
+                    id: $('#costShippingId').val(),
+                    referenceNo: $('#referenceNo').val().trim(),
+                    vendorId: $('#vendorId').val().trim(),
+                    txDate: $('#txDate').val().trim(),
+                    txValidDate: $('#txValidDate').val().trim(),
+                    portOfLoadingId: $('#portOfLoadingId').val().trim(),
+                    sales: $('#sales').val().trim(),
+                    shippingReferenceNo: $('#shippingReferenceNo').val().trim(),
+                    remark: $('#remark').val().trim(),
+                    createdBy: $('#createdBy').val(),
+                    createdOn: $('#createdOn').val()
+                });
+            }
+
+            console.log(data);
+            $('#divError').remove();
+
+            $.ajax({
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                type: 'POST',
+                url: "/CostShipping/save",
+                data: data,
+                success: function (result) {
+                    switch (result.status) {
+                        case 200:
+                            $('#costShippingId').val(result.message.id);
+                            $('#referenceNo').val(result.message.referenceNo);
+
+                            $('#createdBy').val(result.message.createdBy);
+                            $('#createdOn').val(result.message.createdOn);
+
+                            $('#boxService').removeAttr('hidden');
+                            $('#boxDetail').removeAttr('hidden');
+                            $('#boxShipper').removeAttr('hidden');
+
+                            $('#state').val('edit');
+                            break;
+
+                        case 400:
+                            var element = document.getElementById("errorMessageHeader");
+                            var error = '';
+                            for (var i=0; i < result.message.length; i++) {
+                                console.log(result.message[i]);
+                                error = error + '<li>' + result.message[i] + '</li>';
+                            }
+
+                            var alert = '<div class="alert alert-danger alert-dismissible" id = "divError"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><h4><i class="icon fa fa-ban"></i> Error!</h4><div class="validation-summary-errors" data-valmsg-summary="true"><ul>' + error + '</ul></div></div>';
+
+                            element.innerHTML = alert;
+                            console.log(alert);
+                            break;
+
+                        case 409:
+                            var element = document.getElementById("errorMessageHeader");
+                            var error = '<li>' + result.message + '</li>';
+                            var alert = '<div class="alert alert-danger alert-dismissible" id = "divError"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><h4><i class="icon fa fa-ban"></i> Error!</h4><div class="validation-summary-errors" data-valmsg-summary="true"><ul>' + error + '</ul></div></div>';
+
+                            element.innerHTML = alert;
+                            console.log(alert);
+                            break;
+                    }
+                },
+                error: function (result) {
+                    $('#divError').remove();
+                    var element = document.getElementById("errorMessageHeader");
+                    var error = '<li>Error! Check Console</li>';
+                    var alert = '<div class="alert alert-danger alert-dismissible" id = "divError"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><h4><i class="icon fa fa-ban"></i> Error!</h4><div class="validation-summary-errors" data-valmsg-summary="true"><ul>' + error + '</ul></div></div>';
+
+                    element.innerHTML = alert;
+                    console.log(result);
+                }
+            });
+        });
+
+        //Save Service
+        $("#addService").click(function (e) {
+            e.preventDefault();
+
+            var costShippingId = $('#costShippingId').val().trim(),
+                serviceId = $("#itemServiceId").val(),
+                portOfDestinationId = $("#itemPortOfDestinationId").val(),
+                ofEmkl = $("#itemOfEmkl").val(),
+                pcPay = $("#itemPcPay").val(),
+                containerId = $("#itemContainerId").val(),
+                taxId23 = $("#itemTaxId23").val(),
+                taxIdvat = $("#itemTaxIdVat").val(),
+                remark = $("#itemRemark").val();
+
+            var serviceText = $("#itemServiceId option:selected").text(),
+                portOfDestinationText = $("#itemPortOfDestinationId option:selected").text(),
+                ofEmklText = $("#itemOfEmkl option:selected").text(),
+                pcPayText = $("#itemPcPay option:selected").text(),
+                containerText = $("#itemContainerId option:selected").text(),
+                tax23 = $("#itemTaxId23 option:selected").text(),
+                taxvat = $("#itemTaxIdVat option:selected").text();
+
+            var data = JSON.stringify({
+                costShippingId: costShippingId,
+                serviceId: serviceId,
+                portOfDestinationId: portOfDestinationId,
+                ofEmkl: ofEmkl,
+                pcPay: pcPay,
+                containerId: containerId,
+                taxId23: taxId23,
+                taxIdvat: taxIdvat,
+                remark: remark
+            });
+
+            $('#divError').remove();
+
+            $.ajax({
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                type: 'POST',
+                url: "/CostShipping/serviceAdd",
+                data: data,
+                success: function (result) {
+                    switch (result.status) {
+                        case 200:
+                            var itemId = result.message;
+                            $('#Items').DataTable().row.add( [
+                                itemId,
+                                serviceText,
+                                portOfDestinationText,
+                                ofEmklText,
+                                pcPayText,
+                                tax23,
+                                taxvat,
+                                containerText,
+                                remark
+                            ] ).draw(false);
+
+                            $("#itemRemark").val('');
+                            break;
+
+                        case 400:
+                            var element = document.getElementById("errorMessageHeader");
+                            var error = '';
+                            for (var i=0; i < result.message.length; i++) {
+                                console.log(result.message[i]);
+                                error = error + '<li>' + result.message[i] + '</li>';
+                            }
+
+                            var alert = '<div class="alert alert-danger alert-dismissible" id = "divError"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><h4><i class="icon fa fa-ban"></i> Error!</h4><div class="validation-summary-errors" data-valmsg-summary="true"><ul>' + error + '</ul></div></div>';
+
+                            element.innerHTML = alert;
+                            console.log(alert);
+                            break;
+
+                        case 409:
+                            var element = document.getElementById("errorMessageHeader");
+                            var error = '<li>' + result.message + '</li>';
+                            var alert = '<div class="alert alert-danger alert-dismissible" id = "divError"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><h4><i class="icon fa fa-ban"></i> Error!</h4><div class="validation-summary-errors" data-valmsg-summary="true"><ul>' + error + '</ul></div></div>';
+
+                            element.innerHTML = alert;
+                            console.log(alert);
+                            break;
+                    }
+                },
+                error: function (result) {
+                    $('#divError').remove();
+                    var element = document.getElementById("errorMessageHeader");
+                    var error = '<li>Error! Check Console</li>';
+                    var alert = '<div class="alert alert-danger alert-dismissible" id = "divError"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><h4><i class="icon fa fa-ban"></i> Error!</h4><div class="validation-summary-errors" data-valmsg-summary="true"><ul>' + error + '</ul></div></div>';
+
+                    element.innerHTML = alert;
+                    console.log(result);
+                }
+            });
+        });
+
+        $(document).on('click', '.deleteService', function (e) {
+            e.preventDefault();
+
+            var data = $('#Items').DataTable().row($(this).parents('tr')).data();
+            var id = data[0];
+
+            if ($(this).attr('data-itemId') != "0") {
+                $(this).parents('tr').css("background-color", "#ff6347").fadeOut(800, function () {
+                    $('#divError').remove();
+                    $.ajax({
+                        contentType: 'application/json; charset=utf-8',
+                        dataType: 'json',
+                        type: 'POST',
+                        url: "/CostShipping/serviceDelete/" + id,
+                        success: function (result) {
+                            console.log(result);
+                            switch (result.status) {
+                                case 200:
+                                    $(this).remove();
+                                    break;
+
+                                case 409:
+                                    var element = document.getElementById("errorMessageHeader");
+                                    var error = '<li>' + result.message + '</li>';
+                                    var alert = '<div class="alert alert-danger alert-dismissible" id = "divError"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><h4><i class="icon fa fa-ban"></i> Error!</h4><div class="validation-summary-errors" data-valmsg-summary="true"><ul>' + error + '</ul></div></div>';
+
+                                    element.innerHTML = alert;
+                                    console.log(alert);
+                                    break;
+                            }
+                        },
+                        error: function (result) {
+                            $('#divError').remove();
+                            var element = document.getElementById("errorMessageHeader");
+                            var error = '<li>Error! Check Console</li>';
+                            var alert = '<div class="alert alert-danger alert-dismissible" id = "divError"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><h4><i class="icon fa fa-ban"></i> Error!</h4><div class="validation-summary-errors" data-valmsg-summary="true"><ul>' + error + '</ul></div></div>';
+
+                            element.innerHTML = alert;
+                            console.log(result);
+                        }
+                    });
+                });
+            }
+        });
+
+        //Save Detail
+        $("#addDetail").click(function (e) {
+            e.preventDefault();
+
+            var costShippingId = $('#costShippingId').val(),
+                serviceId = $("#detailServiceId").val(),
+                portOfDestinationId = $("#detailPortOfDestinationId").val(),
+                portTerminalId = $("#detailPortTerminalId").val(),
+                pcPay = $("#detailPcPay").val(),
+                containerId = $("#detailContainerId").val(),
+                currencyId = $("#detailCurrencyId").val(),
+                price = $("#detailPrice").val(),
+                taxId23 = $("#detailTaxId23").val(),
+                taxIdvat = $("#detailTaxIdVat").val(),
+                remark = $("#detailRemark").val(),
+                allIn = ($('#isActive').is(":checked") ? 1 : 0),
+                refundType = $("#detailRefundType").val(),
+                refund = $("#detailRefund").val(),
+                payable = $("#detailPayableTo").val(),
+                vendorId = $("#detailVendorId").val();
+
+            var serviceText = $("#detailServiceId option:selected").text(),
+                portOfDestinationText = $("#detailPortOfDestinationId option:selected").text(),
+                portTerminalText = $("#detailPortTerminalId option:selected").text(),
+                pcPayText = $("#detailPcPay option:selected").text(),
+                containerText = $("#detailContainerId option:selected").text(),
+                currencyText = $("#detailCurrencyId option:selected").text(),
+                tax23 = $("#detailTaxId23 option:selected").text(),
+                taxvat = $("#detailTaxIdVat option:selected").text(),
+                refundTypeText = $("#detailRefundType option:selected").text(),
+                vendorText = $("#detailVendorId option:selected").text();
+
+            var data = JSON.stringify({
+                costShippingId: costShippingId,
+                serviceId: serviceId,
+                portOfDestinationId: portOfDestinationId,
+                portTerminalId: portTerminalId,
+                pcPay: pcPay,
+                containerId: containerId,
+                currencyId: currencyId,
+                price: price,
+                taxId23: taxId23,
+                taxIdvat: taxIdvat,
+                remark: remark,
+                allIn: allIn,
+                refundType: refundType,
+                refund: refund,
+                payable: payable,
+                vendorId: vendorId
+            });
+            $('#divError').remove();
+
+            $.ajax({
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                type: 'POST',
+                url: "/CostShipping/detailAdd",
+                data: data,
+                success: function (result) {
+                    switch (result.status) {
+                        case 200:
+                            var itemId = result.message;
+
+                            $('#Details').DataTable().row.add( [
+                                itemId,
+                                serviceText,
+                                portOfDestinationText,
+                                portTerminalText,
+                                pcPayText,
+                                containerText,
+                                currencyText,
+                                price,
+                                tax23,
+                                taxvat,
+                                (allIn == 1 ? 'True' : 'False'),
+                                refundTypeText,
+                                refund,
+                                payable,
+                                vendorText,
+                                remark
+                            ] ).draw(false);
+
+                            $("#detailRemark").val('');
+                            $("#detailPayableTo").val('');
+                            $("#detailRefund").val('0');
+                            $("#detailPrice").val('0');
+                            break;
+
+                        case 400:
+                            var element = document.getElementById("errorMessageHeader");
+                            var error = '';
+                            for (var i=0; i < result.message.length; i++) {
+                                console.log(result.message[i]);
+                                error = error + '<li>' + result.message[i] + '</li>';
+                            }
+
+                            var alert = '<div class="alert alert-danger alert-dismissible" id = "divError"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><h4><i class="icon fa fa-ban"></i> Error!</h4><div class="validation-summary-errors" data-valmsg-summary="true"><ul>' + error + '</ul></div></div>';
+
+                            element.innerHTML = alert;
+                            console.log(alert);
+                            break;
+
+                        case 409:
+                            var element = document.getElementById("errorMessageHeader");
+                            var error = '<li>' + result.message + '</li>';
+                            var alert = '<div class="alert alert-danger alert-dismissible" id = "divError"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><h4><i class="icon fa fa-ban"></i> Error!</h4><div class="validation-summary-errors" data-valmsg-summary="true"><ul>' + error + '</ul></div></div>';
+
+                            element.innerHTML = alert;
+                            console.log(alert);
+                            break;
+                    }
+                },
+                error: function (result) {
+                    $('#divError').remove();
+                    var element = document.getElementById("errorMessageHeader");
+                    var error = '<li>Error! Check Console</li>';
+                    var alert = '<div class="alert alert-danger alert-dismissible" id = "divError"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><h4><i class="icon fa fa-ban"></i> Error!</h4><div class="validation-summary-errors" data-valmsg-summary="true"><ul>' + error + '</ul></div></div>';
+
+                    element.innerHTML = alert;
+                    console.log(result);
+                }
+            });
+        });
+
+        $(document).on('click', '.deleteDetail', function (e) {
+            e.preventDefault();
+
+            var data = $('#Details').DataTable().row($(this).parents('tr')).data();
+            var id = data[0];
+
+            if ($(this).attr('data-itemId') != "0") {
+                $(this).parents('tr').css("background-color", "#ff6347").fadeOut(800, function () {
+                    $('#divError').remove();
+                    $.ajax({
+                        contentType: 'application/json; charset=utf-8',
+                        dataType: 'json',
+                        type: 'POST',
+                        url: "/CostShipping/detailDelete/" + id,
+                        success: function (result) {
+                            switch (result.status) {
+                                case 200:
+                                    $(this).remove();
+                                    break;
+
+                                case 409:
+                                    var element = document.getElementById("errorMessageHeader");
+                                    var error = '<li>' + result.message + '</li>';
+                                    var alert = '<div class="alert alert-danger alert-dismissible" id = "divError"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><h4><i class="icon fa fa-ban"></i> Error!</h4><div class="validation-summary-errors" data-valmsg-summary="true"><ul>' + error + '</ul></div></div>';
+
+                                    element.innerHTML = alert;
+                                    console.log(alert);
+                                    break;
+                            }
+                        },
+                        error: function (result) {
+                            $('#divError').remove();
+                            var element = document.getElementById("errorMessageHeader");
+                            var error = '<li>Error! Check Console</li>';
+                            var alert = '<div class="alert alert-danger alert-dismissible" id = "divError"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><h4><i class="icon fa fa-ban"></i> Error!</h4><div class="validation-summary-errors" data-valmsg-summary="true"><ul>' + error + '</ul></div></div>';
+
+                            element.innerHTML = alert;
+                            console.log(result);
+                        }
+                    });
+                });
+            }
+        });
+
+        //Save Shipper
+        $("#addShipper").click(function (e) {
+            e.preventDefault();
+
+            var costShippingId = $('#costShippingId').val().trim(),
+                costShippingDetailId = $('#costShippingDetailId').val().trim(),
+                shipperId = $("#shipperId").val(),
+                shipperCode = $("#shipperCode").val(),
+                shipperName = $("#shipperName").val();
+
+            var data = JSON.stringify({
+                costShippingId: costShippingId,
+                costShippingDetailId: costShippingDetailId,
+                shipperId: shipperId,
+                shipperCode: shipperCode,
+                shipperName: shipperName
+            });
+
+            $('#divError').remove();
+
+            $.ajax({
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                type: 'POST',
+                url: "/CostShipping/shipperAdd",
+                data: data,
+                success: function (result) {
+                    switch (result.status) {
+                        case 200:
+                            var itemId = result.message;
+
+                            $('#Shippers').DataTable().row.add( [
+                                itemId,
+                                shipperCode,
+                                shipperName
+                            ] ).draw(false);
+
+                            break;
+
+                        case 400:
+                            var element = document.getElementById("errorMessageHeader");
+                            var error = '';
+                            for (var i=0; i < result.message.length; i++) {
+                                console.log(result.message[i]);
+                                error = error + '<li>' + result.message[i] + '</li>';
+                            }
+
+                            var alert = '<div class="alert alert-danger alert-dismissible" id = "divError"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><h4><i class="icon fa fa-ban"></i> Error!</h4><div class="validation-summary-errors" data-valmsg-summary="true"><ul>' + error + '</ul></div></div>';
+
+                            element.innerHTML = alert;
+                            console.log(alert);
+                            break;
+
+                        case 409:
+                            var element = document.getElementById("errorMessageHeader");
+                            var error = '<li>' + result.message + '</li>';
+                            var alert = '<div class="alert alert-danger alert-dismissible" id = "divError"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><h4><i class="icon fa fa-ban"></i> Error!</h4><div class="validation-summary-errors" data-valmsg-summary="true"><ul>' + error + '</ul></div></div>';
+
+                            element.innerHTML = alert;
+                            console.log(alert);
+                            break;
+                    }
+                },
+                error: function (result) {
+                    $('#divError').remove();
+                    var element = document.getElementById("errorMessageHeader");
+                    var error = '<li>Error! Check Console</li>';
+                    var alert = '<div class="alert alert-danger alert-dismissible" id = "divError"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><h4><i class="icon fa fa-ban"></i> Error!</h4><div class="validation-summary-errors" data-valmsg-summary="true"><ul>' + error + '</ul></div></div>';
+
+                    element.innerHTML = alert;
+                    console.log(result);
+                }
+            });
+        });
+
+        $(document).on('click', '.deleteShipper', function (e) {
+            e.preventDefault();
+            var data = $('#Shippers').DataTable().row($(this).parents('tr')).data();
+            var id = data[0];
+
+            if ($(this).attr('data-itemId') != "0") {
+                $(this).parents('tr').css("background-color", "#ff6347").fadeOut(800, function () {
+                    $('#divError').remove();
+                    $.ajax({
+                        contentType: 'application/json; charset=utf-8',
+                        dataType: 'json',
+                        type: 'POST',
+                        url: "/CostShipping/shipperDelete/" + id,
+                        success: function (result) {
+                            switch (result.status) {
+                                case 200:
+                                    $(this).remove();
+                                    break;
+
+                                case 409:
+                                    var element = document.getElementById("errorMessageHeader");
+                                    var error = '<li>' + result.message + '</li>';
+                                    var alert = '<div class="alert alert-danger alert-dismissible" id = "divError"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><h4><i class="icon fa fa-ban"></i> Error!</h4><div class="validation-summary-errors" data-valmsg-summary="true"><ul>' + error + '</ul></div></div>';
+
+                                    element.innerHTML = alert;
+                                    console.log(alert);
+                                    break;
+                            }
+                        },
+                        error: function (result) {
+                            $('#divError').remove();
+                            var element = document.getElementById("errorMessageHeader");
+                            var error = '<li>Error! Check Console</li>';
+                            var alert = '<div class="alert alert-danger alert-dismissible" id = "divError"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><h4><i class="icon fa fa-ban"></i> Error!</h4><div class="validation-summary-errors" data-valmsg-summary="true"><ul>' + error + '</ul></div></div>';
+
+                            element.innerHTML = alert;
+                            console.log(result);
+                        }
+                    });
+                });
+            }
+        });
+
+        function loadHeader() {
+            var id = $("#costShippingId").val();
+            $.ajax({
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                type: 'GET',
+                url: "/CostShipping/loadHeader/" + id,
+
+                success: function (result) {
+                    switch (result.status) {
+                        case 200:
+                            var txDate = new Date(result.message.txDate);
+                            var txValidDate = new Date(result.message.txValidDate);
+
+                            $('#costShippingId').val(result.message.id);
+                            $('#referenceNo').val(result.message.referenceNo);
+                            $('#vendorId').val(result.message.vendorId);
+                            $('#txDate').datepicker("setDate", txDate);
+                            $('#txValidDate').datepicker("setDate", txValidDate);
+                            $('#portOfLoadingId').val(result.message.portOfLoadingId);
+                            $('#portOfLoadingId').trigger('change');
+                            $('#sales').val(result.message.sales);
+                            $('#shippingReferenceNo').val(result.message.shippingReferenceNo);
+                            $('#remark').val(result.message.remark);
+                            $('#createdBy').val(result.message.createdBy);
+                            $('#createdOn').val(result.message.createdOn);
+                            break;
+                    }
+                },
+                error: function (result) {
+                    $('#divError').remove();
+                    var element = document.getElementById("errorMessageHeader");
+                    var error = '<li>Error! Check Console</li>';
+                    var alert = '<div class="alert alert-danger alert-dismissible" id = "divError"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><h4><i class="icon fa fa-ban"></i> Error!</h4><div class="validation-summary-errors" data-valmsg-summary="true"><ul>' + error + '</ul></div></div>';
+
+                    element.innerHTML = alert;
+                    console.log(result);
+                },
+                complete: function (result) {
+                    getVendorShipping();
+                }
+            });
+        }
+
+        function loadService() {
+            var id = $("#costShippingId").val();
+            $.ajax({
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                type: 'GET',
+                url: "/CostShipping/loadService/" + id,
+                success: function (result) {
+                    switch (result.status) {
+                        case 200:
+                            console.log(result.message);
+                            for (var i=0; i < result.message.length; i++) {
+                                $('#Items').DataTable().row.add( [
+                                    result.message[i].id.toString(),
+                                    result.message[i].serviceId,
+                                    result.message[i].portOfDestinationId,
+                                    result.message[i].ofEmkl,
+                                    result.message[i].pcPay,
+                                    result.message[i].taxId23,
+                                    result.message[i].taxIdvat,
+                                    result.message[i].containerId,
+                                    result.message[i].remark
+                                ] ).draw(false);
+                            }
+                            $('#boxService').removeAttr('hidden');
+                            break;
+                    }
+                },
+                error: function (result) {
+                    $('#divError').remove();
+                    var element = document.getElementById("errorMessageHeader");
+                    var error = '<li>Error! Check Console</li>';
+                    var alert = '<div class="alert alert-danger alert-dismissible" id = "divError"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><h4><i class="icon fa fa-ban"></i> Error!</h4><div class="validation-summary-errors" data-valmsg-summary="true"><ul>' + error + '</ul></div></div>';
+
+                    element.innerHTML = alert;
+                    console.log(result);
+                }
+            });
+        }
+
+        function loadDetail() {
+            var id = $("#costShippingId").val();
+            $.ajax({
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                type: 'GET',
+                url: "/CostShipping/loadDetail/" + id,
+                success: function (result) {
+                    switch (result.status) {
+                        case 200:
+                        console.log(result.message);
+                        for (var i=0; i < result.message.length; i++) {
+                            $('#Details').DataTable().row.add([
+                                result.message[i].id.toString(),
+                                result.message[i].serviceId,
+                                result.message[i].portOfDestinationId,
+                                result.message[i].portTerminalId,
+                                result.message[i].pcPay,
+                                result.message[i].containerId,
+                                result.message[i].currencyId,
+                                result.message[i].price,
+                                result.message[i].taxId23,
+                                result.message[i].taxIdvat,
+                                result.message[i].allIn,
+                                result.message[i].refundType,
+                                result.message[i].refund,
+                                result.message[i].payable,
+                                result.message[i].vendorId,
+                                result.message[i].remark
+                            ]).draw(false);
+                        }
+                        $('#boxDetail').removeAttr('hidden');
+                        break;
+                    }
+                },
+                error: function (result) {
+                    $('#divError').remove();
+                    var element = document.getElementById("errorMessageHeader");
+                    var error = '<li>Error! Check Console</li>';
+                    var alert = '<div class="alert alert-danger alert-dismissible" id = "divError"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><h4><i class="icon fa fa-ban"></i> Error!</h4><div class="validation-summary-errors" data-valmsg-summary="true"><ul>' + error + '</ul></div></div>';
+
+                    element.innerHTML = alert;
+                    console.log(result);
+                }
+            });
+        }
+    </script>
+}
