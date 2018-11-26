@@ -1,10 +1,15 @@
 ﻿<Properties StartupConfiguration="{77DB1EC8-3639-4408-B1A3-BAC8A7968AC4}|Default">
   <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.ItemProperties.fms PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches>
+    <Watch file="../../../Controllers/EmployeeController.cs" line="128" offsetX="329" offsetY="1905" expression="ModelState" liveUpdate="False" />
+  </MonoDevelop.Ide.DebuggingService.PinnedWatches>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/ferrisuryadi/Documents/GitHub/andrew/Common/ApplicationDbContext.cs" relfile="Common/ApplicationDbContext.cs" line="10" column="1" />
+      <Breakpoint file="/Users/ferrisuryadi/Documents/GitHub/andrew/Controllers/EmployeeController.cs" relfile="Controllers/EmployeeController.cs" line="113" column="42" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.fms PreferredExecutionTarget="MonoDevelop.Default" />
   <MultiItemStartupConfigurations />
 </Properties>

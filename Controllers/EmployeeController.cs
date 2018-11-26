@@ -6,6 +6,7 @@ using fms.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace fms.Controllers
 {
@@ -13,6 +14,7 @@ namespace fms.Controllers
     public class EmployeeController : Controller
     {
         protected ApplicationDbContext mContext;
+        private string picUrl;
 
         public EmployeeController(ApplicationDbContext context)
         {
@@ -96,6 +98,7 @@ namespace fms.Controllers
 
             ViewBag.Error = false;
             mtEmployee employee = mContext.mtEmployee.Find(id);
+            picUrl = employee.pictureUrl;
             return View("Edit", employee);
         }
 
@@ -107,8 +110,7 @@ namespace fms.Controllers
 
             if (pictureUrl == null || pictureUrl.Length == 0)
             {
-                mtEmployee old = mContext.mtEmployee.Find(item.id);
-                item.pictureUrl = old.pictureUrl;
+                item.pictureUrl = picUrl;
             }
             else
             {
@@ -118,14 +120,14 @@ namespace fms.Controllers
                 item.pictureUrl = fileName;
             }
 
+            string user = "Admin";
+            DateTime txDate = DateTime.Now;
+
+            item.updatedBy = user;
+            item.updatedOn = txDate;
+
             if (ModelState.IsValid)
             {
-                string user = "Admin";
-                DateTime txDate = DateTime.Now;
-
-                item.updatedBy = user;
-                item.updatedOn = txDate;
-
                 mContext.Entry(item).State = EntityState.Modified;
                 mContext.SaveChanges();
 
@@ -135,7 +137,8 @@ namespace fms.Controllers
             ViewBag.Error = true;
             ViewData["Menu"] = "Master";
             ViewData["SubMenuLvl1"] = "Employee";
-            return View("edit");
+            mtEmployee employee = mContext.mtEmployee.Find(item.id);
+            return View("Edit", employee);
         }
 
         [HttpGet]

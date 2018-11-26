@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using fms.Models;
+using Microsoft.Extensions.Configuration;
 
 namespace fms
 {
