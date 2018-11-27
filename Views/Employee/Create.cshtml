@@ -5,7 +5,7 @@
 @model fms.Models.mtEmployee;
 
 @section Header
-{
+    {
     <link rel="stylesheet" href="~/AdminLTE/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
 }
 
@@ -93,6 +93,8 @@
 
 @section scripts{
     <script src="@Url.Content("~/AdminLTE/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js")"></script>
+    <script src="@Url.Content("~/AdminLTE/plugins/input-mask/jquery.inputmask.js")"></script>
+    <script src="@Url.Content("~/AdminLTE/plugins/input-mask/jquery.inputmask.extensions.js")"></script>
 
     <script>
         $(document).ready(function(){

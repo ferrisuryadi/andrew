@@ -79,7 +79,7 @@ using fms.Models;
                 WriteLiteral("\n    ");
                 EndContext();
                 BeginContext(104, 91, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "5f0a4300be4e4566b7268c25030bbc4a", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "28a199d609a442e4b24fde5181749a75", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -98,7 +98,7 @@ using fms.Models;
                 WriteLiteral("\n    ");
                 EndContext();
                 BeginContext(200, 117, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "8ecd25b592924afb826ab9c820c0fb3c", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "1b919901b5ed4cc3b7e9ebac56c15653", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -143,7 +143,7 @@ using fms.Models;
             WriteLiteral("</label>\n                        <select class=\"form-control select2\" style=\"width: 100%;\" id=\"agentId\">\n                            ");
             EndContext();
             BeginContext(784, 35, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3c5a70c870de4547b0d4eae4f60c402e", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "09babbecea2749308f80c844c60aadc6", async() => {
                 BeginContext(802, 8, true);
                 WriteLiteral("No Value");
                 EndContext();
@@ -174,7 +174,7 @@ using fms.Models;
             WriteLiteral("                                ");
             EndContext();
             BeginContext(948, 44, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "163c685f838a4abcab7a46da6052f4de", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "135cad54e3ef4ecaa20a090528417161", async() => {
                 BeginContext(974, 9, false);
 #line 28 "/Users/ferrisuryadi/Documents/Project/Forwarding/fms/Views/ProfitShared/Create.cshtml"
                                                     Write(item.code);
@@ -265,7 +265,7 @@ using fms.Models;
             WriteLiteral("</label>\n                        <select class=\"form-control select2\" style=\"width: 100%;\" id=\"countryId\">\n                            ");
             EndContext();
             BeginContext(2408, 35, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ff16adb5f89c49b180ee623232f524dd", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9204d72568994703a6fb8cdfe6666f45", async() => {
                 BeginContext(2426, 8, true);
                 WriteLiteral("No Value");
                 EndContext();
@@ -296,7 +296,7 @@ using fms.Models;
             WriteLiteral("                                ");
             EndContext();
             BeginContext(2575, 44, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e17b8e568d9c4ce6b14acda0076be690", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d9993d206b834b99bbf0416e39bac985", async() => {
                 BeginContext(2601, 9, false);
 #line 56 "/Users/ferrisuryadi/Documents/Project/Forwarding/fms/Views/ProfitShared/Create.cshtml"
                                                     Write(item.code);
@@ -347,7 +347,7 @@ using fms.Models;
             WriteLiteral("</label>\n                        <select class=\"form-control select2\" style=\"width: 100%;\" id=\"psCondition\">\n                            ");
             EndContext();
             BeginContext(2990, 35, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "fc9b4cfdd55d4fb79ed2fa9b29157d39", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0b176cd91dca4b22921ff3599268ef2c", async() => {
                 BeginContext(3008, 8, true);
                 WriteLiteral("No Value");
                 EndContext();
@@ -369,7 +369,7 @@ using fms.Models;
             WriteLiteral("\n                            ");
             EndContext();
             BeginContext(3054, 39, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2a40e9e18c8c42fbb10d7ecb48314db5", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f70bed4b2b77440584fdd1453cd1fc45", async() => {
                 BeginContext(3072, 12, true);
                 WriteLiteral("Free to Free");
                 EndContext();
@@ -391,7 +391,7 @@ using fms.Models;
             WriteLiteral("\n                            ");
             EndContext();
             BeginContext(3122, 53, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0c2318da8d8844e488e8255a56d9b158", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5743f59e0b074a27a1d5e0f5327a65cd", async() => {
                 BeginContext(3140, 26, true);
                 WriteLiteral("Profit Share/Rebate to TSK");
                 EndContext();
@@ -413,7 +413,7 @@ using fms.Models;
             WriteLiteral("\n                            ");
             EndContext();
             BeginContext(3204, 55, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3f9ccba70b164aa99a7f45274b121de4", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e1de6c45941c473cb8c283a971be113a", async() => {
                 BeginContext(3222, 28, true);
                 WriteLiteral("Profit Share/Rebate to Agent");
                 EndContext();
@@ -435,7 +435,7 @@ using fms.Models;
             WriteLiteral("\n                            ");
             EndContext();
             BeginContext(3288, 32, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "aff435119a964c4dac90673622a06f5c", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7d8d7c79b5c14181b17af9c591382ea0", async() => {
                 BeginContext(3306, 5, true);
                 WriteLiteral("50/50");
                 EndContext();
@@ -504,7 +504,7 @@ using fms.Models;
             WriteLiteral("\n                        </label>\n                    </div>\n                </div>\n            </div>\n            <div class=\"box-footer\">\n                <button id=\"submit\" type=\"submit\" class=\"btn btn-primary\">Save</button>&nbsp;\n                ");
             EndContext();
             BeginContext(4651, 86, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0876ee7de42e414cad040fcb530b04ea", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "925286aa6d6b4d0f8a1a0853f20fde91", async() => {
                 BeginContext(4727, 6, true);
                 WriteLiteral("Cancel");
                 EndContext();
@@ -561,7 +561,7 @@ using fms.Models;
                                 ");
             EndContext();
             BeginContext(6041, 35, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "fec7ec0568ce48ba86bcd4c0e53950e2", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0837c7e1418343e4898844d76407fc8e", async() => {
                 BeginContext(6059, 8, true);
                 WriteLiteral("No Value");
                 EndContext();
@@ -592,7 +592,7 @@ using fms.Models;
             WriteLiteral("                                        ");
             EndContext();
             BeginContext(6232, 55, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a90e93ae07594d29930f76ca0669df06", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6308b251ea2a43aa8fb3c2266f0683e5", async() => {
                 BeginContext(6258, 20, false);
 #line 128 "/Users/ferrisuryadi/Documents/Project/Forwarding/fms/Views/ProfitShared/Create.cshtml"
                                                             Write(item.typeofContainer);

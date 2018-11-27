@@ -68,7 +68,7 @@ using fms.Models;
                 WriteLiteral("\r\n    ");
                 EndContext();
                 BeginContext(114, 91, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "675f90df5b7447dcaec5d5bcfa42b61d", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "f10afbee5c1847cea3efdefdbf24cc6d", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -216,7 +216,7 @@ using fms.Models;
             WriteLiteral("</label>\r\n                            <select class=\"form-control select2\" style=\"width: 100%;\" id=\"coaIdIdr\">\r\n                                ");
             EndContext();
             BeginContext(3161, 35, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "63d9c96c1de740f6a46f503428cb56bb", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "332b89cee6a9460e9edbea71119addb3", async() => {
                 BeginContext(3179, 8, true);
                 WriteLiteral("No Value");
                 EndContext();
@@ -247,7 +247,7 @@ using fms.Models;
             WriteLiteral("                                    ");
             EndContext();
             BeginContext(3352, 44, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6faf967b7ed84a42a8938fe1c5655bb7", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "33335533f0fd46d8b74b4bba37c133f3", async() => {
                 BeginContext(3378, 9, false);
 #line 68 "/Users/ferrisuryadi/Documents/Project/Forwarding/fms/Views/Company/Create.cshtml"
                                                         Write(item.code);
@@ -298,7 +298,7 @@ using fms.Models;
             WriteLiteral("</label>\r\n                            <select class=\"form-control select2\" style=\"width: 100%;\" id=\"coaIdUsd\">\r\n                                ");
             EndContext();
             BeginContext(3852, 35, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "83acefeadbc74a35afe9e7b73223974d", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2d6aabf21007488b9bee42631750f3f0", async() => {
                 BeginContext(3870, 8, true);
                 WriteLiteral("No Value");
                 EndContext();
@@ -329,7 +329,7 @@ using fms.Models;
             WriteLiteral("                                    ");
             EndContext();
             BeginContext(4043, 44, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "21c8cbb852e240a49a81ec20c974f320", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9cf1175808414150a69042e546fd5e3d", async() => {
                 BeginContext(4069, 9, false);
 #line 80 "/Users/ferrisuryadi/Documents/Project/Forwarding/fms/Views/Company/Create.cshtml"
                                                         Write(item.code);
@@ -380,7 +380,7 @@ using fms.Models;
             WriteLiteral("</label>\r\n                            <select class=\"form-control select2\" style=\"width: 100%;\" id=\"typeId\">\r\n                                ");
             EndContext();
             BeginContext(4539, 35, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "acde6dd29de947f5b4e7dacf4c07fa7b", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9bc172c6cdc64a02970e744a867bada4", async() => {
                 BeginContext(4557, 8, true);
                 WriteLiteral("No Value");
                 EndContext();
@@ -411,7 +411,7 @@ using fms.Models;
             WriteLiteral("                                    ");
             EndContext();
             BeginContext(4716, 64, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4a695d8a2b2c428ea2b03d00fa6cc409", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a77b1f540e0b4d88b102083da32ec1e8", async() => {
                 BeginContext(4742, 9, false);
 #line 92 "/Users/ferrisuryadi/Documents/Project/Forwarding/fms/Views/Company/Create.cshtml"
                                                         Write(item.code);
@@ -497,7 +497,7 @@ using fms.Models;
                 ");
             EndContext();
             BeginContext(5710, 81, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "411e2c0f241f429aa17cb92faed2b3ba", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2e1ca41a8069411da8c3d7d6b714926a", async() => {
                 BeginContext(5781, 6, true);
                 WriteLiteral("Cancel");
                 EndContext();

@@ -231,8 +231,7 @@ namespace fms.Controllers
 
             if (pictureUrl == null || pictureUrl.Length == 0)
             {
-                mtEmployee old = mContext.mtEmployee.Find(item.id);
-                item.pictureUrl = old.pictureUrl;
+                item.pictureUrl = item.pictureUrl;
             }
             else
             {
