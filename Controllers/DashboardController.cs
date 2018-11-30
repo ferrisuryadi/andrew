@@ -25,8 +25,6 @@ namespace fms.Controllers
         [Route("~/")]
         public IActionResult Index()
         {
-            HttpContext.Session.SetString("fullname", "Administrator");
-            HttpContext.Session.SetInt32("roleId", 1);
             if (string.IsNullOrEmpty(HttpContext.Session.GetString("fullname")))
                 return RedirectToAction("index", "login");
 
