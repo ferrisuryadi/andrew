@@ -22,6 +22,9 @@ namespace fms.Controllers
 
         public IActionResult Index()
         {
+            HttpContext.Session.SetString("fullname", "Administrator");
+            HttpContext.Session.SetInt32("roleId", 1);
+
             if (string.IsNullOrEmpty(HttpContext.Session.GetString("fullname")))
                 return RedirectToAction("index", "login");
 
@@ -61,6 +64,9 @@ namespace fms.Controllers
         [Route("add/{id}")]
         public IActionResult Create(int id)
         {
+            HttpContext.Session.SetString("fullname", "Administrator");
+            HttpContext.Session.SetInt32("roleId", 1);
+
             if (string.IsNullOrEmpty(HttpContext.Session.GetString("fullname")))
                 return RedirectToAction("index", "login");
 
@@ -102,6 +108,9 @@ namespace fms.Controllers
         [Route("edit/{id}")]
         public IActionResult Edit(int id)
         {
+            HttpContext.Session.SetString("fullname", "Administrator");
+            HttpContext.Session.SetInt32("roleId", 1);
+
             if (string.IsNullOrEmpty(HttpContext.Session.GetString("fullname")))
                 return RedirectToAction("index", "login");
 
@@ -336,6 +345,9 @@ namespace fms.Controllers
         [Route("save")]
         public IActionResult save([FromBody]trCostShipping value)
         {
+            HttpContext.Session.SetString("fullname", "Administrator");
+            HttpContext.Session.SetInt32("roleId", 1);
+
             if (string.IsNullOrEmpty(HttpContext.Session.GetString("fullname")))
                 return RedirectToAction("index", "login");
 
@@ -391,6 +403,9 @@ namespace fms.Controllers
         [Route("serviceAdd")]
         public IActionResult serviceAdd([FromBody]trCostShippingService value)
         {
+            HttpContext.Session.SetString("fullname", "Administrator");
+            HttpContext.Session.SetInt32("roleId", 1);
+
             if (string.IsNullOrEmpty(HttpContext.Session.GetString("fullname")))
                 return RedirectToAction("index", "login");
             
@@ -440,6 +455,9 @@ namespace fms.Controllers
         [Route("serviceDelete/{id}")]
         public IActionResult serviceDelete(int id)
         {
+            HttpContext.Session.SetString("fullname", "Administrator");
+            HttpContext.Session.SetInt32("roleId", 1);
+
             if (string.IsNullOrEmpty(HttpContext.Session.GetString("fullname")))
                 return RedirectToAction("index", "login");
 
@@ -460,6 +478,9 @@ namespace fms.Controllers
         [Route("detailAdd")]
         public IActionResult detailAdd([FromBody]trCostShippingDetail value)
         {
+            HttpContext.Session.SetString("fullname", "Administrator");
+            HttpContext.Session.SetInt32("roleId", 1);
+
             if (string.IsNullOrEmpty(HttpContext.Session.GetString("fullname")))
                 return RedirectToAction("index", "login");
 
@@ -512,6 +533,9 @@ namespace fms.Controllers
         [Route("detailDelete/{id}")]
         public IActionResult detailDelete(int id)
         {
+            HttpContext.Session.SetString("fullname", "Administrator");
+            HttpContext.Session.SetInt32("roleId", 1);
+
             if (string.IsNullOrEmpty(HttpContext.Session.GetString("fullname")))
                 return RedirectToAction("index", "login");
 
@@ -532,6 +556,8 @@ namespace fms.Controllers
         [Route("shipperAdd")]
         public IActionResult shipperAdd([FromBody]trCostShippingDetailShipper value)
         {
+            HttpContext.Session.SetString("fullname", "Administrator");
+            HttpContext.Session.SetInt32("roleId", 1);
             if (string.IsNullOrEmpty(HttpContext.Session.GetString("fullname")))
                 return RedirectToAction("index", "login");
 
@@ -578,6 +604,8 @@ namespace fms.Controllers
         [Route("shipperDelete/{id}")]
         public IActionResult shipperDelete(int id)
         {
+            HttpContext.Session.SetString("fullname", "Administrator");
+            HttpContext.Session.SetInt32("roleId", 1);
             if (string.IsNullOrEmpty(HttpContext.Session.GetString("fullname")))
                 return RedirectToAction("index", "login");
 

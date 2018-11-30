@@ -1,14 +1,49 @@
 ﻿<Properties StartupConfiguration="{77DB1EC8-3639-4408-B1A3-BAC8A7968AC4}|Default">
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Controllers/CompanyController.cs">
+    <Files>
+      <File FileName="Startup.cs" Line="39" Column="16" />
+      <File FileName="Common/ApplicationDbContext.cs" Line="10" Column="1" />
+      <File FileName="Controllers/LoginController.cs" Line="52" Column="65" />
+      <File FileName="Controllers/DashboardController.cs" Line="30" Column="1" />
+      <File FileName="Controllers/AgentController.cs" Line="26" Column="81" />
+      <File FileName="Controllers/AgentProfitSharedController.cs" Line="305" Column="81" />
+      <File FileName="Controllers/BankController.cs" Line="220" Column="81" />
+      <File FileName="Controllers/ChartOfAccountController.cs" Line="192" Column="81" />
+      <File FileName="Controllers/CompanyController.cs" Line="206" Column="81" />
+      <File FileName="Controllers/ConsigneeController.cs" Line="294" Column="13" />
+      <File FileName="Controllers/ContainerController.cs" Line="286" Column="13" />
+      <File FileName="Controllers/CostShippingController.cs" Line="608" Column="55" />
+      <File FileName="Controllers/CountryController.cs" Line="281" Column="55" />
+      <File FileName="Controllers/CurrencyController.cs" Line="279" Column="55" />
+      <File FileName="Controllers/CurrencyRateController.cs" Line="302" Column="55" />
+      <File FileName="Controllers/DepoContainerController.cs" Line="333" Column="55" />
+      <File FileName="Controllers/EmployeeController.cs" Line="310" Column="55" />
+      <File FileName="Controllers/GroupsController.cs" Line="272" Column="55" />
+      <File FileName="Controllers/LocationController.cs" Line="279" Column="55" />
+      <File FileName="Controllers/.#PortOfDestinationController.cs" Line="276" Column="55" />
+      <File FileName="Controllers/.#PortOfLoadingController.cs" Line="283" Column="55" />
+      <File FileName="Controllers/.#PortTerminalController.cs" Line="286" Column="55" />
+      <File FileName="Controllers/PortTerminalController.cs" Line="284" Column="55" />
+      <File FileName="Controllers/ProfitSharedController.cs" Line="356" Column="55" />
+      <File FileName="Controllers/SellingShipperController.cs" Line="571" Column="55" />
+      <File FileName="Controllers/ServicesController.cs" Line="362" Column="55" />
+      <File FileName="Controllers/ShipperController.cs" Line="362" Column="55" />
+      <File FileName="Controllers/TaxController.cs" Line="293" Column="55" />
+      <File FileName="Controllers/TypeController.cs" Line="279" Column="55" />
+      <File FileName="Controllers/VendorController.cs" Line="362" Column="55" />
+      <File FileName="Controllers/WarehouseController.cs" Line="352" Column="55" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.ItemProperties.fms PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches>
     <Watch file="../../../Controllers/EmployeeController.cs" line="128" offsetX="329" offsetY="1905" expression="ModelState" liveUpdate="False" />
+    <Watch file="../../../Controllers/DashboardController.cs" line="28" offsetX="648" offsetY="405" expression="string" liveUpdate="False" />
   </MonoDevelop.Ide.DebuggingService.PinnedWatches>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/Users/ferrisuryadi/Documents/GitHub/andrew/Common/ApplicationDbContext.cs" relfile="Common/ApplicationDbContext.cs" line="10" column="1" />
-      <Breakpoint file="/Users/ferrisuryadi/Documents/GitHub/andrew/Controllers/EmployeeController.cs" relfile="Controllers/EmployeeController.cs" line="113" column="42" />
+      <Breakpoint file="/Users/ferrisuryadi/Documents/GitHub/andrew/Controllers/EmployeeController.cs" relfile="Controllers/EmployeeController.cs" line="119" column="42" />
+      <Breakpoint file="/Users/ferrisuryadi/Documents/GitHub/andrew/Controllers/LoginController.cs" relfile="Controllers/LoginController.cs" line="51" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />

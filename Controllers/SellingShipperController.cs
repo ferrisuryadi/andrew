@@ -22,6 +22,8 @@ namespace fms.Controllers
 
         public IActionResult Index()
         {
+            HttpContext.Session.SetString("fullname", "Administrator");
+            HttpContext.Session.SetInt32("roleId", 1);
             if (string.IsNullOrEmpty(HttpContext.Session.GetString("fullname")))
                 return RedirectToAction("index", "login");
 
@@ -317,6 +319,8 @@ namespace fms.Controllers
         [Route("add")]
         public IActionResult Add([FromBody]trSellingShipper value)
         {
+            HttpContext.Session.SetString("fullname", "Administrator");
+            HttpContext.Session.SetInt32("roleId", 1);
             if (string.IsNullOrEmpty(HttpContext.Session.GetString("fullname")))
                 return RedirectToAction("index", "login");
 
@@ -371,6 +375,8 @@ namespace fms.Controllers
         [Route("serviceAdd")]
         public IActionResult serviceAdd([FromBody]trSellingShipperService value)
         {
+            HttpContext.Session.SetString("fullname", "Administrator");
+            HttpContext.Session.SetInt32("roleId", 1);
             if (string.IsNullOrEmpty(HttpContext.Session.GetString("fullname")))
                 return RedirectToAction("index", "login");
 
@@ -437,6 +443,8 @@ namespace fms.Controllers
         [Route("detailAdd")]
         public IActionResult detailAdd([FromBody]trSellingShipperDetail value)
         {
+            HttpContext.Session.SetString("fullname", "Administrator");
+            HttpContext.Session.SetInt32("roleId", 1);
             if (string.IsNullOrEmpty(HttpContext.Session.GetString("fullname")))
                 return RedirectToAction("index", "login");
 
@@ -491,6 +499,8 @@ namespace fms.Controllers
         [Route("detailDelete/{id}")]
         public IActionResult detailDelete(int id)
         {
+            HttpContext.Session.SetString("fullname", "Administrator");
+            HttpContext.Session.SetInt32("roleId", 1);
             if (string.IsNullOrEmpty(HttpContext.Session.GetString("fullname")))
                 return RedirectToAction("index", "login");
 
@@ -557,6 +567,8 @@ namespace fms.Controllers
         [Route("vendorDelete/{id}")]
         public IActionResult vendorDelete(int id)
         {
+            HttpContext.Session.SetString("fullname", "Administrator");
+            HttpContext.Session.SetInt32("roleId", 1);
             if (string.IsNullOrEmpty(HttpContext.Session.GetString("fullname")))
                 return RedirectToAction("index", "login");
 

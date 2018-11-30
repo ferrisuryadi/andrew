@@ -22,6 +22,9 @@ namespace fms.Controllers
 
         public IActionResult Index()
         {
+            HttpContext.Session.SetString("fullname", "Administrator");
+            HttpContext.Session.SetInt32("roleId", 1);
+
             if (string.IsNullOrEmpty(HttpContext.Session.GetString("fullname")))
                 return RedirectToAction("index", "login");
 
@@ -85,6 +88,9 @@ namespace fms.Controllers
         [Route("add")]
         public IActionResult Create()
         {
+            HttpContext.Session.SetString("fullname", "Administrator");
+            HttpContext.Session.SetInt32("roleId", 1);
+
             if (string.IsNullOrEmpty(HttpContext.Session.GetString("fullname")))
                 return RedirectToAction("index", "login");
 
@@ -134,6 +140,9 @@ namespace fms.Controllers
         [Route("add")]
         public IActionResult Add([FromBody]mtCompany value)
         {
+            HttpContext.Session.SetString("fullname", "Administrator");
+            HttpContext.Session.SetInt32("roleId", 1);
+
             if (string.IsNullOrEmpty(HttpContext.Session.GetString("fullname")))
                 return RedirectToAction("index", "login");
 
@@ -191,6 +200,9 @@ namespace fms.Controllers
         [Route("delete/{id}")]
         public IActionResult Delete(int id)
         {
+            HttpContext.Session.SetString("fullname", "Administrator");
+            HttpContext.Session.SetInt32("roleId", 1);
+
             if (string.IsNullOrEmpty(HttpContext.Session.GetString("fullname")))
                 return RedirectToAction("index", "login");
 
@@ -204,6 +216,9 @@ namespace fms.Controllers
         [Route("edit/{id}")]
         public IActionResult Edit(int id)
         {
+            HttpContext.Session.SetString("fullname", "Administrator");
+            HttpContext.Session.SetInt32("roleId", 1);
+
             if (string.IsNullOrEmpty(HttpContext.Session.GetString("fullname")))
                 return RedirectToAction("index", "login");
 
@@ -255,6 +270,9 @@ namespace fms.Controllers
         [Route("edit/{id}")]
         public IActionResult Edit([FromBody]mtCompany value)
         {
+            HttpContext.Session.SetString("fullname", "Administrator");
+            HttpContext.Session.SetInt32("roleId", 1);
+
             if (string.IsNullOrEmpty(HttpContext.Session.GetString("fullname")))
                 return RedirectToAction("index", "login");
 
@@ -299,6 +317,9 @@ namespace fms.Controllers
         [Route("isActive/{id}")]
         public IActionResult IsActive(int id)
         {
+            HttpContext.Session.SetString("fullname", "Administrator");
+            HttpContext.Session.SetInt32("roleId", 1);
+
             if (string.IsNullOrEmpty(HttpContext.Session.GetString("fullname")))
                 return RedirectToAction("index", "login");
 
@@ -321,6 +342,9 @@ namespace fms.Controllers
         [Route("cancel/{id}")]
         public IActionResult cancel(int id)
         {
+            HttpContext.Session.SetString("fullname", "Administrator");
+            HttpContext.Session.SetInt32("roleId", 1);
+
             if (string.IsNullOrEmpty(HttpContext.Session.GetString("fullname")))
                 return RedirectToAction("index", "login");
 
@@ -365,6 +389,9 @@ namespace fms.Controllers
         [Route("addDetail")]
         public IActionResult addDetail([FromBody]mtCompanyDetails value)
         {
+            HttpContext.Session.SetString("fullname", "Administrator");
+            HttpContext.Session.SetInt32("roleId", 1);
+
             if (string.IsNullOrEmpty(HttpContext.Session.GetString("fullname")))
                 return RedirectToAction("index", "login");
 
