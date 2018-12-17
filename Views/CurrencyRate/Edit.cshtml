@@ -25,6 +25,16 @@
                 <div class="box-body">
                     <div class="form-group">
                         <div class="form-group">
+                            <label>@Html.DisplayNameFor(model => model.category)</label>
+                            <select class="form-control select2" style="width: 100%;" asp-for="category">
+                                <option value="1" selected>BI</option>
+                                <option value="2">Pelayaran</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-group">
                             <label>@Html.DisplayNameFor(model => model.currencyIdFrom)</label>
                             <select class="form-control select2" style="width: 100%;" asp-for="currencyIdFrom">
                                 <option value="0">No Value</option>

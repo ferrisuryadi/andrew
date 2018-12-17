@@ -18,6 +18,9 @@ namespace fms.Models
         [Display(Name = "Currency To")]
         public int? currencyIdTo { get; set; }
 
+        [Display(Name = "Category")]
+        public int category { get; set; } //1: BI, 2: Pelayaran
+
         [Display(Name = "Rate")]
         [Required(ErrorMessage = "Rate harus di isi")]
         public double rate { get; set; }
@@ -60,6 +63,7 @@ namespace fms.Models
         public int id { get; set; }
         public string currencyIdFrom { get; set; }
         public string currencyIdTo { get; set; }
+        public string category { get; set; }
         public string rate { get; set; }
         public string validFrom { get; set; }
         public string validTo { get; set; }

@@ -3,7 +3,7 @@
 }
 @model fms.Models.trSellingShipper;
 @section Header
-    {
+{
     <link rel="stylesheet" href="~/AdminLTE/bower_components/select2/dist/css/select2.min.css">
     <link rel="stylesheet" href="~/AdminLTE/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
     <link rel="stylesheet" href="~/AdminLTE/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
@@ -111,7 +111,7 @@
     <div class="col-xs-12" id="boxService" hidden>
         <div class="box box-primary collapsed-box">
             <div class="box-header with-border">
-                <h3 class="box-title">ITEM OF SERVICE OF ALL DESTINATION</h3>
+                <h3 class="box-title">ITEM OF SERVICE FOR ALL DESTINATION</h3>
                 <div class="box-tools pull-right">
                     <button type="button" class="btn btn-box-tool" data-widget="collapse">
                         <i class="fa fa-plus"></i>
@@ -299,16 +299,16 @@
                 </div>
                 <div class="col-xs-3">
                     <div class="form-group">
-                        <label for="detailRefundType">Refund Type</label>
-                        <select class="form-control select2" style="width: 100%;" id="detailRefundType">
+                        <label for="operationCostType">Operation Cost Type</label>
+                        <select class="form-control select2" style="width: 100%;" id="detailOperationCostType">
                             <option value="1" selected>Percentage</option>
                             <option value="2">Amount</option>
                         </select>
                     </div>
 
                     <div class="form-group">
-                        <label for="detailRefund">Refund</label>
-                        <input type="number" class="form-control" style="width: 100%;" id="detailRefund">
+                        <label for="operationCost">Operation Cost</label>
+                        <input type="number" class="form-control" style="width: 100%;" id="detailOperationCost">
                     </div>
 
                     <div class="form-group">
@@ -360,10 +360,6 @@
                                 <th>Price</th>
                                 <th>Invoice Group</th>
                                 <th>All In</th>
-                                <th>Refund Type</th>
-                                <th>Refund</th>
-                                <th>Payable To</th>
-                                <th>Ship CoLoader</th>
                                 <th>Remark</th>
                                 <th>Action</th>
                             </tr>
@@ -386,38 +382,18 @@
                 </div>
             </div>
             <div class="box-body">
-                <div class="col-xs-4">
-                    <div class="form-group">
-                        <label for="vendorId">Vendor</label>
-                        <select class="form-control select2" style="width: 100%;" id="vendorId">
-                            <option value="0">Select</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-xs-4">
-                    <div class="form-group">
-                        <label for="vendorCode">Code Vendor</label>
-                        <input type="text" class="form-control" style="width: 100%;" id="vendorCode" disabled>
-                    </div>
-                </div>
-                <div class="col-xs-3">
-                    <div class="form-group">
-                        <label for="vendorName">Name Vendor</label>
-                        <input type="text" class="form-control" style="width: 100%;" id="vendorName" disabled>
-                    </div>
-                </div>
-            </div>
-            <div class="box-footer">
-                <button id="addVendor" type="submit" class="btn btn-success">Add</button>
-            </div>
-
-            <div class="box-footer">
                 <div class="box-body table-responsive">
                     <table class="table table-bordered table-striped" style="width:100%" id="Vendors">
                         <thead>
                             <tr>
                                 <th>Id</th>
-                                <th>Kode Vendor</th>
+                                <th>Port Of Destination</th>
+                                <th>Container</th>
+                                <th>Currency</th>
+                                <th>Operation Cost Type</th>
+                                <th>Operation Cost</th>
+                                <th>Payable To</th>
+                                <th>Ship CoLoader</th>
                                 <th>Nama Vendor</th>
                                 <th>Action</th>
                             </tr>
@@ -497,36 +473,6 @@
             });
         }
 
-        function getVendor() {
-            var vendorId = $('#vendorId').val().trim();
-
-            $('#vendorCode').val('');
-            $('#vendorName').val('');
-            $.ajax({
-                contentType: 'application/json; charset=utf-8',
-                dataType: 'json',
-                type: 'GET',
-                url: "/SellingShipper/getVendor/" + vendorId,
-                success: function (result) {
-                    switch (result.status) {
-                        case 200:
-                            $('#vendorCode').val(result.message.code);
-                            $('#vendorName').val(result.message.name);
-                            break;
-                    }
-                },
-                error: function (result) {
-                    $('#divError').remove();
-                    var element = document.getElementById("errorMessageHeader");
-                    var error = '<li>Error! Check Console</li>';
-                    var alert = '<div class="alert alert-danger alert-dismissible" id = "divError"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><h4><i class="icon fa fa-ban"></i> Error!</h4><div class="validation-summary-errors" data-valmsg-summary="true"><ul>' + error + '</ul></div></div>';
-
-                    element.innerHTML = alert;
-                    console.log(result);
-                }
-            });
-        }
-
         function loadVendor() {
             var sellingShipperId = $("#sellingShipperId").val().trim();
             var sellingShipperDetailId = $("#sellingShipperDetailId").val().trim();
@@ -538,9 +484,6 @@
                 sellingShipperId: sellingShipperId,
                 sellingShipperDetailId: sellingShipperDetailId
             });
-            console.log(sellingShipperId);
-            console.log(sellingShipperDetailId);
-            console.log(data);
 
             $.ajax({
                 contentType: 'application/json; charset=utf-8',
@@ -555,6 +498,12 @@
                             for (var i=0; i < result.message.length; i++) {
                                 $('#Vendors').DataTable().row.add( [
                                     result.message[i].id,
+                                    result.message[i].portOfDestination,
+                                    result.message[i].container,
+                                    result.message[i].currency,
+                                    result.message[i].operationCostType,
+                                    result.message[i].operationCost,
+                                    result.message[i].payable,
                                     result.message[i].vendorCode,
                                     result.message[i].vendorName
                                 ] ).draw(false);
@@ -641,10 +590,6 @@
                 getAttention();
             });
 
-            $('#vendorId').change(function(){
-                getVendor();
-            });
-
             //assign data header
             getDropDown($('#shipperId'), 'getShipper');
             getDropDown($('#employeeId'), 'getEmployee');
@@ -673,7 +618,7 @@
             getDropDown($('#vendorId'), 'getVendor');
 
             $('#termOfPayment').val('0');
-            $('#detailRefund').val('0');
+            $('#detailOperationCost').val('0');
             $('#detailPrice').val('0');
 
             //Set selected for grid detail
@@ -932,10 +877,11 @@
                 remark = $("#detailRemark").val(),
                 orderId = $("#detailOrder").val(),
                 allIn = ($('#isActive').is(":checked") ? 1 : 0),
-                refundType = $("#detailRefundType").val(),
-                refund = $("#detailRefund").val(),
+                operationCostType = $("#detailOperationCostType").val(),
+                operationCost = $("#detailOperationCost").val(),
                 payable = $("#detailPayableTo").val(),
-                vendorId = $("#detailVendorId").val();
+                vendorId = $("#detailVendorId").val(),
+                id = $('#sellingShipperDetailId').val().trim();
 
             var serviceText = $("#detailServiceId option:selected").text(),
                 portOfDestinationText = $("#detailPortOfDestinationId option:selected").text(),
@@ -948,10 +894,11 @@
                 tax23 = $("#detailTaxId23 option:selected").text(),
                 taxvat = $("#detailTaxIdVat option:selected").text(),
                 orderText = $("#detailOrder option:selected").text(),
-                refundTypeText = $("#detailRefundType option:selected").text(),
+                operationCostTypeText = $("#detailOperationCostType option:selected").text(),
                 vendorText = $("#detailVendorId option:selected").text();
 
             var data = JSON.stringify({
+                id: id,
                 sellingShipperId: sellingShipperId,
                 serviceId: serviceId,
                 portOfDestinationId: portOfDestinationId,
@@ -966,8 +913,8 @@
                 price: price,
                 orderId: orderId,
                 allIn: allIn,
-                refundType: refundType,
-                refund: refund,
+                operationCostType: operationCostType,
+                operationCost: operationCost,
                 remark: remark,
                 payable: payable,
                 vendorId: vendorId
@@ -983,7 +930,10 @@
                 success: function (result) {
                     switch (result.status) {
                         case 200:
-                            var itemId = result.message;
+                            var itemId = result.message.detailId;
+                            var vendorId = result.message.vendorId;
+                            var vendorCode = result.message.vendorCode;
+                            var vendorName = result.message.vendorName;
 
                             $('#Details').DataTable().row.add( [
                                 itemId,
@@ -1000,17 +950,52 @@
                                 price,
                                 orderText,
                                 (allIn == 1 ? 'True' : 'False'),
-                                refundTypeText,
-                                refund,
-                                payable,
-                                vendorText,
                                 remark
                             ] ).draw(false);
 
                             $("#detailRemark").val('');
                             $("#detailPayableTo").val('');
-                            $("#detailRefund").val('0');
+                            $("#detailOperationCost").val('0');
                             $("#detailPrice").val('0');
+
+                            $('#Vendors').DataTable().clear().draw();
+                            $('#Vendors').DataTable().row.add( [
+                                vendorId,
+                                portOfDestinationText,
+                                containerText,
+                                currencyText,
+                                operationCostTypeText,
+                                operationCost,
+                                payable,
+                                vendorCode,
+                                vendorName
+                            ] ).draw(false);
+
+                            $("#sellingShipperDetailId").val(itemId);
+                            break;
+
+                        case 201:
+                            var vendorId = result.message.vendorId;
+                            var vendorCode = result.message.vendorCode;
+                            var vendorName = result.message.vendorName;
+
+                            $("#detailRemark").val('');
+                            $("#detailPayableTo").val('');
+                            $("#detailOperationCost").val('0');
+                            $("#detailPrice").val('0');
+
+                            $('#Vendors').DataTable().row.add( [
+                                vendorId,
+                                portOfDestinationText,
+                                containerText,
+                                currencyText,
+                                operationCostTypeText,
+                                operationCost,
+                                payable,
+                                vendorCode,
+                                vendorName
+                            ] ).draw(false);
+
                             break;
 
                         case 400:
@@ -1068,6 +1053,7 @@
                             switch (result.status) {
                                 case 200:
                                     $(this).remove();
+                                    $('#Vendors').DataTable().clear().draw();
                                     break;
 
                                 case 409:
@@ -1092,81 +1078,6 @@
                     });
                 });
             }
-        });
-
-        //Save Vendor
-        $("#addVendor").click(function (e) {
-            e.preventDefault();
-
-            var sellingShipperId = $('#sellingShipperId').val().trim(),
-                sellingShipperDetailId = $('#sellingShipperDetailId').val().trim(),
-                vendorId = $("#vendorId").val(),
-                vendorCode = $("#vendorCode").val(),
-                vendorName = $("#vendorName").val();
-
-            var data = JSON.stringify({
-                sellingShipperId: sellingShipperId,
-                sellingShipperDetailId: sellingShipperDetailId,
-                vendorId: vendorId,
-                vendorCode: vendorCode,
-                vendorName: vendorName
-            });
-
-            $('#divError').remove();
-
-            $.ajax({
-                contentType: 'application/json; charset=utf-8',
-                dataType: 'json',
-                type: 'POST',
-                url: "/SellingShipper/vendorAdd",
-                data: data,
-                success: function (result) {
-                    switch (result.status) {
-                        case 200:
-                            var itemId = result.message;
-
-                            $('#Vendors').DataTable().row.add( [
-                                itemId,
-                                vendorCode,
-                                vendorName
-                            ] ).draw(false);
-
-                            break;
-
-                        case 400:
-                            var element = document.getElementById("errorMessageHeader");
-                            var error = '';
-                            for (var i=0; i < result.message.length; i++) {
-                                console.log(result.message[i]);
-                                error = error + '<li>' + result.message[i] + '</li>';
-                            }
-
-                            var alert = '<div class="alert alert-danger alert-dismissible" id = "divError"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><h4><i class="icon fa fa-ban"></i> Error!</h4><div class="validation-summary-errors" data-valmsg-summary="true"><ul>' + error + '</ul></div></div>';
-
-                            element.innerHTML = alert;
-                            console.log(alert);
-                            break;
-
-                        case 409:
-                            var element = document.getElementById("errorMessageHeader");
-                            var error = '<li>' + result.message + '</li>';
-                            var alert = '<div class="alert alert-danger alert-dismissible" id = "divError"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><h4><i class="icon fa fa-ban"></i> Error!</h4><div class="validation-summary-errors" data-valmsg-summary="true"><ul>' + error + '</ul></div></div>';
-
-                            element.innerHTML = alert;
-                            console.log(alert);
-                            break;
-                    }
-                },
-                error: function (result) {
-                    $('#divError').remove();
-                    var element = document.getElementById("errorMessageHeader");
-                    var error = '<li>Error! Check Console</li>';
-                    var alert = '<div class="alert alert-danger alert-dismissible" id = "divError"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><h4><i class="icon fa fa-ban"></i> Error!</h4><div class="validation-summary-errors" data-valmsg-summary="true"><ul>' + error + '</ul></div></div>';
-
-                    element.innerHTML = alert;
-                    console.log(result);
-                }
-            });
         });
 
         $(document).on('click', '.deleteVendor', function (e) {

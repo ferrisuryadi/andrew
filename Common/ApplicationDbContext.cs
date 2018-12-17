@@ -64,6 +64,8 @@ namespace fms
         public DbSet<sysUser> sysUser { get; set; }
         public DbSet<sysUserRole> sysUserRole { get; set; }
 
+        public DbSet<mtQuotation> mtQuotation { get; set; }
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
             //Database.EnsureCreated();

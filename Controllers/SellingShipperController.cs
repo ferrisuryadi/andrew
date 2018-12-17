@@ -280,7 +280,7 @@ namespace fms.Controllers
         public IActionResult getCoLoader()
         {
             ICollection<sysDropDown> dropDowns =
-                mContext.mtVendor.Where(x => x.isActive == true && x.typeId == 5)
+                mContext.mtVendor.Where(x => x.isActive == true && (x.typeId == 4 || x.typeId == 5))
                         .Select(x => new sysDropDown
                         {
                             id = x.id,
@@ -325,7 +325,7 @@ namespace fms.Controllers
             SystemDocumentNo sysDocNo = new SystemDocumentNo(mContext);
 
             try{
-                value.referenceNo = (value.id == 0 ? sysDocNo.getDocNo("SellingShipper", "RefNo", false) : "");
+                value.referenceNo = (value.id == 0 ? sysDocNo.getDocNo("SellingShipper", "RefNo", false) : value.referenceNo);
                 value.isActive = true;
                 value.createdBy = (value.id == 0 ? user : value.createdBy);
                 value.createdOn = (value.id == 0 ? txDate : value.createdOn);
@@ -435,7 +435,7 @@ namespace fms.Controllers
 
         [HttpPost]
         [Route("detailAdd")]
-        public IActionResult detailAdd([FromBody]trSellingShipperDetail value)
+        public IActionResult detailAdd([FromBody]trSellingShipperDetailModel value)
         {
             if (string.IsNullOrEmpty(HttpContext.Session.GetString("fullname")))
                 return RedirectToAction("index", "login");
@@ -445,12 +445,6 @@ namespace fms.Controllers
 
             try
             {
-                value.isActive = true;
-                value.createdBy = user;
-                value.createdOn = txDate;
-                value.updatedBy = user;
-                value.updatedOn = txDate;
-
                 var context = new ValidationContext(value, serviceProvider: null, items: null);
                 var results = new List<ValidationResult>();
                 var isValid = Validator.TryValidateObject(value, context, results, true);
@@ -475,11 +469,93 @@ namespace fms.Controllers
                     return Ok(new { status = 400, message = errorMessage });
                 }
 
-                mContext.trSellingShipperDetail.Add(value);
-                mContext.SaveChanges();
+                //add condition if detail already save
+                trSellingShipperDetailVendor checking =
+                    mContext.trSellingShipperDetailVendor
+                            .Where(x => x.isActive == true &&
+                                   x.sellingShipperId == value.sellingShipperId &&
+                                   x.sellingShipperDetailId == value.id &&
+                                   x.containerId == value.containerId && 
+                                   x.currencyId == value.currencyId &&
+                                   x.portOfDestinationId == value.portOfDestinationId)
+                            .FirstOrDefault();
 
-                return Ok(new { status = 200, message = value.id });
+                if (checking is null)
+                {
+                    trSellingShipperDetail item = new trSellingShipperDetail();
+                    item.sellingShipperId = value.sellingShipperId;
+                    item.serviceId = value.serviceId;
+                    item.portOfDestinationId = value.portOfDestinationId;
+                    item.ofEmkl = value.ofEmkl;
+                    item.locationId = value.locationId;
+                    item.consigneeId = value.consigneeId;
+                    item.containerId = value.containerId;
+                    item.currencyId = value.currencyId;
+                    item.truckingCondition = value.truckingCondition; //1: Single; 2: Double;
+                    item.taxId23 = value.taxId23;
+                    item.taxIdvat = value.taxIdvat;
+                    item.price = value.price;
+                    item.remark = value.remark;
+                    item.orderId = value.orderId;
+                    item.allIn = value.allIn;
+                    item.isActive = true;
+                    item.createdBy = user;
+                    item.createdOn = txDate;
+                    item.updatedBy = user;
+                    item.updatedOn = txDate;
 
+                    mContext.trSellingShipperDetail.Add(item);
+                    mContext.SaveChanges();
+
+                    trSellingShipperDetailVendor refund = new trSellingShipperDetailVendor();
+                    refund.sellingShipperId = value.sellingShipperId;
+                    refund.sellingShipperDetailId = item.id;
+                    refund.containerId = value.containerId;
+                    refund.currencyId = value.currencyId;
+                    refund.portOfDestinationId = value.portOfDestinationId;
+                    refund.operationCost = value.operationCost;
+                    refund.operationCostType = value.operationCostType;//1: Percentage; 2: Amount;
+                    refund.payable = value.payable;
+                    refund.vendorId = value.vendorId;
+                    refund.vendorCode = mContext.mtVendor.Where(x => x.isActive == true && x.id == value.vendorId).Select(x => x.code).FirstOrDefault();
+                    refund.vendorName = mContext.mtVendor.Where(x => x.isActive == true && x.id == value.vendorId).Select(x => x.name).FirstOrDefault();
+                    refund.isActive = true;
+                    refund.createdBy = user;
+                    refund.createdOn = txDate;
+                    refund.updatedBy = user;
+                    refund.updatedOn = txDate;
+
+                    mContext.trSellingShipperDetailVendor.Add(refund);
+                    mContext.SaveChanges();
+
+                    return Ok(new { status = 200, message = new { detailId = item.id, vendorId = refund.id, vendorCode = refund.vendorCode, vendorName = refund.vendorName } });
+                }
+                else
+                {
+                    trSellingShipperDetailVendor refund = new trSellingShipperDetailVendor();
+                    refund.sellingShipperId = checking.sellingShipperId;
+                    refund.sellingShipperDetailId = checking.sellingShipperDetailId;
+                    refund.containerId = value.containerId;
+                    refund.currencyId = value.currencyId;
+                    refund.portOfDestinationId = value.portOfDestinationId;
+                    refund.operationCost = value.operationCost;
+                    refund.operationCostType = value.operationCostType;//1: Percentage; 2: Amount;
+                    refund.payable = value.payable;
+                    refund.vendorId = value.vendorId;
+                    refund.vendorCode = mContext.mtVendor.Where(x => x.isActive == true && x.id == value.vendorId).Select(x => x.code).FirstOrDefault();
+                    refund.vendorName = mContext.mtVendor.Where(x => x.isActive == true && x.id == value.vendorId).Select(x => x.name).FirstOrDefault();
+                    refund.isActive = true;
+                    refund.createdBy = user;
+                    refund.createdOn = txDate;
+                    refund.updatedBy = user;
+                    refund.updatedOn = txDate;
+
+                    mContext.trSellingShipperDetailVendor.Add(refund);
+                    mContext.SaveChanges();
+
+                    return Ok(new { status = 201, message = new { vendorId = refund.id, vendorCode = refund.vendorCode, vendorName = refund.vendorName } });
+
+                }
             }
             catch (Exception ex)
             {
@@ -497,6 +573,7 @@ namespace fms.Controllers
             try
             {
                 mContext.Remove(mContext.trSellingShipperDetail.Find(id));
+                mContext.Remove(mContext.trSellingShipperDetailVendor.Where(x => x.sellingShipperDetailId == id));
                 mContext.SaveChanges();
             }
             catch (Exception e)
@@ -577,11 +654,28 @@ namespace fms.Controllers
         [Route("loadVendor")]
         public IActionResult loadVendor([FromBody]trSellingShipperDetailVendorLoad value)
         {
-            ICollection<trSellingShipperDetailVendor> mtVendor = 
+            ICollection<trSellingShipperDetailVendorModel> mtVendor = 
                 mContext.trSellingShipperDetailVendor
+                        .Include(x => x.portOfDestination)
+                        .Include(x => x.currency)
+                        .Include(x => x.container)
                         .Where(x => x.isActive == true && 
                                x.sellingShipperId == value.sellingShipperId && 
-                               x.sellingShipperDetailId == value.sellingShipperDetailId).ToList();
+                               x.sellingShipperDetailId == value.sellingShipperDetailId)
+                        .Select(x => new trSellingShipperDetailVendorModel
+                        {
+                            id = x.id,
+                            sellingShipperId = x.sellingShipperId,
+                            sellingShipperDetailId = x.sellingShipperDetailId,
+                            portOfDestination = x.portOfDestination.location,
+                            container = x.container.typeofContainer,
+                            currency = (x.currency.code + " - " + x.currency.description),
+                            operationCost = x.operationCost,
+                            operationCostType = (x.operationCostType == 1 ? "Percentage" : "Amount"),
+                            payable = x.payable,
+                            vendorCode = x.vendorCode,
+                            vendorName = x.vendorName
+                        }).ToList();
 
             return Ok(new { status = 200, message = mtVendor });
         }

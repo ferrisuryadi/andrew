@@ -17,8 +17,8 @@ namespace fms.Models
         [Display(Name = "Ref No")]
         public string referenceNo { get; set; }
 
-        [Display(Name = "Shipping Date")]
-        [Required(ErrorMessage = "Shipping Date harus di isi")]
+        [Display(Name = "Selling Shipper Date")]
+        [Required(ErrorMessage = "Selling Shipper Date harus di isi")]
         public DateTime txDate { get; set; }
 
         [Display(Name = "Valid Date")]

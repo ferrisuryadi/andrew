@@ -17,6 +17,29 @@ namespace fms.Models
         [Display(Name = "Selling Shipper Detail")]
         public int sellingShipperDetailId { get; set; }
 
+        [Required(ErrorMessage = "Container harus di isi")]
+        [Display(Name = "Container")]
+        public int containerId { get; set; }
+
+        [Required(ErrorMessage = "Currency harus di isi")]
+        [Display(Name = "Currency")]
+        public int currencyId { get; set; }
+
+        [Required(ErrorMessage = "Port Of Destination harus di isi")]
+        [Display(Name = "Port Of Destination")]
+        public int portOfDestinationId { get; set; }
+
+        [Required(ErrorMessage = "Operation Monitoring harus di isi")]
+        [Display(Name = "Operation Monitoring")]
+        public decimal operationCost { get; set; }
+
+        [Required(ErrorMessage = "Operation Monitoring Type harus di isi")]
+        [Display(Name = "Operation Monitoring Type")]
+        public int operationCostType { get; set; } //1: Percentage; 2: Amount;
+
+        [Display(Name = "Payable")]
+        public string payable { get; set; }
+
         [Display(Name = "Vendor Id")]
         public int vendorId { get; set; }
 
@@ -56,11 +79,35 @@ namespace fms.Models
 
         [ForeignKey("vendorId")]
         public mtVendor vendor { get; set; }
+
+        [ForeignKey("portOfDestinationId")]
+        public mtPortOfDestination portOfDestination { get; set; }
+
+        [ForeignKey("containerId")]
+        public mtContainer container { get; set; }
+
+        [ForeignKey("currencyId")]
+        public mtCurrency currency { get; set; }
     }
 
     public class trSellingShipperDetailVendorLoad
     {
         public int sellingShipperId { get; set; }
         public int sellingShipperDetailId { get; set; }
+    }
+
+    public class trSellingShipperDetailVendorModel
+    {
+        public int id { get; set; }
+        public int sellingShipperId { get; set; }
+        public int sellingShipperDetailId { get; set; }
+        public string container { get; set; }
+        public string currency { get; set; }
+        public string portOfDestination { get; set; }
+        public decimal operationCost { get; set; }
+        public string operationCostType { get; set; } //1: Percentage; 2: Amount;
+        public string payable { get; set; }
+        public string vendorCode { get; set; }
+        public string vendorName { get; set; }
     }
 }

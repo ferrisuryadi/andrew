@@ -71,22 +71,6 @@ namespace fms.Models
         [Display(Name = "All In")]
         public bool allIn { get; set; }
 
-        [Required(ErrorMessage = "Refund harus di isi")]
-        [Display(Name = "Refund")]
-        public decimal refund { get; set; }
-
-        [Required(ErrorMessage = "Refund Type harus di isi")]
-        [Display(Name = "Refund Type")]
-        public int refundType { get; set; } //1: Percentage; 2: Amount;
-
-        [Required(ErrorMessage = "Payable harus di isi")]
-        [Display(Name = "Payable")]
-        public string payable { get; set; }
-
-        [Required(ErrorMessage = "Ship CoLoader harus di isi")]
-        [Display(Name = "Ship CoLoader")]
-        public int vendorId { get; set; }
-
         [Required]
         [Display(Name = "Is Active")]
         public bool isActive { get; set; }
@@ -135,9 +119,30 @@ namespace fms.Models
         [ForeignKey("orderId")]
         public mtOrders orders { get; set; }
 
-        [ForeignKey("vendorId")]
-        public mtVendor vendor { get; set; }
-
         public ICollection<trSellingShipperDetailVendor> sellingShipperDetailVendors { get; set; }
+    }
+
+    public class trSellingShipperDetailModel
+    {
+        public int id { get; set; }
+        public int sellingShipperId { get; set; }
+        public int serviceId { get; set; }
+        public int portOfDestinationId { get; set; }
+        public int ofEmkl { get; set; }
+        public int locationId { get; set; }
+        public int consigneeId { get; set; }
+        public int containerId { get; set; }
+        public int currencyId { get; set; }
+        public int truckingCondition { get; set; } //1: Single; 2: Double;
+        public int taxId23 { get; set; }
+        public int taxIdvat { get; set; }
+        public decimal price { get; set; }
+        public string remark { get; set; }
+        public int orderId { get; set; }
+        public bool allIn { get; set; }
+        public decimal operationCost { get; set; }
+        public int operationCostType { get; set; } //1: Percentage; 2: Amount;
+        public string payable { get; set; }
+        public int vendorId { get; set; }
     }
 }

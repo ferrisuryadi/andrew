@@ -72,7 +72,7 @@
     <div class="col-xs-12" id="boxService" hidden>
         <div class="box box-primary collapsed-box">
             <div class="box-header with-border">
-                <h3 class="box-title">ITEM OF SERVICE OF ALL DESTINATION</h3>
+                <h3 class="box-title">ITEM OF SERVICE FOR ALL DESTINATION</h3>
                 <div class="box-tools pull-right">
                     <button type="button" class="btn btn-box-tool" data-widget="collapse">
                         <i class="fa fa-plus"></i>
@@ -239,17 +239,17 @@
                 </div>
                 <div class="col-xs-4">
                     <div class="form-group">
-                        <label for="detailRefundType">Refund Type</label>
+                        <label for="detailRefundType">Operation Cost Type</label>
                         <select class="form-control select2" style="width: 100%;" id="detailRefundType">
                             <option value="1" selected>Percentage</option>
                             <option value="2">Amount</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="detailRefund">Refund</label>
+                        <label for="detailRefund">Operation Cost</label>
                         <input type="number" class="form-control" style="width: 100%;" id="detailRefund">
                     </div>
-                    <div class="form-group">
+                    <div class="form-group"> 
                         <label for="detailPayableTo">Payable To</label>
                         <input type="text" class="form-control" style="width: 100%;" id="detailPayableTo">
                     </div>
@@ -284,8 +284,8 @@
                                 <th>% Tax 23</th>
                                 <th>% Vat</th>
                                 <th>All In</th>
-                                <th>Refund Type</th>
-                                <th>Refund</th>
+                                <th>Operation Cost Type</th>
+                                <th>Operation Cost</th>
                                 <th>Payable To</th>
                                 <th>Ship CoLoader</th>
                                 <th>Remark</th>
@@ -300,45 +300,18 @@
     </div>
     <div class="col-xs-12" id="boxShipper" hidden>
         <div class="box box-primary collapsed-box">
-            <div class="box-header with-border">
-                <h3 class="box-title">SHIPPER</h3>
-                <div class="box-tools pull-right">
-                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
-                        <i class="fa fa-plus"></i>
-                    </button>
-                </div>
-            </div>
-            <div class="box-body">
-                <div class="col-xs-4">
-                    <div class="form-group">
-                        <label for="shipperId">Shipper</label>
-                        <select class="form-control select2" style="width: 100%;" id="shipperId">
-                            <option value="0">Select</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-xs-4">
-                    <div class="form-group">
-                        <label for="shipperCode">Code Shipper</label>
-                        <input type="text" class="form-control" style="width: 100%;" id="shipperCode" disabled>
-                    </div>
-                </div>
-                <div class="col-xs-3">
-                    <div class="form-group">
-                        <label for="shipperName">Name Shipper</label>
-                        <input type="text" class="form-control" style="width: 100%;" id="shipperName" disabled>
-                    </div>
-                </div>
-            </div>
-            <div class="box-footer">
-                <button id="addShipper" type="submit" class="btn btn-success">Add</button>
-            </div>
             <div class="box-footer">
                 <div class="box-body table-responsive">
                     <table class="table table-bordered table-striped" style="width:100%" id="Shippers">
                         <thead>
                             <tr>
                                 <th>Id</th>
+                                <th>Port Of Destination</th>
+                                <th>Container</th>
+                                <th>Currency</th>
+                                <th>Operation Cost Type</th>
+                                <th>Operation Cost</th>
+                                <th>Payable To</th>
                                 <th>Kode Shipper</th>
                                 <th>Nama Shipper</th>
                                 <th>Action</th>

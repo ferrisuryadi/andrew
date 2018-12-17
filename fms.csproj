@@ -45,6 +45,7 @@
     <Folder Include="Views\CostShipping\" />
     <Folder Include="Views\SellingShipper\" />
     <Folder Include="Views\Login\" />
+    <Folder Include="Views\Quotation\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="Views\CompanyType\Index.cshtml" />

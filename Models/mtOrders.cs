@@ -11,7 +11,7 @@ namespace fms.Models
         [Display(Name = "ID")]
         public int id { get; set; }
 
-        [MaxLength(50, ErrorMessage = "Name maksimal 10 karakter")]
+        [MaxLength(50, ErrorMessage = "Name maksimal 50 karakter")]
         [Required(ErrorMessage = "Name harus di isi")]
         [Display(Name = "Name")]
         public string name { get; set; }

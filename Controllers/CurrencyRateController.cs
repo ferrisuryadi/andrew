@@ -60,6 +60,7 @@ namespace fms.Controllers
                             id = x.id,
                             currencyIdFrom = (x.currencyFrom == null ? "" : x.currencyFrom.code + " - " + x.currencyFrom.description),
                             currencyIdTo = (x.currencyTo == null ? "" : x.currencyTo.code + " - " + x.currencyTo.description),
+                            category = (x.category == 1 ? "BI" : "Pelayaran"),
                             rate = x.rate.ToString(SystemFormat.decimalFormat),
                             validFrom = x.validFrom.ToString(SystemFormat.dateFormat),
                             validTo = x.validTo.ToString(SystemFormat.dateFormat),
