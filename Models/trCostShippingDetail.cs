@@ -23,6 +23,10 @@ namespace fms.Models
         [Display(Name = "Port Of Destination")]
         public int portOfDestinationId { get; set; }
 
+        [Required(ErrorMessage = "Port Of Transhipment Type harus di isi")]
+        [Display(Name = "Port Of Transhipment Type")]
+        public int portTerminalType { get; set; } // 1: POL, 2: POD
+
         [Required(ErrorMessage = "Port Of Transhipment harus di isi")]
         [Display(Name = "Port Of Transhipment")]
         public int portTerminalId { get; set; }
@@ -59,22 +63,6 @@ namespace fms.Models
         [Display(Name = "All In")]
         public bool allIn { get; set; }
 
-        [Required(ErrorMessage = "Refund harus di isi")]
-        [Display(Name = "Refund")]
-        public decimal refund { get; set; }
-
-        [Required(ErrorMessage = "Refund Type harus di isi")]
-        [Display(Name = "Refund Type")]
-        public int refundType { get; set; } //1: Percentage; 2: Amount;
-
-        [Required(ErrorMessage = "Payable harus di isi")]
-        [Display(Name = "Payable")]
-        public string payable { get; set; }
-
-        [Required(ErrorMessage = "Ship CoLoader harus di isi")]
-        [Display(Name = "Ship CoLoader")]
-        public int vendorId { get; set; }
-
         [Required]
         [Display(Name = "Is Active")]
         public bool isActive { get; set; }
@@ -102,9 +90,6 @@ namespace fms.Models
         [ForeignKey("portOfDestinationId")]
         public mtPortOfDestination portOfDestination { get; set; }
 
-        [ForeignKey("portTerminalId")]
-        public mtPortTerminal portTerminal { get; set; }
-
         [ForeignKey("containerId")]
         public mtContainer container { get; set; }
 
@@ -117,9 +102,6 @@ namespace fms.Models
         [ForeignKey("taxIdvat")]
         public mtTax vat { get; set; }
 
-        [ForeignKey("vendorId")]
-        public mtVendor vendor { get; set; }
-
         public ICollection<trCostShippingDetailShipper> costShippingDetailShippers { get; set; }
     }
 
@@ -128,6 +110,7 @@ namespace fms.Models
         public int id { get; set; }
         public string serviceId { get; set; }
         public string portOfDestinationId { get; set; }
+        public string portTerminalType { get; set; } // 1: POL, 2: POD
         public string portTerminalId { get; set; }
         public string pcPay { get; set; }
         public string containerId { get; set; }
@@ -137,9 +120,27 @@ namespace fms.Models
         public decimal price { get; set; }
         public string remark { get; set; }
         public string allIn { get; set; }
-        public decimal refund { get; set; }
-        public string refundType { get; set; } //1: Percentage; 2: Amount;
+    }
+
+    public class trCostShippingDetailModel
+    {
+        public int id { get; set; }
+        public int costShippingId { get; set; }
+        public int serviceId { get; set; }
+        public int portOfDestinationId { get; set; }
+        public int portTerminalType { get; set; } // 1: POD, 2: POD
+        public int portTerminalId { get; set; }
+        public int pcPay { get; set; }
+        public int containerId { get; set; }
+        public int currencyId { get; set; }
+        public int taxId23 { get; set; }
+        public int taxIdvat { get; set; }
+        public decimal price { get; set; }
+        public string remark { get; set; }
+        public bool allIn { get; set; }
+        public decimal operationMonitoring { get; set; }
+        public int operationMonitoringType { get; set; } //1: Percentage; 2: Amount;
         public string payable { get; set; }
-        public string vendorId { get; set; }
+        public int vendorId { get; set; }
     }
 }

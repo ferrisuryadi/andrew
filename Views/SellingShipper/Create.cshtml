@@ -935,6 +935,7 @@
                             var vendorCode = result.message.vendorCode;
                             var vendorName = result.message.vendorName;
 
+                            $('#Details tr.selected').removeClass('selected');
                             $('#Details').DataTable().row.add( [
                                 itemId,
                                 serviceText,
@@ -951,7 +952,7 @@
                                 orderText,
                                 (allIn == 1 ? 'True' : 'False'),
                                 remark
-                            ] ).draw(false);
+                            ] ).draw(false).select();
 
                             $("#detailRemark").val('');
                             $("#detailPayableTo").val('');

@@ -1,11 +1,5 @@
 ﻿<Properties StartupConfiguration="{77DB1EC8-3639-4408-B1A3-BAC8A7968AC4}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Controllers/SellingShipperController.cs">
-    <Files>
-      <File FileName="Controllers/SellingShipperController.cs" Line="471" Column="17" />
-      <File FileName="Models/trSellingShipperDetail.cs" Line="80" Column="46" />
-      <File FileName="Views/SellingShipper/Create.cshtml" Line="633" Column="43" />
-    </Files>
-  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench />
   <MonoDevelop.Ide.ItemProperties.fms PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches>
     <Watch file="../../../Controllers/EmployeeController.cs" line="128" offsetX="329" offsetY="1905" expression="ModelState" liveUpdate="False" />

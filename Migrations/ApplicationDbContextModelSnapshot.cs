@@ -195,8 +195,8 @@ namespace fms.Migrations
                     b.ToTable("mtBank");
 
                     b.HasData(
-                        new { id = 1, code = "BCA", createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 93, DateTimeKind.Local), description = "PT. Bank Central Asia Tbk", isActive = true, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 93, DateTimeKind.Local) },
-                        new { id = 2, code = "MANDIRI", createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 93, DateTimeKind.Local), description = "PT. Bank Mandiri Tbk", isActive = true, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 93, DateTimeKind.Local) }
+                        new { id = 1, code = "BCA", createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 273, DateTimeKind.Local), description = "PT. Bank Central Asia Tbk", isActive = true, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 273, DateTimeKind.Local) },
+                        new { id = 2, code = "MANDIRI", createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 273, DateTimeKind.Local), description = "PT. Bank Mandiri Tbk", isActive = true, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 273, DateTimeKind.Local) }
                     );
                 });
 
@@ -239,9 +239,9 @@ namespace fms.Migrations
                     b.ToTable("mtChartOfAccount");
 
                     b.HasData(
-                        new { id = 1, code = "1-10001", createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 94, DateTimeKind.Local), currencyId = 1, description = "Cash", isActive = true, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 94, DateTimeKind.Local) },
-                        new { id = 2, code = "6-60100", createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 94, DateTimeKind.Local), currencyId = 1, description = "General & Administrative Expenses", isActive = true, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 94, DateTimeKind.Local) },
-                        new { id = 3, code = "6-60101", createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 94, DateTimeKind.Local), currencyId = 1, description = "Salaries", isActive = true, parentId = 2, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 94, DateTimeKind.Local) }
+                        new { id = 1, code = "1-10001", createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 274, DateTimeKind.Local), currencyId = 1, description = "Cash", isActive = true, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 274, DateTimeKind.Local) },
+                        new { id = 2, code = "6-60100", createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 274, DateTimeKind.Local), currencyId = 1, description = "General & Administrative Expenses", isActive = true, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 274, DateTimeKind.Local) },
+                        new { id = 3, code = "6-60101", createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 274, DateTimeKind.Local), currencyId = 1, description = "Salaries", isActive = true, parentId = 2, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 274, DateTimeKind.Local) }
                     );
                 });
 
@@ -487,8 +487,8 @@ namespace fms.Migrations
                     b.ToTable("mtCountry");
 
                     b.HasData(
-                        new { id = 1, code = "INA", createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 85, DateTimeKind.Local), description = "Indonesia", isActive = true, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 92, DateTimeKind.Local) },
-                        new { id = 2, code = "USA", createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 92, DateTimeKind.Local), description = "United State of America", isActive = true, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 92, DateTimeKind.Local) }
+                        new { id = 1, code = "INA", createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 265, DateTimeKind.Local), description = "Indonesia", isActive = true, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 273, DateTimeKind.Local) },
+                        new { id = 2, code = "USA", createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 273, DateTimeKind.Local), description = "United State of America", isActive = true, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 273, DateTimeKind.Local) }
                     );
                 });
 
@@ -522,8 +522,8 @@ namespace fms.Migrations
                     b.ToTable("mtCurrency");
 
                     b.HasData(
-                        new { id = 1, code = "IDR", createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 93, DateTimeKind.Local), description = "Indonesian Rupiah", isActive = true, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 93, DateTimeKind.Local) },
-                        new { id = 2, code = "USD", createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 93, DateTimeKind.Local), description = "US Dollar", isActive = true, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 93, DateTimeKind.Local) }
+                        new { id = 1, code = "IDR", createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 274, DateTimeKind.Local), description = "Indonesian Rupiah", isActive = true, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 274, DateTimeKind.Local) },
+                        new { id = 2, code = "USD", createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 274, DateTimeKind.Local), description = "US Dollar", isActive = true, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 274, DateTimeKind.Local) }
                     );
                 });
 
@@ -1303,18 +1303,18 @@ namespace fms.Migrations
                     b.ToTable("mtType");
 
                     b.HasData(
-                        new { id = 1, category = 1, code = "FMG", createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 94, DateTimeKind.Local), description = "FUMIGASI", isActive = true, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 94, DateTimeKind.Local) },
-                        new { id = 2, category = 1, code = "INS", createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 94, DateTimeKind.Local), description = "INSURANCE", isActive = true, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 94, DateTimeKind.Local) },
-                        new { id = 3, category = 2, code = "TRUCKING", createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 94, DateTimeKind.Local), description = "TRUCKING", isActive = true, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 94, DateTimeKind.Local) },
-                        new { id = 4, category = 2, code = "SHIPPING", createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 94, DateTimeKind.Local), description = "SHIPPING", isActive = true, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 94, DateTimeKind.Local) },
-                        new { id = 5, category = 2, code = "COLOADER", createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 94, DateTimeKind.Local), description = "COLOADER", isActive = true, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 94, DateTimeKind.Local) },
-                        new { id = 6, category = 2, code = "WAREHOUSE", createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 94, DateTimeKind.Local), description = "WAREHOUSE", isActive = true, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 94, DateTimeKind.Local) },
-                        new { id = 7, category = 2, code = "INSURANCE", createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 94, DateTimeKind.Local), description = "INSURANCE", isActive = true, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 94, DateTimeKind.Local) },
-                        new { id = 8, category = 2, code = "FUMIGASI", createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 94, DateTimeKind.Local), description = "FUMIGASI", isActive = true, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 94, DateTimeKind.Local) },
-                        new { id = 9, category = 2, code = "UNDERNAME", createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 94, DateTimeKind.Local), description = "UNDERNAME", isActive = true, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 94, DateTimeKind.Local) },
-                        new { id = 10, category = 3, code = "AGENT TSK", createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 94, DateTimeKind.Local), description = "AGENT TSK", isActive = true, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 94, DateTimeKind.Local) },
-                        new { id = 11, category = 3, code = "SHIPPING LINE AGENT", createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 94, DateTimeKind.Local), description = "SHIPPING LINE AGENT", isActive = true, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 94, DateTimeKind.Local) },
-                        new { id = 12, category = 3, code = "CO LOADER", createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 94, DateTimeKind.Local), description = "CO LOADER", isActive = true, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 94, DateTimeKind.Local) }
+                        new { id = 1, category = 1, code = "FMG", createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 275, DateTimeKind.Local), description = "FUMIGASI", isActive = true, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 275, DateTimeKind.Local) },
+                        new { id = 2, category = 1, code = "INS", createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 275, DateTimeKind.Local), description = "INSURANCE", isActive = true, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 275, DateTimeKind.Local) },
+                        new { id = 3, category = 2, code = "TRUCKING", createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 275, DateTimeKind.Local), description = "TRUCKING", isActive = true, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 275, DateTimeKind.Local) },
+                        new { id = 4, category = 2, code = "SHIPPING", createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 275, DateTimeKind.Local), description = "SHIPPING", isActive = true, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 275, DateTimeKind.Local) },
+                        new { id = 5, category = 2, code = "COLOADER", createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 275, DateTimeKind.Local), description = "COLOADER", isActive = true, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 275, DateTimeKind.Local) },
+                        new { id = 6, category = 2, code = "WAREHOUSE", createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 275, DateTimeKind.Local), description = "WAREHOUSE", isActive = true, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 275, DateTimeKind.Local) },
+                        new { id = 7, category = 2, code = "INSURANCE", createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 275, DateTimeKind.Local), description = "INSURANCE", isActive = true, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 275, DateTimeKind.Local) },
+                        new { id = 8, category = 2, code = "FUMIGASI", createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 275, DateTimeKind.Local), description = "FUMIGASI", isActive = true, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 275, DateTimeKind.Local) },
+                        new { id = 9, category = 2, code = "UNDERNAME", createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 275, DateTimeKind.Local), description = "UNDERNAME", isActive = true, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 275, DateTimeKind.Local) },
+                        new { id = 10, category = 3, code = "AGENT TSK", createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 275, DateTimeKind.Local), description = "AGENT TSK", isActive = true, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 275, DateTimeKind.Local) },
+                        new { id = 11, category = 3, code = "SHIPPING LINE AGENT", createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 275, DateTimeKind.Local), description = "SHIPPING LINE AGENT", isActive = true, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 275, DateTimeKind.Local) },
+                        new { id = 12, category = 3, code = "CO LOADER", createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 275, DateTimeKind.Local), description = "CO LOADER", isActive = true, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 275, DateTimeKind.Local) }
                     );
                 });
 
@@ -1666,9 +1666,9 @@ namespace fms.Migrations
                     b.ToTable("sysDocNo");
 
                     b.HasData(
-                        new { id = 1, createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 95, DateTimeKind.Local), documentType = "RefNo", isActive = true, lastDay = 1, lastMonth = 1, lastYear = 2018, module = "SellingShipper", nextDocNo = 1, numberFormat = "0000", prefix = "SQXP-%YYYY%%mm%", resetLevel = 2, suffix = "", updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 95, DateTimeKind.Local) },
-                        new { id = 2, createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 95, DateTimeKind.Local), documentType = "RefNo", isActive = true, lastDay = 1, lastMonth = 1, lastYear = 2018, module = "CostShipping", nextDocNo = 1, numberFormat = "0000", prefix = "QSLXP-%YYYY%%mm%", resetLevel = 2, suffix = "", updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 95, DateTimeKind.Local) },
-                        new { id = 3, createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 95, DateTimeKind.Local), documentType = "Image", isActive = true, lastDay = 1, lastMonth = 1, lastYear = 2018, module = "Employee", nextDocNo = 1, numberFormat = "0000", prefix = "%YYYY%%mm%%dd%", resetLevel = 1, suffix = "", updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 95, DateTimeKind.Local) }
+                        new { id = 1, createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 275, DateTimeKind.Local), documentType = "RefNo", isActive = true, lastDay = 1, lastMonth = 1, lastYear = 2018, module = "SellingShipper", nextDocNo = 1, numberFormat = "0000", prefix = "SQXP-%YYYY%%mm%", resetLevel = 2, suffix = "", updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 275, DateTimeKind.Local) },
+                        new { id = 2, createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 275, DateTimeKind.Local), documentType = "RefNo", isActive = true, lastDay = 1, lastMonth = 1, lastYear = 2018, module = "CostShipping", nextDocNo = 1, numberFormat = "0000", prefix = "QSLXP-%YYYY%%mm%", resetLevel = 2, suffix = "", updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 275, DateTimeKind.Local) },
+                        new { id = 3, createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 275, DateTimeKind.Local), documentType = "Image", isActive = true, lastDay = 1, lastMonth = 1, lastYear = 2018, module = "Employee", nextDocNo = 1, numberFormat = "0000", prefix = "%YYYY%%mm%%dd%", resetLevel = 1, suffix = "", updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 275, DateTimeKind.Local) }
                     );
                 });
 
@@ -1720,36 +1720,36 @@ namespace fms.Migrations
                     b.ToTable("sysModule");
 
                     b.HasData(
-                        new { id = 1, code = "Dashboard", controller = "Dashboard", createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 95, DateTimeKind.Local), hasChild = false, isActive = true, level = 1, name = "Dashboard", orderModule = 1, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 96, DateTimeKind.Local), view = "" },
-                        new { id = 2, code = "Master", controller = "", createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 96, DateTimeKind.Local), hasChild = true, isActive = true, level = 1, name = "Master", orderModule = 2, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 96, DateTimeKind.Local), view = "" },
-                        new { id = 3, code = "Transaction", controller = "", createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 96, DateTimeKind.Local), hasChild = true, isActive = true, level = 1, name = "Transaction", orderModule = 3, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 96, DateTimeKind.Local), view = "" },
-                        new { id = 4, code = "Agent", controller = "Agent", createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 96, DateTimeKind.Local), hasChild = false, isActive = true, level = 2, name = "Agent", orderModule = 1, parentId = 2, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 96, DateTimeKind.Local), view = "Index" },
-                        new { id = 5, code = "AgentProfitShared", controller = "AgentProfitShared", createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 96, DateTimeKind.Local), hasChild = false, isActive = true, level = 2, name = "Agent Profit Shared", orderModule = 2, parentId = 2, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 96, DateTimeKind.Local), view = "Index" },
-                        new { id = 6, code = "Bank", controller = "Bank", createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 96, DateTimeKind.Local), hasChild = false, isActive = true, level = 2, name = "Bank", orderModule = 3, parentId = 2, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 96, DateTimeKind.Local), view = "Index" },
-                        new { id = 7, code = "ChartOfAccount", controller = "ChartOfAccount", createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 96, DateTimeKind.Local), hasChild = false, isActive = true, level = 2, name = "Chart Of Account", orderModule = 4, parentId = 2, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 96, DateTimeKind.Local), view = "Index" },
-                        new { id = 8, code = "Company", controller = "Company", createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 96, DateTimeKind.Local), hasChild = false, isActive = true, level = 2, name = "Fumigasi & Insurance", orderModule = 5, parentId = 2, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 96, DateTimeKind.Local), view = "Index" },
-                        new { id = 9, code = "Consignee", controller = "Consignee", createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 96, DateTimeKind.Local), hasChild = false, isActive = true, level = 2, name = "Consignee", orderModule = 6, parentId = 2, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 96, DateTimeKind.Local), view = "Index" },
-                        new { id = 10, code = "Container", controller = "Container", createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 96, DateTimeKind.Local), hasChild = false, isActive = true, level = 2, name = "Container", orderModule = 7, parentId = 2, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 96, DateTimeKind.Local), view = "Index" },
-                        new { id = 11, code = "Country", controller = "Country", createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 96, DateTimeKind.Local), hasChild = false, isActive = true, level = 2, name = "Country", orderModule = 8, parentId = 2, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 96, DateTimeKind.Local), view = "Index" },
-                        new { id = 12, code = "Currency", controller = "Currency", createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 96, DateTimeKind.Local), hasChild = false, isActive = true, level = 2, name = "Currency", orderModule = 9, parentId = 2, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 96, DateTimeKind.Local), view = "Index" },
-                        new { id = 13, code = "CurrencyRate", controller = "CurrencyRate", createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 96, DateTimeKind.Local), hasChild = false, isActive = true, level = 2, name = "Currency Rate", orderModule = 10, parentId = 2, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 96, DateTimeKind.Local), view = "Index" },
-                        new { id = 14, code = "DepoContainer", controller = "DepoContainer", createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 96, DateTimeKind.Local), hasChild = false, isActive = true, level = 2, name = "Depo Container", orderModule = 11, parentId = 2, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 96, DateTimeKind.Local), view = "Index" },
-                        new { id = 15, code = "Employee", controller = "Employee", createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 96, DateTimeKind.Local), hasChild = false, isActive = true, level = 2, name = "Employee", orderModule = 12, parentId = 2, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 96, DateTimeKind.Local), view = "Index" },
-                        new { id = 16, code = "Groups", controller = "Groups", createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 96, DateTimeKind.Local), hasChild = false, isActive = true, level = 2, name = "Groups", orderModule = 13, parentId = 2, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 96, DateTimeKind.Local), view = "Index" },
-                        new { id = 17, code = "Orders", controller = "Orders", createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 96, DateTimeKind.Local), hasChild = false, isActive = true, level = 2, name = "Orders", orderModule = 16, parentId = 2, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 96, DateTimeKind.Local), view = "Index" },
-                        new { id = 18, code = "Location", controller = "Location", createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 96, DateTimeKind.Local), hasChild = false, isActive = true, level = 2, name = "Location", orderModule = 17, parentId = 2, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 96, DateTimeKind.Local), view = "Index" },
-                        new { id = 19, code = "PortOfDestination", controller = "PortOfDestination", createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 96, DateTimeKind.Local), hasChild = false, isActive = true, level = 2, name = "Port Of Destination", orderModule = 18, parentId = 2, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 96, DateTimeKind.Local), view = "Index" },
-                        new { id = 20, code = "PortOfLoading", controller = "PortOfLoading", createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 96, DateTimeKind.Local), hasChild = false, isActive = true, level = 2, name = "Port Of Loading", orderModule = 19, parentId = 2, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 96, DateTimeKind.Local), view = "Index" },
-                        new { id = 21, code = "PortTerminal", controller = "PortTerminal", createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 96, DateTimeKind.Local), hasChild = false, isActive = true, level = 2, name = "Port Terminal", orderModule = 21, parentId = 2, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 96, DateTimeKind.Local), view = "Index" },
-                        new { id = 22, code = "ProfitShared", controller = "ProfitShared", createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 96, DateTimeKind.Local), hasChild = false, isActive = true, level = 2, name = "Profit Shared", orderModule = 22, parentId = 2, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 96, DateTimeKind.Local), view = "Index" },
-                        new { id = 23, code = "Service", controller = "Services", createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 96, DateTimeKind.Local), hasChild = false, isActive = true, level = 2, name = "Service", orderModule = 23, parentId = 2, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 96, DateTimeKind.Local), view = "Index" },
-                        new { id = 24, code = "Shipper", controller = "Shipper", createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 96, DateTimeKind.Local), hasChild = false, isActive = true, level = 2, name = "Shipper", orderModule = 24, parentId = 2, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 96, DateTimeKind.Local), view = "Index" },
-                        new { id = 25, code = "Tax", controller = "Tax", createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 96, DateTimeKind.Local), hasChild = false, isActive = true, level = 2, name = "Tax", orderModule = 25, parentId = 2, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 96, DateTimeKind.Local), view = "Index" },
-                        new { id = 26, code = "Type", controller = "Type", createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 96, DateTimeKind.Local), hasChild = false, isActive = true, level = 2, name = "Type", orderModule = 26, parentId = 2, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 96, DateTimeKind.Local), view = "Index" },
-                        new { id = 27, code = "Vendor", controller = "Vendor", createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 96, DateTimeKind.Local), hasChild = false, isActive = true, level = 2, name = "Vendor", orderModule = 27, parentId = 2, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 96, DateTimeKind.Local), view = "Index" },
-                        new { id = 28, code = "Warehouse", controller = "Warehouse", createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 96, DateTimeKind.Local), hasChild = false, isActive = true, level = 2, name = "Warehouse", orderModule = 28, parentId = 2, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 96, DateTimeKind.Local), view = "Index" },
-                        new { id = 29, code = "CostShipping", controller = "CostShipping", createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 96, DateTimeKind.Local), hasChild = false, isActive = true, level = 2, name = "Cost Shipping", orderModule = 1, parentId = 3, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 96, DateTimeKind.Local), view = "Index" },
-                        new { id = 30, code = "SellingShipper", controller = "SellingShipper", createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 96, DateTimeKind.Local), hasChild = false, isActive = true, level = 2, name = "Selling Shipper", orderModule = 2, parentId = 3, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 96, DateTimeKind.Local), view = "Create" }
+                        new { id = 1, code = "Dashboard", controller = "Dashboard", createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 276, DateTimeKind.Local), hasChild = false, isActive = true, level = 1, name = "Dashboard", orderModule = 1, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 276, DateTimeKind.Local), view = "" },
+                        new { id = 2, code = "Master", controller = "", createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 276, DateTimeKind.Local), hasChild = true, isActive = true, level = 1, name = "Master", orderModule = 2, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 276, DateTimeKind.Local), view = "" },
+                        new { id = 3, code = "Transaction", controller = "", createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 276, DateTimeKind.Local), hasChild = true, isActive = true, level = 1, name = "Transaction", orderModule = 3, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 276, DateTimeKind.Local), view = "" },
+                        new { id = 4, code = "Agent", controller = "Agent", createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 276, DateTimeKind.Local), hasChild = false, isActive = true, level = 2, name = "Agent", orderModule = 1, parentId = 2, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 276, DateTimeKind.Local), view = "Index" },
+                        new { id = 5, code = "AgentProfitShared", controller = "AgentProfitShared", createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 276, DateTimeKind.Local), hasChild = false, isActive = true, level = 2, name = "Agent Profit Shared", orderModule = 2, parentId = 2, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 276, DateTimeKind.Local), view = "Index" },
+                        new { id = 6, code = "Bank", controller = "Bank", createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 276, DateTimeKind.Local), hasChild = false, isActive = true, level = 2, name = "Bank", orderModule = 3, parentId = 2, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 276, DateTimeKind.Local), view = "Index" },
+                        new { id = 7, code = "ChartOfAccount", controller = "ChartOfAccount", createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 276, DateTimeKind.Local), hasChild = false, isActive = true, level = 2, name = "Chart Of Account", orderModule = 4, parentId = 2, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 276, DateTimeKind.Local), view = "Index" },
+                        new { id = 8, code = "Company", controller = "Company", createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 276, DateTimeKind.Local), hasChild = false, isActive = true, level = 2, name = "Fumigasi & Insurance", orderModule = 5, parentId = 2, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 276, DateTimeKind.Local), view = "Index" },
+                        new { id = 9, code = "Consignee", controller = "Consignee", createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 276, DateTimeKind.Local), hasChild = false, isActive = true, level = 2, name = "Consignee", orderModule = 6, parentId = 2, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 276, DateTimeKind.Local), view = "Index" },
+                        new { id = 10, code = "Container", controller = "Container", createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 276, DateTimeKind.Local), hasChild = false, isActive = true, level = 2, name = "Container", orderModule = 7, parentId = 2, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 276, DateTimeKind.Local), view = "Index" },
+                        new { id = 11, code = "Country", controller = "Country", createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 276, DateTimeKind.Local), hasChild = false, isActive = true, level = 2, name = "Country", orderModule = 8, parentId = 2, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 276, DateTimeKind.Local), view = "Index" },
+                        new { id = 12, code = "Currency", controller = "Currency", createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 276, DateTimeKind.Local), hasChild = false, isActive = true, level = 2, name = "Currency", orderModule = 9, parentId = 2, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 276, DateTimeKind.Local), view = "Index" },
+                        new { id = 13, code = "CurrencyRate", controller = "CurrencyRate", createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 276, DateTimeKind.Local), hasChild = false, isActive = true, level = 2, name = "Currency Rate", orderModule = 10, parentId = 2, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 276, DateTimeKind.Local), view = "Index" },
+                        new { id = 14, code = "DepoContainer", controller = "DepoContainer", createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 276, DateTimeKind.Local), hasChild = false, isActive = true, level = 2, name = "Depo Container", orderModule = 11, parentId = 2, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 276, DateTimeKind.Local), view = "Index" },
+                        new { id = 15, code = "Employee", controller = "Employee", createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 276, DateTimeKind.Local), hasChild = false, isActive = true, level = 2, name = "Employee", orderModule = 12, parentId = 2, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 276, DateTimeKind.Local), view = "Index" },
+                        new { id = 16, code = "Groups", controller = "Groups", createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 276, DateTimeKind.Local), hasChild = false, isActive = true, level = 2, name = "Groups", orderModule = 13, parentId = 2, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 276, DateTimeKind.Local), view = "Index" },
+                        new { id = 17, code = "Orders", controller = "Orders", createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 276, DateTimeKind.Local), hasChild = false, isActive = true, level = 2, name = "Orders", orderModule = 16, parentId = 2, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 276, DateTimeKind.Local), view = "Index" },
+                        new { id = 18, code = "Location", controller = "Location", createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 276, DateTimeKind.Local), hasChild = false, isActive = true, level = 2, name = "Location", orderModule = 17, parentId = 2, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 276, DateTimeKind.Local), view = "Index" },
+                        new { id = 19, code = "PortOfDestination", controller = "PortOfDestination", createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 276, DateTimeKind.Local), hasChild = false, isActive = true, level = 2, name = "Port Of Destination", orderModule = 18, parentId = 2, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 276, DateTimeKind.Local), view = "Index" },
+                        new { id = 20, code = "PortOfLoading", controller = "PortOfLoading", createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 276, DateTimeKind.Local), hasChild = false, isActive = true, level = 2, name = "Port Of Loading", orderModule = 19, parentId = 2, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 276, DateTimeKind.Local), view = "Index" },
+                        new { id = 21, code = "PortTerminal", controller = "PortTerminal", createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 276, DateTimeKind.Local), hasChild = false, isActive = true, level = 2, name = "Port Terminal", orderModule = 21, parentId = 2, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 276, DateTimeKind.Local), view = "Index" },
+                        new { id = 22, code = "ProfitShared", controller = "ProfitShared", createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 276, DateTimeKind.Local), hasChild = false, isActive = true, level = 2, name = "Profit Shared", orderModule = 22, parentId = 2, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 276, DateTimeKind.Local), view = "Index" },
+                        new { id = 23, code = "Service", controller = "Services", createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 276, DateTimeKind.Local), hasChild = false, isActive = true, level = 2, name = "Service", orderModule = 23, parentId = 2, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 276, DateTimeKind.Local), view = "Index" },
+                        new { id = 24, code = "Shipper", controller = "Shipper", createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 276, DateTimeKind.Local), hasChild = false, isActive = true, level = 2, name = "Shipper", orderModule = 24, parentId = 2, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 276, DateTimeKind.Local), view = "Index" },
+                        new { id = 25, code = "Tax", controller = "Tax", createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 276, DateTimeKind.Local), hasChild = false, isActive = true, level = 2, name = "Tax", orderModule = 25, parentId = 2, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 276, DateTimeKind.Local), view = "Index" },
+                        new { id = 26, code = "Type", controller = "Type", createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 276, DateTimeKind.Local), hasChild = false, isActive = true, level = 2, name = "Type", orderModule = 26, parentId = 2, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 276, DateTimeKind.Local), view = "Index" },
+                        new { id = 27, code = "Vendor", controller = "Vendor", createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 276, DateTimeKind.Local), hasChild = false, isActive = true, level = 2, name = "Vendor", orderModule = 27, parentId = 2, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 276, DateTimeKind.Local), view = "Index" },
+                        new { id = 28, code = "Warehouse", controller = "Warehouse", createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 276, DateTimeKind.Local), hasChild = false, isActive = true, level = 2, name = "Warehouse", orderModule = 28, parentId = 2, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 276, DateTimeKind.Local), view = "Index" },
+                        new { id = 29, code = "CostShipping", controller = "CostShipping", createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 276, DateTimeKind.Local), hasChild = false, isActive = true, level = 2, name = "Cost Shipping", orderModule = 1, parentId = 3, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 276, DateTimeKind.Local), view = "Index" },
+                        new { id = 30, code = "SellingShipper", controller = "SellingShipper", createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 276, DateTimeKind.Local), hasChild = false, isActive = true, level = 2, name = "Selling Shipper", orderModule = 2, parentId = 3, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 276, DateTimeKind.Local), view = "Create" }
                     );
                 });
 
@@ -1785,36 +1785,36 @@ namespace fms.Migrations
                     b.ToTable("sysModuleRole");
 
                     b.HasData(
-                        new { id = 1, createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 114, DateTimeKind.Local), isActive = true, isDefault = true, moduleId = 1, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 114, DateTimeKind.Local), userRoleId = 1 },
-                        new { id = 2, createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 114, DateTimeKind.Local), isActive = true, isDefault = false, moduleId = 2, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 114, DateTimeKind.Local), userRoleId = 1 },
-                        new { id = 3, createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 114, DateTimeKind.Local), isActive = true, isDefault = false, moduleId = 3, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 114, DateTimeKind.Local), userRoleId = 1 },
-                        new { id = 4, createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 114, DateTimeKind.Local), isActive = true, isDefault = false, moduleId = 4, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 114, DateTimeKind.Local), userRoleId = 1 },
-                        new { id = 5, createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 114, DateTimeKind.Local), isActive = true, isDefault = false, moduleId = 5, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 114, DateTimeKind.Local), userRoleId = 1 },
-                        new { id = 6, createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 114, DateTimeKind.Local), isActive = true, isDefault = false, moduleId = 6, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 114, DateTimeKind.Local), userRoleId = 1 },
-                        new { id = 7, createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 114, DateTimeKind.Local), isActive = true, isDefault = false, moduleId = 7, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 114, DateTimeKind.Local), userRoleId = 1 },
-                        new { id = 8, createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 114, DateTimeKind.Local), isActive = true, isDefault = false, moduleId = 8, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 114, DateTimeKind.Local), userRoleId = 1 },
-                        new { id = 9, createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 114, DateTimeKind.Local), isActive = true, isDefault = false, moduleId = 9, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 114, DateTimeKind.Local), userRoleId = 1 },
-                        new { id = 10, createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 114, DateTimeKind.Local), isActive = true, isDefault = false, moduleId = 10, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 114, DateTimeKind.Local), userRoleId = 1 },
-                        new { id = 11, createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 114, DateTimeKind.Local), isActive = true, isDefault = false, moduleId = 11, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 114, DateTimeKind.Local), userRoleId = 1 },
-                        new { id = 12, createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 114, DateTimeKind.Local), isActive = true, isDefault = false, moduleId = 12, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 114, DateTimeKind.Local), userRoleId = 1 },
-                        new { id = 13, createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 114, DateTimeKind.Local), isActive = true, isDefault = false, moduleId = 13, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 114, DateTimeKind.Local), userRoleId = 1 },
-                        new { id = 14, createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 114, DateTimeKind.Local), isActive = true, isDefault = false, moduleId = 14, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 114, DateTimeKind.Local), userRoleId = 1 },
-                        new { id = 15, createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 114, DateTimeKind.Local), isActive = true, isDefault = false, moduleId = 15, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 114, DateTimeKind.Local), userRoleId = 1 },
-                        new { id = 16, createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 114, DateTimeKind.Local), isActive = true, isDefault = false, moduleId = 16, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 114, DateTimeKind.Local), userRoleId = 1 },
-                        new { id = 17, createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 114, DateTimeKind.Local), isActive = true, isDefault = false, moduleId = 17, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 114, DateTimeKind.Local), userRoleId = 1 },
-                        new { id = 18, createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 114, DateTimeKind.Local), isActive = true, isDefault = false, moduleId = 18, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 114, DateTimeKind.Local), userRoleId = 1 },
-                        new { id = 19, createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 114, DateTimeKind.Local), isActive = true, isDefault = false, moduleId = 19, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 114, DateTimeKind.Local), userRoleId = 1 },
-                        new { id = 20, createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 114, DateTimeKind.Local), isActive = true, isDefault = false, moduleId = 20, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 114, DateTimeKind.Local), userRoleId = 1 },
-                        new { id = 21, createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 114, DateTimeKind.Local), isActive = true, isDefault = false, moduleId = 21, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 114, DateTimeKind.Local), userRoleId = 1 },
-                        new { id = 22, createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 114, DateTimeKind.Local), isActive = true, isDefault = false, moduleId = 22, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 114, DateTimeKind.Local), userRoleId = 1 },
-                        new { id = 23, createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 114, DateTimeKind.Local), isActive = true, isDefault = false, moduleId = 23, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 114, DateTimeKind.Local), userRoleId = 1 },
-                        new { id = 24, createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 114, DateTimeKind.Local), isActive = true, isDefault = false, moduleId = 24, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 114, DateTimeKind.Local), userRoleId = 1 },
-                        new { id = 25, createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 114, DateTimeKind.Local), isActive = true, isDefault = false, moduleId = 25, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 114, DateTimeKind.Local), userRoleId = 1 },
-                        new { id = 26, createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 114, DateTimeKind.Local), isActive = true, isDefault = false, moduleId = 26, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 114, DateTimeKind.Local), userRoleId = 1 },
-                        new { id = 27, createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 114, DateTimeKind.Local), isActive = true, isDefault = false, moduleId = 27, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 114, DateTimeKind.Local), userRoleId = 1 },
-                        new { id = 28, createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 114, DateTimeKind.Local), isActive = true, isDefault = false, moduleId = 28, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 114, DateTimeKind.Local), userRoleId = 1 },
-                        new { id = 29, createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 114, DateTimeKind.Local), isActive = true, isDefault = false, moduleId = 29, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 114, DateTimeKind.Local), userRoleId = 1 },
-                        new { id = 30, createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 114, DateTimeKind.Local), isActive = true, isDefault = false, moduleId = 30, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 114, DateTimeKind.Local), userRoleId = 1 }
+                        new { id = 1, createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 303, DateTimeKind.Local), isActive = true, isDefault = true, moduleId = 1, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 303, DateTimeKind.Local), userRoleId = 1 },
+                        new { id = 2, createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 303, DateTimeKind.Local), isActive = true, isDefault = false, moduleId = 2, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 303, DateTimeKind.Local), userRoleId = 1 },
+                        new { id = 3, createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 303, DateTimeKind.Local), isActive = true, isDefault = false, moduleId = 3, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 303, DateTimeKind.Local), userRoleId = 1 },
+                        new { id = 4, createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 303, DateTimeKind.Local), isActive = true, isDefault = false, moduleId = 4, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 303, DateTimeKind.Local), userRoleId = 1 },
+                        new { id = 5, createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 303, DateTimeKind.Local), isActive = true, isDefault = false, moduleId = 5, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 303, DateTimeKind.Local), userRoleId = 1 },
+                        new { id = 6, createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 303, DateTimeKind.Local), isActive = true, isDefault = false, moduleId = 6, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 303, DateTimeKind.Local), userRoleId = 1 },
+                        new { id = 7, createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 303, DateTimeKind.Local), isActive = true, isDefault = false, moduleId = 7, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 303, DateTimeKind.Local), userRoleId = 1 },
+                        new { id = 8, createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 303, DateTimeKind.Local), isActive = true, isDefault = false, moduleId = 8, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 303, DateTimeKind.Local), userRoleId = 1 },
+                        new { id = 9, createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 303, DateTimeKind.Local), isActive = true, isDefault = false, moduleId = 9, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 303, DateTimeKind.Local), userRoleId = 1 },
+                        new { id = 10, createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 303, DateTimeKind.Local), isActive = true, isDefault = false, moduleId = 10, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 303, DateTimeKind.Local), userRoleId = 1 },
+                        new { id = 11, createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 303, DateTimeKind.Local), isActive = true, isDefault = false, moduleId = 11, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 303, DateTimeKind.Local), userRoleId = 1 },
+                        new { id = 12, createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 303, DateTimeKind.Local), isActive = true, isDefault = false, moduleId = 12, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 303, DateTimeKind.Local), userRoleId = 1 },
+                        new { id = 13, createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 303, DateTimeKind.Local), isActive = true, isDefault = false, moduleId = 13, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 303, DateTimeKind.Local), userRoleId = 1 },
+                        new { id = 14, createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 303, DateTimeKind.Local), isActive = true, isDefault = false, moduleId = 14, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 303, DateTimeKind.Local), userRoleId = 1 },
+                        new { id = 15, createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 303, DateTimeKind.Local), isActive = true, isDefault = false, moduleId = 15, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 303, DateTimeKind.Local), userRoleId = 1 },
+                        new { id = 16, createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 303, DateTimeKind.Local), isActive = true, isDefault = false, moduleId = 16, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 303, DateTimeKind.Local), userRoleId = 1 },
+                        new { id = 17, createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 303, DateTimeKind.Local), isActive = true, isDefault = false, moduleId = 17, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 303, DateTimeKind.Local), userRoleId = 1 },
+                        new { id = 18, createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 303, DateTimeKind.Local), isActive = true, isDefault = false, moduleId = 18, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 303, DateTimeKind.Local), userRoleId = 1 },
+                        new { id = 19, createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 303, DateTimeKind.Local), isActive = true, isDefault = false, moduleId = 19, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 303, DateTimeKind.Local), userRoleId = 1 },
+                        new { id = 20, createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 303, DateTimeKind.Local), isActive = true, isDefault = false, moduleId = 20, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 303, DateTimeKind.Local), userRoleId = 1 },
+                        new { id = 21, createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 303, DateTimeKind.Local), isActive = true, isDefault = false, moduleId = 21, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 303, DateTimeKind.Local), userRoleId = 1 },
+                        new { id = 22, createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 303, DateTimeKind.Local), isActive = true, isDefault = false, moduleId = 22, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 303, DateTimeKind.Local), userRoleId = 1 },
+                        new { id = 23, createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 303, DateTimeKind.Local), isActive = true, isDefault = false, moduleId = 23, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 303, DateTimeKind.Local), userRoleId = 1 },
+                        new { id = 24, createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 303, DateTimeKind.Local), isActive = true, isDefault = false, moduleId = 24, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 303, DateTimeKind.Local), userRoleId = 1 },
+                        new { id = 25, createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 303, DateTimeKind.Local), isActive = true, isDefault = false, moduleId = 25, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 303, DateTimeKind.Local), userRoleId = 1 },
+                        new { id = 26, createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 303, DateTimeKind.Local), isActive = true, isDefault = false, moduleId = 26, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 303, DateTimeKind.Local), userRoleId = 1 },
+                        new { id = 27, createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 303, DateTimeKind.Local), isActive = true, isDefault = false, moduleId = 27, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 303, DateTimeKind.Local), userRoleId = 1 },
+                        new { id = 28, createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 303, DateTimeKind.Local), isActive = true, isDefault = false, moduleId = 28, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 303, DateTimeKind.Local), userRoleId = 1 },
+                        new { id = 29, createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 303, DateTimeKind.Local), isActive = true, isDefault = false, moduleId = 29, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 303, DateTimeKind.Local), userRoleId = 1 },
+                        new { id = 30, createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 303, DateTimeKind.Local), isActive = true, isDefault = false, moduleId = 30, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 303, DateTimeKind.Local), userRoleId = 1 }
                     );
                 });
 
@@ -1860,7 +1860,7 @@ namespace fms.Migrations
                     b.ToTable("sysUser");
 
                     b.HasData(
-                        new { id = 1, createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 113, DateTimeKind.Local), email = "", isActive = true, name = "Administrator", password = "cQeyR/6G59fwNXoKjkIPIkkXStwefY/E3yrAcfwA5IiqZCHj", roleId = 1, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 113, DateTimeKind.Local), username = "admin" }
+                        new { id = 1, createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 303, DateTimeKind.Local), email = "", isActive = true, name = "Administrator", password = "C5DUlbPsfB/rBCwgC3DTPJpJK0xVqCMx9BYs3Sr+JpXTE9jC", roleId = 1, updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 303, DateTimeKind.Local), username = "admin" }
                     );
                 });
 
@@ -1894,7 +1894,7 @@ namespace fms.Migrations
                     b.ToTable("sysUserRole");
 
                     b.HasData(
-                        new { id = 1, createdBy = "admin", createdOn = new DateTime(2018, 12, 17, 19, 2, 10, 96, DateTimeKind.Local), description = "Super Administrator", isActive = true, name = "Super Admin", updatedBy = "admin", updatedOn = new DateTime(2018, 12, 17, 19, 2, 10, 96, DateTimeKind.Local) }
+                        new { id = 1, createdBy = "admin", createdOn = new DateTime(2018, 12, 18, 12, 1, 30, 276, DateTimeKind.Local), description = "Super Administrator", isActive = true, name = "Super Admin", updatedBy = "admin", updatedOn = new DateTime(2018, 12, 18, 12, 1, 30, 276, DateTimeKind.Local) }
                     );
                 });
 
@@ -1968,20 +1968,15 @@ namespace fms.Migrations
 
                     b.Property<bool>("isActive");
 
-                    b.Property<string>("payable")
-                        .IsRequired();
-
                     b.Property<int>("pcPay");
 
                     b.Property<int>("portOfDestinationId");
 
                     b.Property<int>("portTerminalId");
 
+                    b.Property<int>("portTerminalType");
+
                     b.Property<decimal>("price");
-
-                    b.Property<decimal>("refund");
-
-                    b.Property<int>("refundType");
 
                     b.Property<string>("remark")
                         .HasMaxLength(500);
@@ -1997,8 +1992,6 @@ namespace fms.Migrations
 
                     b.Property<DateTime>("updatedOn");
 
-                    b.Property<int>("vendorId");
-
                     b.HasKey("id");
 
                     b.HasIndex("containerId");
@@ -2009,15 +2002,11 @@ namespace fms.Migrations
 
                     b.HasIndex("portOfDestinationId");
 
-                    b.HasIndex("portTerminalId");
-
                     b.HasIndex("serviceId");
 
                     b.HasIndex("taxId23");
 
                     b.HasIndex("taxIdvat");
-
-                    b.HasIndex("vendorId");
 
                     b.ToTable("trCostShippingDetail");
                 });
@@ -2026,6 +2015,8 @@ namespace fms.Migrations
                 {
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<int>("containerId");
 
                     b.Property<int>("costShippingDetailId");
 
@@ -2036,7 +2027,17 @@ namespace fms.Migrations
 
                     b.Property<DateTime>("createdOn");
 
+                    b.Property<int>("currencyId");
+
                     b.Property<bool>("isActive");
+
+                    b.Property<decimal>("operationMonitoring");
+
+                    b.Property<int>("operationMonitoringType");
+
+                    b.Property<string>("payable");
+
+                    b.Property<int>("portOfDestinationId");
 
                     b.Property<string>("shipperCode")
                         .IsRequired()
@@ -2055,9 +2056,15 @@ namespace fms.Migrations
 
                     b.HasKey("id");
 
+                    b.HasIndex("containerId");
+
                     b.HasIndex("costShippingDetailId");
 
                     b.HasIndex("costShippingId");
+
+                    b.HasIndex("currencyId");
+
+                    b.HasIndex("portOfDestinationId");
 
                     b.HasIndex("shipperId");
 
@@ -2272,8 +2279,7 @@ namespace fms.Migrations
 
                     b.Property<int>("operationCostType");
 
-                    b.Property<string>("payable")
-                        .IsRequired();
+                    b.Property<string>("payable");
 
                     b.Property<int>("portOfDestinationId");
 
@@ -2664,11 +2670,6 @@ namespace fms.Migrations
                         .HasForeignKey("portOfDestinationId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("fms.Models.mtPortTerminal", "portTerminal")
-                        .WithMany()
-                        .HasForeignKey("portTerminalId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
                     b.HasOne("fms.Models.mtServices", "services")
                         .WithMany()
                         .HasForeignKey("serviceId")
@@ -2683,15 +2684,15 @@ namespace fms.Migrations
                         .WithMany()
                         .HasForeignKey("taxIdvat")
                         .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("fms.Models.mtVendor", "vendor")
-                        .WithMany()
-                        .HasForeignKey("vendorId")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("fms.Models.trCostShippingDetailShipper", b =>
                 {
+                    b.HasOne("fms.Models.mtContainer", "container")
+                        .WithMany()
+                        .HasForeignKey("containerId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("fms.Models.trCostShippingDetail", "costShippingDetail")
                         .WithMany("costShippingDetailShippers")
                         .HasForeignKey("costShippingDetailId")
@@ -2700,6 +2701,16 @@ namespace fms.Migrations
                     b.HasOne("fms.Models.trCostShipping", "costShipping")
                         .WithMany()
                         .HasForeignKey("costShippingId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("fms.Models.mtCurrency", "currency")
+                        .WithMany()
+                        .HasForeignKey("currencyId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("fms.Models.mtPortOfDestination", "portOfDestination")
+                        .WithMany()
+                        .HasForeignKey("portOfDestinationId")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("fms.Models.mtShipper", "shipper")

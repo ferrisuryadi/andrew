@@ -299,7 +299,7 @@ namespace fms.Controllers
         public IActionResult getCoLoader()
         {
             ICollection<sysDropDown> dropDowns =
-                mContext.mtVendor.Where(x => x.isActive == true && x.typeId == 5)
+                mContext.mtShipper.Where(x => x.isActive == true)
                         .Select(x => new sysDropDown
                         {
                             id = x.id,
@@ -458,7 +458,7 @@ namespace fms.Controllers
 
         [HttpPost]
         [Route("detailAdd")]
-        public IActionResult detailAdd([FromBody]trCostShippingDetail value)
+        public IActionResult detailAdd([FromBody]trCostShippingDetailModel value)
         {
             if (string.IsNullOrEmpty(HttpContext.Session.GetString("fullname")))
                 return RedirectToAction("index", "login");
@@ -468,11 +468,6 @@ namespace fms.Controllers
 
             try
             {
-                value.isActive = true;
-                value.createdBy = user;
-                value.createdOn = txDate;
-                value.updatedBy = user;
-                value.updatedOn = txDate;
 
                 var context = new ValidationContext(value, serviceProvider: null, items: null);
                 var results = new List<ValidationResult>();
@@ -496,10 +491,91 @@ namespace fms.Controllers
                     return Ok(new { status = 400, message = errorMessage });
                 }
 
-                mContext.trCostShippingDetail.Add(value);
-                mContext.SaveChanges();
+                //add condition if detail already save
+                trCostShippingDetailShipper checking =
+                    mContext.trCostShippingDetailShipper
+                            .Where(x => x.isActive == true &&
+                                   x.costShippingId == value.costShippingId &&
+                                   x.costShippingDetailId == value.id &&
+                                   x.containerId == value.containerId &&
+                                   x.currencyId == value.currencyId &&
+                                   x.portOfDestinationId == value.portOfDestinationId)
+                            .FirstOrDefault();
 
-                return Ok(new { status = 200, message = value.id });
+                if (checking is null)
+                {
+                    trCostShippingDetail item = new trCostShippingDetail();
+                    item.costShippingId = value.costShippingId;
+                    item.serviceId = value.serviceId;
+                    item.portOfDestinationId = value.portOfDestinationId;
+                    item.pcPay = value.pcPay;
+                    item.portTerminalType = value.portTerminalType;
+                    item.portTerminalId = value.portTerminalId;
+                    item.containerId = value.containerId;
+                    item.currencyId = value.currencyId;
+                    item.taxId23 = value.taxId23;
+                    item.taxIdvat = value.taxIdvat;
+                    item.price = value.price;
+                    item.remark = value.remark;
+                    item.allIn = value.allIn;
+                    item.isActive = true;
+                    item.createdBy = user;
+                    item.createdOn = txDate;
+                    item.updatedBy = user;
+                    item.updatedOn = txDate;
+
+                    mContext.trCostShippingDetail.Add(item);
+                    mContext.SaveChanges();
+
+                    trCostShippingDetailShipper refund = new trCostShippingDetailShipper();
+                    refund.costShippingId = value.costShippingId;
+                    refund.costShippingDetailId = item.id;
+                    refund.containerId = value.containerId;
+                    refund.currencyId = value.currencyId;
+                    refund.portOfDestinationId = value.portOfDestinationId;
+                    refund.operationMonitoring = value.operationMonitoring;
+                    refund.operationMonitoringType = value.operationMonitoringType;//1: Percentage; 2: Amount;
+                    refund.payable = value.payable;
+                    refund.shipperId = value.vendorId;
+                    refund.shipperCode = mContext.mtShipper.Where(x => x.isActive == true && x.id == value.vendorId).Select(x => x.code).FirstOrDefault();
+                    refund.shipperName = mContext.mtShipper.Where(x => x.isActive == true && x.id == value.vendorId).Select(x => x.name).FirstOrDefault();
+                    refund.isActive = true;
+                    refund.createdBy = user;
+                    refund.createdOn = txDate;
+                    refund.updatedBy = user;
+                    refund.updatedOn = txDate;
+
+                    mContext.trCostShippingDetailShipper.Add(refund);
+                    mContext.SaveChanges();
+
+                    return Ok(new { status = 200, message = new { detailId = item.id, shipperId = refund.id, shipperCode = refund.shipperCode, shipperName = refund.shipperName } });
+                }
+                else
+                {
+                    trCostShippingDetailShipper refund = new trCostShippingDetailShipper();
+                    refund.costShippingId = checking.costShippingId;
+                    refund.costShippingDetailId = checking.costShippingDetailId;
+                    refund.containerId = value.containerId;
+                    refund.currencyId = value.currencyId;
+                    refund.portOfDestinationId = value.portOfDestinationId;
+                    refund.operationMonitoring = value.operationMonitoring;
+                    refund.operationMonitoringType = value.operationMonitoringType;//1: Percentage; 2: Amount;
+                    refund.payable = value.payable;
+                    refund.shipperId = value.vendorId;
+                    refund.shipperCode = mContext.mtShipper.Where(x => x.isActive == true && x.id == value.vendorId).Select(x => x.code).FirstOrDefault();
+                    refund.shipperName = mContext.mtShipper.Where(x => x.isActive == true && x.id == value.vendorId).Select(x => x.name).FirstOrDefault();
+                    refund.isActive = true;
+                    refund.createdBy = user;
+                    refund.createdOn = txDate;
+                    refund.updatedBy = user;
+                    refund.updatedOn = txDate;
+
+                    mContext.trCostShippingDetailShipper.Add(refund);
+                    mContext.SaveChanges();
+
+                    return Ok(new { status = 201, message = new { shipperId = refund.id, shipperCode = refund.shipperCode, shipperName = refund.shipperName } });
+
+                }
 
             }
             catch (Exception ex)
@@ -598,13 +674,30 @@ namespace fms.Controllers
         [Route("loadShipper")]
         public IActionResult loadShipper([FromBody]trCostShippingDetailShipperLoad value)
         {
-            ICollection<trCostShippingDetailShipper> mtVendor =
+            ICollection<trCostShippingDetailShipperModel> mtShipper =
                 mContext.trCostShippingDetailShipper
+                        .Include(x => x.portOfDestination)
+                        .Include(x => x.currency)
+                        .Include(x => x.container)
                         .Where(x => x.isActive == true &&
                                x.costShippingId == value.costShippingId &&
-                               x.costShippingDetailId == value.costShippingDetailId).ToList();
+                               x.costShippingDetailId == value.costShippingDetailId)
+                       .Select(x => new trCostShippingDetailShipperModel
+                       {
+                           id = x.id,
+                           costShippingId = x.costShippingId,
+                           costShippingDetailId = x.costShippingDetailId,
+                           portOfDestination = x.portOfDestination.location,
+                           container = x.container.typeofContainer,
+                           currency = (x.currency.code + " - " + x.currency.description),
+                           operationMonitoring = x.operationMonitoring,
+                           operationMonitoringType = (x.operationMonitoringType == 1 ? "Percentage" : "Amount"),
+                           payable = x.payable,
+                           shipperCode = x.shipperCode,
+                           shipperName = x.shipperName
+                       }).ToList();
 
-            return Ok(new { status = 200, message = mtVendor });
+            return Ok(new { status = 200, message = mtShipper });
         }
 
         [HttpGet]
@@ -655,19 +748,22 @@ namespace fms.Controllers
                 mContext.trCostShippingDetail
                         .Include(x => x.services)
                         .Include(x => x.portOfDestination)
-                        .Include(x => x.portTerminal)
                         .Include(x => x.container)
                         .Include(x => x.currency)
                         .Include(x => x.tax23)
                         .Include(x => x.vat)
-                        .Include(x => x.vendor)
                         .Where(x => x.isActive == true && x.costShippingId == id)
                         .Select(x => new trCostShippingDetailView
                         {
                             id = x.id,
                             serviceId = (x.services.code + " - " + x.services.description),
                             portOfDestinationId = x.portOfDestination.location,
-                            portTerminalId = x.portTerminal.terminalPort,
+                            portTerminalType = (x.portTerminalType == 1 ? "POL" : "POD"),
+                            portTerminalId = 
+                                (x.portTerminalType  == 1 ? 
+                                    mContext.mtPortOfLoading.Where(a => a.isActive == true && a.id == x.portTerminalId).Select(a => a.port).FirstOrDefault() :
+                                    mContext.mtPortOfDestination.Where(b => b.isActive == true && b.id == x.portTerminalId).Select(b => b.location).FirstOrDefault()
+                                ),
                             pcPay = (x.pcPay == 1 ? "PREPAID (P)" : (x.pcPay == 2 ? "COLLECT (C)" : "PAYABLE AT")),
                             containerId = (x.container.typeofContainer),
                             currencyId = (x.currency.code + " - " + x.currency.description),
@@ -675,10 +771,6 @@ namespace fms.Controllers
                             taxIdvat = (x.vat.code + " - " + x.vat.amount.ToString(SystemFormat.decimalFormat)),
                             price = x.price,
                             allIn = (x.allIn ? "True" : "False"),
-                            refund = x.refund,
-                            refundType = (x.refundType == 1 ? "Percentage" : "Amount"),
-                            payable = x.payable,
-                            vendorId = (x.vendor.code + " - " + x.vendor.name),
                             remark = x.remark
                         }).ToList();
 
